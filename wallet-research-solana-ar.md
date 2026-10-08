@@ -206,6 +206,41 @@
 
 **الجواب المباشر:** من ناحية حجم السيولة في اللقطة الحالية، دخول **$10 لكل تجربة** أيسر من $50، لكن ليس مضمون الخروج ولا يحمي من انهيار كامل. **$50 ليس مبلغًا ضخمًا بالنسبة لبعض المجمعات، لكنه كبير بما يكفي لإحداث انزلاق ملحوظ في الأزواج الأضعف**. قبل أي مبادلة، افحص عرض البيع الفعلي للكمية التي ستملكها وحدّ الانزلاق؛ إذا كان العرض سيئًا أو لا يوجد مسار بيع واضح فتجاوز الصفقة. لا تنسخ المحفظة آليًا أو تمنح موقعًا/بوتًا مفتاحك الخاص.
 
+## 8. هل نستطيع معرفة نوع أوامر الخروج؟ وكيف تبني نسخة أسرع؟
+
+### ما تثبته البيانات عن هذه المحفظة — وما لا تثبته
+
+- معاملة AORP المفحوصة على Orb تظهر مبادلة نحو `0.987654 SOL` مقابل `49.99M` توكن عبر **Bloom Router** إلى **Pump.fun AMM / PumpSwap**. هذا يثبت استعمال مسار Bloom في تلك المعاملة؛ لا يثبت وحده أن صاحب الحساب يستخدم واجهة Bloom نفسها أو خاصية Copy Trading تحديدًا، إذ يمكن أن يرسل تداولًا يدويًا أو عبر API.
+- في تجميع Vybe السابق: من 28 مِنت ميم مغلقًا، صُنّف 27 موجبًا ومِنت واحد خاسرًا (`−$2.88` على شراء `$119.21`، نحو `−2.4%`). وفي عدد من المراكز المغلقة ظهرت عمليتا بيع أو ثلاث للمِنت؛ وهذا يثبت الخروج على دفعات في تلك الحالات، لا سبب البيع. وهناك أيضًا خمسة مِنتات لم تسجل لها مبيعات، ومركز XRPN مفتوح جزئيًا.
+- هذا **يتوافق** مع جني أرباح على دفعات، لكنه لا يميّز بين Take Profit ثابت، أو Trailing Stop، أو Stop Loss، أو Follow Sells، أو بيع يدوي. ملخص PnL لا يعرض إعدادات صاحب المحفظة ولا سبب إطلاق كل بيع؛ والمراكز المفتوحة تجعل الحكم من العينة المغلقة وحدها منحازًا. لذلك لا أستطيع تأكيد أنه يستخدم Stop Loss أو Trailing أو حتى أن مبيعاته الآلية هي سبب الأرباح.
+
+Bloom نفسها توثّق في Copy Trading خيارات `Buy Exact / Buy % / Buy Fixed` و`Follow Sells`، كما توثّق Auto Orders تشمل Take Profit وStop Loss وTrailing ووقت خروج وخروجًا عند بيع المطوّر. وجود هذه الإمكانات مع مرور إحدى صفقاته عبر Bloom يجعل استخدامها **ممكنًا ومعقولًا، لا مثبتًا**. الموقع الرسمي لـBloom يعلن رسمًا قدره 1% على الشراء و1% على البيع؛ تحقّق من الشروط/الخصومات السارية في حسابك قبل حساب نقطة التعادل.
+
+### أقرب نسخة جاهزة الآن: Bloom Copy Trading
+
+إذا أردت تقليد حركة المحفظة بأقل وقت تطوير، استخدم مهمة Copy Trading الرسمية وأدخل عنوانها. كإعداد أولي للنسخ، لا كتوصية استثمارية:
+
+1. فعّل `Follow Sells` كي تبيع النسبة التي يبيعها الهدف، و`Buy Tokens Once` و`Sell Only Copied Buys` لتفادي تكرار الدخول أو بيع رصيد لم تشتره هذه المهمة.
+2. أظهر سجلها دخولًا نموذجيًا قريبًا من `0.9876 SOL` (نحو `$117` في اللقطة). `Buy Exact` سيحاول محاكاة ذلك المبلغ؛ إن كان أكبر من ميزانيتك استخدم `Buy Fixed` أو نسبة أقل من 100%، وضع حدًا أقصى لكل صفقة وعدد المراكز.
+3. اضبط `Max Slot Diff` منخفضًا حتى تتجاوز الإشارة إذا تأخر النسخ كثيرًا؛ هذا يقلل النسخ المتأخر لكنه قد يجعل البوت يفوّت صفقات. استخدم فلاتر الحد الأعلى/الأدنى لشراء الهدف والقيمة السوقية وعمر التوكن.
+4. لنسخة أقرب إلى سلوكه، ابدأ بـ`Follow Sells` من دون TP/SL/Trailing مستقل. إضافة هذه المخارج قد تبيعك قبل الهدف أو بعده، وبالتالي لن تكون نسخة مطابقة. إذا أضفت حد خسارة كشبكة أمان، اعتبره قرارًا يغيّر الاستراتيجية لا معلومة مستنتجة عن الهدف.
+
+Bloom API الرسمي يتيح إرسال Swap وإرفاق أوامر خروج، لكنه في التوثيق العام يشرح واجهات Swap/Deploy/Wallets ولا يعرض واجهة عامة لإنشاء مهمة Copy ومراقبة عنوان هدف؛ لذلك حتى مع API ستحتاج إلى بناء مستمع معاملاتك. المفتاح Bearer مرتبط بحساب Bloom، ومحافظ التنفيذ يجب أن تكون ضمنه. انتبه إلى `auto_orders`: إغفالها أو إرسال `null` يطبق استراتيجية Spot المحفوظة، و`[]` يعطّل أوامر الخروج، والمصفوفة المخصصة تستخدم أوامرك وحدها؛ حدّد السلوك صراحةً حتى لا ترث إعدادًا لم تقصده. كما أن الوثائق تنشر حدود طلبات (60/دقيقة، 1,200/ساعة، 10,000/أسبوع)، لذا راقب حدّ الاستخدام وأعد المحاولة بتدرّج. ويمكن استعماله كطبقة تنفيذ، لكن المرور عبر طلب API خارجي لا يضمن أن يكون أسرع من Copy Trading المدمج في Bloom.
+
+### بنية بوت مخصص — ابدأ بقياس السرعة قبل مطاردة الميلي ثانية
+
+1. **استقبال الإشارة:** Yellowstone gRPC / LaserStream مع فلتر عنوان الهدف، وبـ`processed` لأسرع تنبيه؛ سجّل التوقيع والـslot، ثم صالح النتيجة عند `confirmed` وتعامل مع إعادة الاتصال والتكرار. `processed` أسرع لكنه ليس نهائيًا، فلا تُرسل شراءً ثانيًا لمجرد غموض التأكيد.
+2. **فكّ المعاملة:** لا تراقب شموع الدقيقة ولا تبحث فقط عن تعليمة Pump.fun مباشرة. صفقة العينة تمر عبر Bloom Router وبداخلها PumpSwap؛ فكّ التعليمات الخارجية والداخلية، وتأكد من نجاح المعاملة (`meta.err`)، واستعمل فروق أرصدة SOL والتوكن قبل/بعدها لتحديد المِنت والاتجاه والكمية الفعلية. وقّع **معاملة جديدة لمحفظتك**؛ لا يمكن إعادة بث توقيع الهدف ليصبح صفقتك.
+3. **بوابة المخاطر قبل التنفيذ:** حد أقصى SOL لكل صفقة ولكل توكن، سقف انزلاق/أثر سعري، حد أدنى للسيولة ومسار بيع، عدد أقصى للمراكز، قائمة منع، منع التكرار، وقاطع يومي يوقف التداول. افحص ناتج البيع المتوقع لكمية محفظتك؛ Stop Loss لا يضمن سعرًا أو حتى إمكان البيع إذا اختفت السيولة أو تعذّر المسار.
+4. **التنفيذ:** للنسخة الأولى استخدم Bloom API أو Jupiter Swap لبناء المسار وإرسال الصفقة؛ قد يمنح بناء تعليمات Pump.fun/PumpSwap مباشرة وتوقيعها محليًا تحكمًا أكبر وربما يقلل بعض الرحلات الشبكية، لكن لا تفترض أنه أسرع قبل القياس. اجعل متابعة البيع بنسبة من **رصيدك أنت قبل الصفقة**، لا كمية توكنات الهدف حرفيًا، لأن حجم التنفيذ والانزلاق والرسوم يختلفان.
+5. **القياس:** خزّن أوقات اكتشاف الإشارة، انتهاء فكّها، إرسال معاملتك، الـslot، سعر تنفيذك وسعر الهدف والرسوم. قارن `slot gap` وسعر التنفيذ الفعلي قبل تغيير مزوّد البيانات أو دفع تكاليف بنية أسرع. سرعة اللغة وحدها لن تعوّض تأخر مزوّد البيانات أو بناء الصفقة أو إرسالها.
+
+**مهم بتاريخ هذا التقرير (8 أكتوبر 2026):** توثيق Jito أعلن موعد إيقاف ShredStream في **5 سبتمبر 2026** وأوصى بالانتقال إلى DoubleZero Edge؛ الموعد المعلن قد مضى، فلا تبدأ مشروعًا جديدًا من شروحات قديمة تفترض أن Jito ShredStream متاح. DoubleZero Edge مسار بيانات shreds وليس وحده خدمة توقيع/إرسال Swap. Yellowstone/LaserStream أسهل كبداية؛ قِس زمن مسار أوروبي من بيئة تشغيلك قبل شراء بنية مخصّصة. وإيقاف ShredStream لا يعني تلقائيًا إيقاف واجهة Jito لإرسال المعاملات؛ هما مساران مختلفان.
+
+حتى مع أسرع بث، لن تحصل تلقائيًا على سعر الهدف: أنت ترى معاملته بعد أن أُرسلت/عولجت وتبني صفقة أخرى بعدها. وهذا مهم جدًا هنا؛ تقدير التقرير السابق لشراء قريب من `$117` مقابل احتياطيات المجمعات الحالية أعطى أثرًا نظريًا يقارب `16%–43%` في بعض المجمعات المفتوحة و`53%–96%` في أمثلة أضعف. ليست هذه قياسات تاريخية أو سعر تنفيذ مضمونًا، لكنها توضح لماذا قد يرفع النسخ سعر دخولك ويحوّل «السرعة» إلى مطاردة أعلى سعر.
+
+**الأمان:** ابدأ بمراقبة/محاكاة بلا توقيع، ثم بمحفظة تشغيل منفصلة ومحدودة التمويل إذا قررت التجربة. لا تضع مفتاحًا خاصًا أو API key في Git أو واجهة المتصفح؛ تعامل مع Bloom API key كبيانات تداول حساسة، واحفظه في مدير أسرار. لا يمكن استنتاج إعدادات الهدف الخاصة أو ضمان نسخ ربحه.
+
 ## المصادر
 
 1. [Solscan — الحساب والرصيد الحالي](https://solscan.io/account/2dV2AzutJpBMDGzW2VS2LEFnVoqHxEGKq5J1UWnKC2Vb)
@@ -224,6 +259,14 @@
 14. معاملات الدخول التي استُخدمت لعينة النسخ: [شراء AORP](https://orbmarkets.io/tx/41wz7Poe7QBxHd8CQbEVbBGqpeXFVodUGH7qJizA9inqw5JGL8awDVcqfgby1FuGt9zyfgG3HDpVgkGpp9sCuNVt)، [شراء SARP `6Wbi…`](https://orbmarkets.io/tx/67GTFqS6X1SgKdEnupmeP494sgxHMKvDp9v5FYRrS9ZyYsC87prATw4zpWfmDG6q9FsYuuNdV3RjPV5i18AxDGrb)، [شراء ATFS الخاسر](https://orbmarkets.io/tx/4NAJQsr6eJX9frMtKFHBUaedg53nKYC58yMpkKnZNzeYx5efPcJjtpmGQn41xVm1aaARhscmros4dmZrPjQR5A8f).
 15. [GeckoTerminal — شموع الدقيقة لـAORP حول الدخول](https://api.geckoterminal.com/api/v2/networks/solana/pools/8sKzmW8r2hQH8wuBCcAB8WHWvRHmJk8hqprme1novPxw/ohlcv/minute?aggregate=1&limit=30&before_timestamp=1790901999&currency=usd&token=base)، [SARP `6Wbi…`](https://api.geckoterminal.com/api/v2/networks/solana/pools/9Z1cRcyxQCLMBLaSACAimrBv5ZA2nhBHESbjxviLTbgg/ohlcv/minute?aggregate=1&limit=30&before_timestamp=1791057341&currency=usd&token=base)، [ATFS](https://api.geckoterminal.com/api/v2/networks/solana/pools/EXQ4omc4xKw6wb2X9mD1NCxrMixxviBqCFo2mUjbhkGT/ohlcv/minute?aggregate=1&limit=30&before_timestamp=1791244489&currency=usd&token=base)، [WOTF](https://api.geckoterminal.com/api/v2/networks/solana/pools/FhXq6akCDx47spG5XGqd2CFJGGgGRQpdNBpjiUpSNVQ3/ohlcv/minute?aggregate=1&limit=30&before_timestamp=1791136721&currency=usd&token=base)، [GOIF `qTy…`](https://api.geckoterminal.com/api/v2/networks/solana/pools/ANcPJyoPyos5hoGioj6UvkzA4RpU5FRNTb626xSMX6dB/ohlcv/minute?aggregate=1&limit=30&before_timestamp=1790946676&currency=usd&token=base)، و[DOTF `tY5…`](https://api.geckoterminal.com/api/v2/networks/solana/pools/FKajTTeLMZ59oxNhrNf9YTbG8GkAgwe2ELDEbQ2iM7mp/ohlcv/minute?aggregate=1&limit=30&before_timestamp=1791209004&currency=usd&token=base). هذه لقطات تاريخية أتعامل معها بتحفظ بسبب قفزات سعر غير متسقة.
 16. [GeckoTerminal — شموع الدقيقة لأحدث SARP `W7Ljd…`](https://api.geckoterminal.com/api/v2/networks/solana/pools/AdvA19rgGhN1ZUNHP7nQPxZ29x1P263g2FHnQdyPHVYi/ohlcv/minute?aggregate=1&limit=30&before_timestamp=1791473508&currency=usd&token=base) — تُظهر تعارضًا مع سعر الدخول المحسوب من بيانات المبادلة.
+17. [Orb — معاملة شراء AORP `41wz…`](https://orbmarkets.io/tx/41wz7Poe7QBxHd8CQbEVbBGqpeXFVodUGH7qJizA9inqw5JGL8awDVcqfgby1FuGt9zyfgG3HDpVgkGpp9sCuNVt) — تعرض مسار Bloom Router إلى Pump.fun AMM وكمية SOL/التوكن في المثال.
+18. [Bloom — Copy Trading على Solana](https://docs.bloombot.app/solana/solana-bot/copy)، [إعدادات مهمة النسخ في Manager](https://docs.bloombot.app/manager/pages/tasks/solana/copy-trade)، و[Copy Presets](https://docs.bloombot.app/solana/solana-bot/settings/presets/copy-presets) — Buy Exact/Fixed، Follow Sells، Buy Tokens Once، وحدّ فرق الـslots.
+19. [Bloom — الأسئلة الشائعة](https://docs.bloombot.app/solana/miscellaneous/faqs) و[الموقع الرسمي](https://www.bloombot.app/) — Auto Orders وTP/SL/Trailing ورسوم المنصة المعلنة.
+20. [Bloom API — المقدمة](https://dev.bloombot.app/introduction) و[مرجع Swap](https://dev.bloombot.app/api-reference/swap) و[Auto-orders](https://dev.bloombot.app/concepts/auto-orders) — واجهات التنفيذ وخيارات TP/SL/Trailing وحدود الطلبات.
+21. [Helius — Yellowstone gRPC](https://www.helius.dev/docs/grpc) و[Transaction Monitoring](https://www.helius.dev/docs/grpc/transaction-monitoring) — بث المعاملات والالتزام `processed/confirmed`.
+22. [Jito — إعلان Sunset لـShredStream](https://docs.jito.wtf/lowlatencytxnfeed/) و[إرسال المعاملات عبر Block Engine](https://docs.jito.wtf/lowlatencytxnsend/) — واجهتا استقبال البيانات وإرسال المعاملات منفصلتان.
+23. [Jupiter — Trigger API V2](https://developers.jup.ag/docs/trigger) — أوامر OCO لوقف الخسارة/جني الربح وTrailing Stop؛ و[Solana — توقيع الإنتاج وإدارة المفاتيح](https://solana.com/docs/core/transactions/signing-in-production) — إرشادات عدم تضمين المفاتيح في الكود أو Git.
+24. [DoubleZero Edge](https://doublezero.xyz/dz-edge) — خدمة توصيل بيانات Solana الخام (shreds)، منفصلة عن إنشاء المعاملات وتوقيعها وإرسالها.
 ---
 
 **تنبيه:** هذه دراسة بيانات عامة على السلسلة وليست نصيحة استثمارية أو تقريرًا جنائيًا. الأسعار والسيولة وأسماء العناوين قد تتغير أو تكون غير دقيقة؛ تحقق من عنوان المِنت والمعاملة مباشرة قبل أي قرار.
