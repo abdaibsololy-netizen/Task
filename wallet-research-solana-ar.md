@@ -134,6 +134,44 @@
 - بعض أرصدة التوكن المفتوحة بلا PnL غير محقق (`null`). تسعيرات DexScreener في التقرير مجرد تقدير لحظي من زوج تداول محدد، وقد لا تعكس سعر تنفيذ الكمية كاملة. ويوجد اختلاف واضح بين زوجين للـSARP الأحدث.
 - `PnL التداول`، و`قيمة المحفظة الحالية`، و`صافي النقد بعد الإيداع والسحب والرسوم` ثلاثة مقاييس مختلفة. تقرير نهائي محاسبي يحتاج سجلًا كاملًا للمعاملات، وأسعار تنفيذ كل مبادلة، والرسوم، والتحويلات الخارجية، وتحققًا من أرصدة التوكنات وأسعار بيعها الفعلية.
 
+## 7. هل النسخ بـ$10 أو$50 ممكن؟
+
+### محاكاة رجعية، لا توقع للمستقبل
+
+أعدتُ حساب 28 مِنت ميم **مغلقة بالكامل** فقط، واستبعدتُ مركز XRPN الجزئي والمراكز المفتوحة وصف wSOL. اشترت المحفظة هذه المراكز بأحجام مجمعة تقارب `$3,411.24`، وسجلت لها PnL محققًا يقارب `$2,689.63`.
+
+| افتراض نسخ كل مركز بنفس نقطة دخول وخروج المحفظة | إجمالي المبلغ الاسمي على 28 مركزًا | PnL رجعي افتراضي | المتوسط لكل مركز |
+|---|---:|---:|---:|
+| `$10` لكل مِنت | $280 | **+$223.13** | +$7.97 |
+| `$50` لكل مِنت | $1,400 | **+$1,115.67** | +$39.85 |
+
+في هذا السجل المغلق فقط، 27 من 28 مركزًا كانت موجبة وواحد سالب. مثال: AORP حقق نحو +240% من مبلغ دخوله، ما يعادل نظريًا +$24 على دخول $10 أو +$120 على $50؛ أما ATFS الخاسر فكان نحو −2.4%، أي −$0.24 أو −$1.21. **هذه أرقام hindsight مشروطة بأن تشتري وتبيع بنفس سعره تقريبًا**؛ لا تشمل تأخر النسخ، اختلاف السعر، أثر الصفقة على المجمع، تعثر المعاملة، ولا تثبت أن الصفقة التالية ستربح. الميم كوين قد يهبط أكثر أو يفقد السيولة، وعندها يمكن أن تخسر كامل $10 أو $50.
+
+### تقدير أثر $10 و$50 على السيولة الحالية
+
+استخدمت بيانات DexScreener من 8 أكتوبر وسعر SOL المعروض `$109.04`. الجدول يقدّر **انزلاق متوسط التنفيذ مقابل السعر الحالي** في نموذج مجمع ثابت مبسط، باستخدام احتياطي SOL في جهة واحدة من المجمع (`quote reserve`) لا رقم السيولة الإجمالي ذي الجهتين. التقريب هو `حجم الصفقة ÷ (احتياطي جهة SOL + حجم الصفقة)` قبل رسوم المجمع/المسار وأي حركة سعر أخرى؛ ليس عرض تنفيذ حيًا، وقد تكون حركة السعر بعد الصفقة أكبر من النسبة المعروضة.
+
+| مجمع التوكن | احتياطي SOL المقابل بالدولار | أثر تقريبي لصفقة $10 | أثر تقريبي لصفقة $50 |
+|---|---:|---:|---:|
+| XRPN `iTbVz…` المفتوح جزئيًا | ~$1,547 | ~0.64% | ~3.13% |
+| GOIF `Bm7…` المفتوح | ~$666 | ~1.48% | ~6.99% |
+| GOIF `nZbP…` المفتوح | ~$792 | ~1.25% | ~5.94% |
+| AROS `VEnb…` المفتوح | ~$764 | ~1.29% | ~6.14% |
+| XRPN `mHinvys…` المفتوح | ~$603 | ~1.63% | ~7.66% |
+| SARP `W7Ljd…` المفتوح — زوج PumpSwap | ~$875 | ~1.13% | ~5.40% |
+| ATFS `HE2k…` — صفقة خاسرة سابقة | ~$497 | ~1.97% | ~9.13% |
+| UDR `5iUR…` — صفقة رابحة سابقة | ~$294 | ~3.29% | ~14.55% |
+
+**قراءة عملية:** في الأزواج المفتوحة الستة التي فُحصت، $10 أصغر بكثير من الاحتياطي المقدر، وقد يكون أثره أقل من نحو 1–2% في اللقطة الحالية؛ أما $50 فقد يسبب نحو 3–8% أثرًا نظريًا فيها. وفي الأزواج الأضعف مثل UDR/ATFS يصل التقدير إلى نحو 9–15% لصفقة $50. إذا هبط التوكن أو خرجت السيولة، تصبح الأرقام أسوأ. كما أن حجم تداول 24 ساعة كان شبه معدوم لبعض الأزواج (مثل SARP `GGMm…` نحو `$1.74`، وDOTF نحو `$17.75`، وUDR نحو `$5.97`)؛ وجود احتياطي في المجمع لا يعني أن السعر المعروض حديث أو أن البيع سيُنفذ بلا انزلاق.
+
+### هل يشتري فعلًا «بعد الانهيار»؟ وهل يمكن نسخه في اللحظة نفسها؟
+
+- أمثلة معاملات فعلية تؤكد أن دخوله متكرر قرب **0.9876 SOL** عبر Bloom Router إلى Pump.fun AMM: اشترى AORP بنحو 49.99M توكن، وSARP `6Wbi…` بنحو 51.27M، وATFS الخاسر بنحو 48.23M. هذا يثبت حجم دخوله وطريق التنفيذ في هذه الأمثلة، لا سبب اختياره للتوقيت.
+- شموع GeckoTerminal حول بعض هذه المشتريات تُظهر قفزات/انهيارات سعرية لحظية هائلة وغير متسقة مع سعر المبادلة المحسوب من المعاملة؛ قد تكون انهيارًا حقيقيًا، أو خللًا في سلسلة السعر/انتقالًا بين مجمعات. لذلك **لا أستطيع إثبات أن لديه استراتيجية موثوقة لشراء القاع بعد الانهيار**، ولا أوصي باعتبار الشمعة وحدها إشارة دخول.
+- لا يمكن تنفيذ نسخة مطابقة تمامًا: المعاملة تصبح مرئية بعد إدراجها/تأكيدها، وقد يتحرك السعر قبل أن تنفذ أنت. كذلك يبيع المحفظة بعض المراكز على دفعتين أو ثلاث؛ إذا لم تراقب كل بيع قد تبقى داخل التوكن بعد خروجه.
+
+**الجواب المباشر:** من ناحية حجم السيولة في اللقطة الحالية، دخول **$10 لكل تجربة** أيسر من $50، لكن ليس مضمون الخروج ولا يحمي من انهيار كامل. **$50 ليس مبلغًا ضخمًا بالنسبة لبعض المجمعات، لكنه كبير بما يكفي لإحداث انزلاق ملحوظ في الأزواج الأضعف**. قبل أي مبادلة، افحص عرض البيع الفعلي للكمية التي ستملكها وحدّ الانزلاق؛ إذا كان العرض سيئًا أو لا يوجد مسار بيع واضح فتجاوز الصفقة. لا تنسخ المحفظة آليًا أو تمنح موقعًا/بوتًا مفتاحك الخاص.
+
 ## المصادر
 
 1. [Solscan — الحساب والرصيد الحالي](https://solscan.io/account/2dV2AzutJpBMDGzW2VS2LEFnVoqHxEGKq5J1UWnKC2Vb)
@@ -148,6 +186,9 @@
 10. [Solscan — صفحة مِنت ATFS الخاسر](https://solscan.io/token/HE2kCYoqisUpFCjVa6QDat8Aqrn4DWkxaRbF7CPpump)؛ [DexScreener API — ATFS](https://api.dexscreener.com/latest/dex/tokens/HE2kCYoqisUpFCjVa6QDat8Aqrn4DWkxaRbF7CPpump)
 11. [DexScreener API — أزواج المراكز المفتوحة XRPN `iTbVz…`](https://api.dexscreener.com/latest/dex/tokens/iTbVzEXiw7eC9ftbv5eNVCQUrY64AQLHCfgW4DGpump)، [GOIF `Bm7…`](https://api.dexscreener.com/latest/dex/tokens/Bm7Uxam9efqL8gu9CX5kZ3A7t5nj2v2titSC7nnpump)، [GOIF `nZbP…`](https://api.dexscreener.com/latest/dex/tokens/nZbPjCn4GJcLxrdHWRnMhPt875EyHSNTzhFmD6Dpump)، [AROS `VEnb…`](https://api.dexscreener.com/latest/dex/tokens/VEnbFNs7yCnN4aeNRXkgL25cBXg96nWVfHiQBN1pump)، [XRPN `mHinvys…`](https://api.dexscreener.com/latest/dex/tokens/mHinvysGkV4YPfj1PYxHGgyc4S7LCDwVki4r1Phpump)، [SARP `W7Ljd…`](https://api.dexscreener.com/latest/dex/tokens/W7LjdSHiGM6nE376hFUHpGMVGLuj1nokhy8v2r5pump)
 12. [Solana Explorer — الحساب](https://explorer.solana.com/address/2dV2AzutJpBMDGzW2VS2LEFnVoqHxEGKq5J1UWnKC2Vb?cluster=mainnet-beta)
+13. [DexScreener API — UDR `5iUR…`](https://api.dexscreener.com/latest/dex/tokens/5iURQEWL4NcbqhXRnhssfCzhAnghWbEGUoTWiWhpump) و[DOTF `tY5…`](https://api.dexscreener.com/latest/dex/tokens/tY5KSvxu3iBMwVZzVpYqrVbxAVbAXMKTJ7SxW6Wpump) — أسعار/احتياطيات أزواج وقت الفحص.
+14. معاملات الدخول التي استُخدمت لعينة النسخ: [شراء AORP](https://orbmarkets.io/tx/41wz7Poe7QBxHd8CQbEVbBGqpeXFVodUGH7qJizA9inqw5JGL8awDVcqfgby1FuGt9zyfgG3HDpVgkGpp9sCuNVt)، [شراء SARP `6Wbi…`](https://orbmarkets.io/tx/67GTFqS6X1SgKdEnupmeP494sgxHMKvDp9v5FYRrS9ZyYsC87prATw4zpWfmDG6q9FsYuuNdV3RjPV5i18AxDGrb)، [شراء ATFS الخاسر](https://orbmarkets.io/tx/4NAJQsr6eJX9frMtKFHBUaedg53nKYC58yMpkKnZNzeYx5efPcJjtpmGQn41xVm1aaARhscmros4dmZrPjQR5A8f).
+15. [GeckoTerminal — شموع AORP حول الدخول](https://api.geckoterminal.com/api/v2/networks/solana/pools/8sKzmW8r2hQH8wuBCcAB8WHWvRHmJk8hqprme1novPxw/ohlcv/minute?aggregate=1&limit=30&before_timestamp=1790901999&currency=usd&token=base)، [SARP `6Wbi…`](https://api.geckoterminal.com/api/v2/networks/solana/pools/9Z1cRcyxQCLMBLaSACAimrBv5ZA2nhBHESbjxviLTbgg/ohlcv/minute?aggregate=1&limit=30&before_timestamp=1791057341&currency=usd&token=base)، و[ATFS](https://api.geckoterminal.com/api/v2/networks/solana/pools/EXQ4omc4xKw6wb2X9mD1NCxrMixxviBqCFo2mUjbhkGT/ohlcv/minute?aggregate=1&limit=30&before_timestamp=1791244489&currency=usd&token=base) — لقطات تاريخية أتعامل معها بتحفظ بسبب قفزات سعر غير متسقة.
 
 ---
 
