@@ -1,61 +1,154 @@
-# تقرير بحث عام عن محفظة Solana
+# دراسة أداء التداول والربح والخسارة لمحفظة Solana
 
-**تاريخ الفحص:** 8 أكتوبر 2026 (UTC)  
-**الشبكة:** Solana Mainnet  
-**العنوان محلّ البحث:** `2dV2AzutJpBMDGzW2VS2LEFnVoqHxEGKq5J1UWnKC2Vb`
+**تاريخ اللقطة:** 8 أكتوبر 2026 (UTC)
+**الشبكة:** Solana Mainnet
+**عنوان المحفظة:** `2dV2AzutJpBMDGzW2VS2LEFnVoqHxEGKq5J1UWnKC2Vb`
 
-> أُعدّ هذا التقرير اعتمادًا على بيانات البلوكشين العامة وصفحات مستكشفي الشبكة وقت الفحص. أرصدة الدولار وتسميات العناوين قد تتغير، وتسميات المستكشفين ليست إثباتًا لهوية المالك.
+> **الخلاصة المباشرة:** واجهة Vybe لحساب PnL التاريخي تسجل للمحفظة ربحًا محققًا **+$2,835.64**، وربحًا/خسارة غير محققة **−$115.84**؛ مجموع الحقلين حسابيًا **+$2,719.80**. هذا تقدير أداء تداول من مزوّد بيانات، وليس رصيد المحفظة أو كشفًا نقديًا مدققًا. سجلّها يغلب عليه تدوير صفقات صغيرة على ميم كوينات حديثة من Pump.fun، مع دخول متكرر قرب $115–$121 وبيع على دفعة أو دفعات. توجد مراكز مفتوحة وتسعيرات ناقصة، لذا لا يصح اعتبار الربح غير المحقق نقدًا مضمونًا.
 
-## الملخص التنفيذي
+## 1. أرقام الأداء التي أرجعها Vybe
 
-المحفظة نشطة على شبكة Solana، ويظهر سجلها تداولًا لتوكنات ميم عبر Pump.fun، مع تحويل حديث قدره **8 SOL** إلى عنوان موسوم لدى Orb بأنه إيداع Binance. بلغ رصيد SOL المعروض وقت الفحص قرابة **15.23 SOL** (نحو **1,700 دولار** وفق سعر SOL وقتها). لا تكفي البيانات المتاحة لتحديد صاحب المحفظة أو الجزم بأنها احتيالية.
+طلبتُ سجل `resolution=Full` لمحفظة العنوان أعلاه. هذه قيم الملخص كما أعادها endpoint وقت الفحص، مع التقريب إلى السنت:
 
-## النتائج
+| المقياس | القيمة | ملاحظة |
+|---|---:|---|
+| PnL محقق تاريخيًا | **+$2,835.64** | من المراكز التي صنّفها المزوّد كمحققة |
+| PnL غير محقق | **−$115.84** | يتضمن صف Wrapped SOL المفتوح؛ بعض توكنات الميم المفتوحة لا يملك المزوّد لها سعرًا (`null`) |
+| مجموع الحقلين حسابيًا | **+$2,719.80** | ليس ربحًا نقديًا قابلًا للسحب ولا قيمة المحفظة الحالية |
+| عدد الأصول في الملخص | **35** | صفوف التفصيل تشمل Wrapped SOL؛ بقية الصفوف 34 مِنتًا بأسماء/رموز ميم، وعناوينها تنتهي بـ`pump` |
+| عدد الصفقات المبلغ عنه | **91** | كما ورد في الملخص |
+| حجم التداول المبلغ عنه | **$22,716.13** | حجم إجمالي وفق المزوّد؛ لا يُعاد جمع أحجام صف Wrapped SOL مع بقية التوكنات كأنها صفقات مستقلة |
+| متوسط حجم الصفقة | **$249.63** | كما ورد في الملخص |
+| نسبة الفوز المعلنة | **84.62%** | غير مؤكدة حسابيًا: الملخص يسجل 77 رابحة وواحدة خاسرة من أصل 91؛ تبقى 13 غير مفسرة ضمن الحقول المنشورة |
+| أفضل مِنت حسب PnL المحقق | **AORP: +$281.88** | المِنت `G7UJP…pump`، وليس كل توكن يحمل الرمز AORP إن وُجد غيره |
+| أسوأ مِنت حسب PnL المحقق | **ATFS: −$2.88** | المِنت `HE2k…pump`; يوجد مِنت آخر بالرمز نفسه ربح +$1.89 |
 
-### 1. نوع الحساب والرصيد
+**تنبيه قراءة:** جمع الربح المحقق وغير المحقق يعطي +$2,719.80 حسابيًا، لكنه لا يثبت صافي ما كسبه صاحب المحفظة من كل مصادر الأموال. وثائق Vybe تقول إن مقاييس PnL مشتقة من أسواق «موثّقة/مفلترة»؛ لذلك يمكن أن تختلف عن إعادة بناء كل تحويل على السلسلة، كما أن الأسعار غير المتاحة والمراكز المفتوحة تؤثر في الإجمالي. وتغير تقدير PnL غير المحقق بنحو $6 خلال قراءات متقاربة في الجلسة نفسها، وهو مقياس متحرك.
 
-- يعرض مستكشف Solana أن الحساب مملوك لـ **System Program**، غير قابل للتنفيذ، وحجم بياناته صفر؛ أي إنه يبدو حسابًا عاديًا على الشبكة، لا برنامجًا/عقدًا ذكيًا.
-- عرضت Solscan رصيدًا قدره **15.230854152 SOL**، بقيمة تقريبية تقارب **1,700 دولار** وقت الفحص. القيمة الدولارية تقديرية وتتغير مع السعر.
-- تعرض Solscan خمسة أرصدة توكنات، من بينها كمية كبيرة معروضة باسم/رمز XRPN. لكن Orb لم يعرض قيمة سوقية لهذه التوكنات وقت الفحص. لذلك لا ينبغي اعتبار عدد الوحدات أو رمز التوكن وحده دليلًا على قيمة قابلة للتحصيل؛ فالرموز قد تتكرر بين توكنات مختلفة، وقد تكون السيولة محدودة أو غير موجودة.
+### نتيجة آخر سبعة أيام في بيانات Vybe
 
-### 2. التمويل والتحويلات
+السلسلة اليومية التي أعادتها الواجهة للأيام 1–7 أكتوبر 2026 موجبة في كل يوم، ومجموعها **+$997.12**:
 
-- في **30 سبتمبر 2026** استقبل العنوان تحويلين ظاهرين من المحفظة الوسيطة `CyrKL8GZ9J1qtfF3oJniSimqe5w6ajEJFwahqo37Xygb`:
-  - `0.001265524 SOL` عند 04:28:38 UTC.
-  - `0.028646294 SOL` عند 04:38:07 UTC.
-  - المجموع: **0.029911818 SOL**.
-- يوسم Orb مصدر التمويل السابق للمحفظة الوسيطة بأنه **Binance Hot Wallet 2**، بينما تعرض Solscan للمحفظة الوسيطة عدّادًا باسم **Funding out** يشير إلى 318 حسابًا. كما تعرض Solscan للمحفظة محل البحث عدّادًا مشابهًا يشير إلى 124 حسابًا. هذه العدّادات قرائن على نمط تمويل/تحويل واسع، لكنها لا تثبت أن الحسابات تعود لأشخاص مختلفين أو أنها مرتبطة بنشاط غير مشروع.
-- في **8 أكتوبر 2026 عند 14:08:42 UTC** أرسلت المحفظة **8 SOL** إلى عنوان صنّفه Orb بأنه **Binance Deposit (Gmeap)**. يوضح سجل المعاملة أن الرصيد كان نحو **23.230860251 SOL** قبل التحويل، وأصبح نحو **15.230855251 SOL** بعده (قبل تغييرات لاحقة طفيفة). تصنيف العنوان كإيداع Binance صادر عن المستكشف، وليس إثباتًا مستقلًا لهوية المستلم.
+| اليوم (UTC) | PnL اليومي |
+|---|---:|
+| 1 أكتوبر | +$249.07 |
+| 2 أكتوبر | +$63.10 |
+| 3 أكتوبر | +$80.82 |
+| 4 أكتوبر | +$369.04 |
+| 5 أكتوبر | +$128.83 |
+| 6 أكتوبر | +$94.32 |
+| 7 أكتوبر | +$11.93 |
+| **المجموع** | **+$997.12** |
 
-### 3. نمط النشاط
+## 2. تفصيل كل مِنت تداولته المحفظة
 
-يُظهر السجل الحديث عمليات بيع لتوكنات ميم عبر **Pump.fun AMM**، مع ظهور **Bloom Router** ضمن البرامج المستخدمة. من الأمثلة المعروضة:
+الأرقام التالية هي أحجام الشراء والبيع وPnL لكل صف كما أرجعته واجهة Vybe، مقربة إلى سنت. **العنوان الكامل للمِنت قابل للنقر لفتح صفحة Solscan**. الرموز متكررة بين مِنتات مختلفة؛ لذلك يجب مطابقة العنوان، لا الرمز وحده. بيانات الشراء والبيع أحجام بالدولار كما حسبها المزوّد، وليست بالضرورة كشفًا صافيًا بعد كل الرسوم.
 
-- بيع نحو **12.75 مليون XRPN** مقابل **0.7318 SOL**.
-- بيع نحو **52.47 مليون DOTF** مقابل قرابة **1.13 SOL**.
-- بيع نحو **48.23 مليون ATFS** مقابل قرابة **1.0362 SOL**.
+### مِنتات الميم التي تحقق لها PnL محقق (28 مغلقًا + مركز XRPN جرى بيع جزء منه)
 
-هذا يتوافق مع نشاط تداول نشط لتوكنات ميم، لكنه لا يكفي وحده لإثبات أن المحفظة آلية أو لتحديد ربحها/خسارتها.
+| الرمز/اسم المِنت كما ظهر | عنوان المِنت | شراء USD | بيع USD (عدد عمليات البيع) | PnL محقق USD | الحالة |
+|---|---|---:|---:|---:|---|
+| AORP — American Oil Relief Program | [`G7UJPfu4Xh4Lv5H1ETmwn1Q9uMScw3GSFgBqzKppump`](https://solscan.io/token/G7UJPfu4Xh4Lv5H1ETmwn1Q9uMScw3GSFgBqzKppump) | $117.45 | $399.33 (2) | **+$281.88** | مغلق |
+| SARP | [`GGMm5EmstNMQh4tvR127joSzBDa5UeE4FkVYZZmtpump`](https://solscan.io/token/GGMm5EmstNMQh4tvR127joSzBDa5UeE4FkVYZZmtpump) | $119.31 | $395.64 (2) | **+$276.33** | مغلق |
+| SARP — Strategic American Protocol | [`6WbiJtjXoNpLH6GhSvDX4HqRUN3ShQgxsk56Synpump`](https://solscan.io/token/6WbiJtjXoNpLH6GhSvDX4HqRUN3ShQgxsk56Synpump) | $118.26 | $384.60 (3) | **+$266.34** | مغلق |
+| WOTF — World Oil Trust Fund | [`6DWHBW3R5NE2LUShJRbvDyi9GZ8Hz4EFFRgcfP3apump`](https://solscan.io/token/6DWHBW3R5NE2LUShJRbvDyi9GZ8Hz4EFFRgcfP3apump) | $120.02 | $326.89 (3) | **+$206.87** | مغلق |
+| GOIF | [`qTyZGgDKVH1fZNhBAnGcUgtyVbVrWZ3uNeuCgJ4pump`](https://solscan.io/token/qTyZGgDKVH1fZNhBAnGcUgtyVbVrWZ3uNeuCgJ4pump) | $121.02 | $308.28 (2) | **+$187.26** | مغلق |
+| DOTF | [`tY5KSvxu3iBMwVZzVpYqrVbxAVbAXMKTJ7SxW6Wpump`](https://solscan.io/token/tY5KSvxu3iBMwVZzVpYqrVbxAVbAXMKTJ7SxW6Wpump) | $119.34 | $296.62 (2) | **+$177.28** | مغلق |
+| GOIF — Global Oil Institution Fund | [`waW5EVqWFtDVpwoudzYQxCoP8DCFUz91trdyg2Zpump`](https://solscan.io/token/waW5EVqWFtDVpwoudzYQxCoP8DCFUz91trdyg2Zpump) | $116.49 | $292.05 (2) | **+$175.56** | مغلق |
+| XRPN — EVERNORTHXRP | [`iTbVzEXiw7eC9ftbv5eNVCQUrY64AQLHCfgW4DGpump`](https://solscan.io/token/iTbVzEXiw7eC9ftbv5eNVCQUrY64AQLHCfgW4DGpump) | $120.05 | $226.25 (2) | **+$136.21** | مفتوح جزئيًا؛ بقيت كمية من المركز |
+| UDR | [`5iURQEWL4NcbqhXRnhssfCzhAnghWbEGUoTWiWhpump`](https://solscan.io/token/5iURQEWL4NcbqhXRnhssfCzhAnghWbEGUoTWiWhpump) | $178.10 | $307.92 (1) | **+$129.82** | مغلق |
+| NTDA — National Trump Digital Accounts | [`76R3Mbb3w66VQg7u7tQHoCMqq6QofD59bncoZKnpump`](https://solscan.io/token/76R3Mbb3w66VQg7u7tQHoCMqq6QofD59bncoZKnpump) | $116.21 | $234.08 (2) | **+$117.87** | مغلق |
+| VSOF | [`CnrPtHUeeM6QtHjkEArLF68B2pf2TvhJfSvShaQpump`](https://solscan.io/token/CnrPtHUeeM6QtHjkEArLF68B2pf2TvhJfSvShaQpump) | $116.67 | $234.51 (3) | **+$117.84** | مغلق |
+| WSOS — World Strategic Oil Supply | [`tCHCHiqVVcsL69ab94xGHV8zdpKyFYNiz92Behjpump`](https://solscan.io/token/tCHCHiqVVcsL69ab94xGHV8zdpKyFYNiz92Behjpump) | $116.11 | $231.25 (2) | **+$115.13** | مغلق |
+| AROS | [`GC9GWsd9mQhj4GWpUQBxw7peBEimGjgpUrGgkWBpump`](https://solscan.io/token/GC9GWsd9mQhj4GWpUQBxw7peBEimGjgpUrGgkWBpump) | $116.71 | $227.88 (1) | **+$111.18** | مغلق |
+| NTDA | [`fSK8y3f3Hz1mTeSYap6FeqhZ8ResekAAuhZYddnpump`](https://solscan.io/token/fSK8y3f3Hz1mTeSYap6FeqhZ8ResekAAuhZYddnpump) | $118.84 | $205.47 (1) | **+$86.63** | مغلق |
+| VSOF — Vanguard Strategic Oil Fund | [`nktiJ91NxzY8Dq1JB6YvZq97bpCiELxrRgBzwKupump`](https://solscan.io/token/nktiJ91NxzY8Dq1JB6YvZq97bpCiELxrRgBzwKupump) | $116.13 | $199.53 (1) | **+$83.40** | مغلق |
+| VSOF | [`6BfTBNYJcZW9AnxRQ7aAx4Luf2K4BpmWpR7FWTPZpump`](https://solscan.io/token/6BfTBNYJcZW9AnxRQ7aAx4Luf2K4BpmWpR7FWTPZpump) | $116.67 | $196.12 (2) | **+$79.45** | مغلق |
+| DOTF | [`4cYJ8eGZaKMF1iuoUXskhfTHSi6VxL7Jq7xaTJHbpump`](https://solscan.io/token/4cYJ8eGZaKMF1iuoUXskhfTHSi6VxL7Jq7xaTJHbpump) | $116.56 | $180.62 (1) | **+$64.06** | مغلق |
+| AROS | [`1Atst4LcMEYfAXACbCaBpdk166CU8eopNkjyD8jpump`](https://solscan.io/token/1Atst4LcMEYfAXACbCaBpdk166CU8eopNkjyD8jpump) | $120.49 | $171.51 (1) | **+$51.02** | مغلق |
+| USDF — United States Dividend Fund | [`tYLAYuNEJbuvDzuERBHSHAeVFZTgkkSLPwrRwHzpump`](https://solscan.io/token/tYLAYuNEJbuvDzuERBHSHAeVFZTgkkSLPwrRwHzpump) | $175.33 | $209.24 (1) | **+$33.91** | مغلق |
+| GOIF | [`apy9dR4PyLzqAs6eZHKDLsLRE1qbc6GHaGsgaNTpump`](https://solscan.io/token/apy9dR4PyLzqAs6eZHKDLsLRE1qbc6GHaGsgaNTpump) | $119.56 | $147.69 (1) | **+$28.13** | مغلق |
+| GOIF | [`FsJAn2icHwMM68bB67ccZfog4czywSioTgiHrDVSpump`](https://solscan.io/token/FsJAn2icHwMM68bB67ccZfog4czywSioTgiHrDVSpump) | $118.98 | $139.64 (1) | **+$20.66** | مغلق |
+| SARP | [`Ph1ie3e4aMXCEVCjTcTzkyVhTRC7k9kpkq5MKSUpump`](https://solscan.io/token/Ph1ie3e4aMXCEVCjTcTzkyVhTRC7k9kpkq5MKSUpump) | $115.44 | $134.60 (1) | **+$19.16** | مغلق |
+| DOTF — Digital Oil Trust Fund | [`RvkFYybWAGhgcsmvkQvFdUgqnVREbcSQhHFUW6Ypump`](https://solscan.io/token/RvkFYybWAGhgcsmvkQvFdUgqnVREbcSQhHFUW6Ypump) | $114.97 | $130.44 (1) | **+$15.47** | مغلق |
+| UDR | [`PUXx1iSexu15p8FLG4FoFyRpyVtARFEf6CYbUzopump`](https://solscan.io/token/PUXx1iSexu15p8FLG4FoFyRpyVtARFEf6CYbUzopump) | $116.08 | $128.61 (1) | **+$12.53** | مغلق |
+| DOTF | [`GkNBBV3TstnLb4Fxj1bmToza8ikx5UReSBw3LEWmpump`](https://solscan.io/token/GkNBBV3TstnLb4Fxj1bmToza8ikx5UReSBw3LEWmpump) | $114.43 | $126.48 (1) | **+$12.05** | مغلق |
+| DOTF | [`SH6SfUf5pPbdq9h7RjnsoGjNvP3onox7P5tKJGEpump`](https://solscan.io/token/SH6SfUf5pPbdq9h7RjnsoGjNvP3onox7P5tKJGEpump) | $120.14 | $132.19 (1) | **+$12.04** | مغلق |
+| ELPEPE | [`6bcjVdK2k9AS3cH4wEzc5x61myRLLAEkTSxwzVygpump`](https://solscan.io/token/6bcjVdK2k9AS3cH4wEzc5x61myRLLAEkTSxwzVygpump) | $117.86 | $126.62 (1) | **+$8.76** | مغلق |
+| ATFS — American Trust Fund System | [`rtyCb78V7G3yEX3zqFRGn94Zy6nJYx5rKQrhDZ5pump`](https://solscan.io/token/rtyCb78V7G3yEX3zqFRGn94Zy6nJYx5rKQrhDZ5pump) | $114.86 | $116.75 (1) | **+$1.89** | مغلق |
+| ATFS — American Trust Fund System | [`HE2kCYoqisUpFCjVa6QDat8Aqrn4DWkxaRbF7CPpump`](https://solscan.io/token/HE2kCYoqisUpFCjVa6QDat8Aqrn4DWkxaRbF7CPpump) | $119.21 | $116.33 (1) | **−$2.88** | مغلق — أسوأ نتيجة محققة في القائمة |
 
-## التقييم والحدود
+الأرقام في الجدول مقربة إلى السنت، لذا قد يختلف مجموع الصفوف المعروضة بسنت عن القيمة الدقيقة في الملخص. من المراكز الـ28 المغلقة في ميم كوينات، يظهر **27 ربحًا محققًا وواحدًا خاسرًا**. ويوجد مركز XRPN إضافي رُبح منه جزء محقق (+$136.21) لكنه ما زال مفتوحًا جزئيًا. هذه هي قراءة صفوف الأصول، وليست بديلًا عن إحصائية win rate الإجمالية التي لم تتطابق حقولها تمامًا.
 
-- **مخاطر السوق:** مرتفعة نسبيًا؛ لأن النشاط يتضمن توكنات ميم عالية التقلب، كما أن بعض الأرصدة لا تظهر لها قيمة موثوقة في المستكشف.
-- **مؤشرات الاحتيال:** لا تكفي البيانات التي جرى فحصها لتصنيف العنوان كمحفظة احتيالية أو لإثبات صلته بعملية نصب. نمط التمويل والتحويلات يستحق الانتباه، لكنه ليس دليلًا قاطعًا.
-- **الهوية والربحية:** لا يكشف عنوان عام هوية مالكه. كما لا يمكن حساب الربح أو الخسارة من الرصيد الحالي وحده؛ لذلك يلزم تحليل كامل للتدفقات الداخلة والخارجة وأسعار التداول والسيولة.
+### المراكز المفتوحة حاليًا بحسب سجل التوكنات
+
+تعرض Solscan **6 أرصدة توكن** بالمحفظة، وتُظهر في الملخص 72.66M من أحد أرصدة XRPN. يسجل Vybe ستة مراكز ميم مفتوحة: XRPN جزئيًا، وخمسة مراكز لم تُسجل لها مبيعات بعد؛ تساوي العدد قرينة، لا تحقق مستقلًا من كل مِنت. العمود الأخير أدناه مجرد ضرب للكمية المتبقية في سعر أول زوج PumpSwap رجعه DexScreener وقت الفحص؛ **قيمة نظرية لا تضمن إمكان البيع بهذا السعر**.
+
+| الرمز | المِنت | المتبقي حسب سجل الشراء/البيع | PnL غير المحقق في Vybe | قيمة سعرية تقريبية من DexScreener / سيولة الزوج |
+|---|---|---:|---:|---:|
+| XRPN — المِنت `iTbVz…` (جزئي) | [`iTbVzEXiw7eC9ftbv5eNVCQUrY64AQLHCfgW4DGpump`](https://solscan.io/token/iTbVzEXiw7eC9ftbv5eNVCQUrY64AQLHCfgW4DGpump) | 12.75M | غير متاح (`null`) | ~$78 / سيولة ~$4,998 |
+| GOIF — `Bm7…` | [`Bm7Uxam9efqL8gu9CX5kZ3A7t5nj2v2titSC7nnpump`](https://solscan.io/token/Bm7Uxam9efqL8gu9CX5kZ3A7t5nj2v2titSC7nnpump) | 46.58M | +$43.82 | ~$161 / سيولة ~$3,325 |
+| GOIF — Global Oil Institution Fund (`nZbP…`) | [`nZbPjCn4GJcLxrdHWRnMhPt875EyHSNTzhFmD6Dpump`](https://solscan.io/token/nZbPjCn4GJcLxrdHWRnMhPt875EyHSNTzhFmD6Dpump) | 48.66M | غير متاح (`null`) | ~$180 / سيولة ~$3,597 |
+| AROS — American Reserved Oil Supply (`VEnb…`) | [`VEnbFNs7yCnN4aeNRXkgL25cBXg96nWVfHiQBN1pump`](https://solscan.io/token/VEnbFNs7yCnN4aeNRXkgL25cBXg96nWVfHiQBN1pump) | 51.42M | غير متاح (`null`) | ~$200 / سيولة ~$3,655 |
+| XRPN — EVERNORTHXRP (`mHinvys…`) | [`mHinvysGkV4YPfj1PYxHGgyc4S7LCDwVki4r1Phpump`](https://solscan.io/token/mHinvysGkV4YPfj1PYxHGgyc4S7LCDwVki4r1Phpump) | 72.66M | +$77.69 | ~$249 / سيولة ~$3,266 |
+| SARP — المِنت الأحدث (`W7Ljd…`) | [`W7LjdSHiGM6nE376hFUHpGMVGLuj1nokhy8v2r5pump`](https://solscan.io/token/W7LjdSHiGM6nE376hFUHpGMVGLuj1nokhy8v2r5pump) | 50.47M | +$91.03 | ~$199 / سيولة ~$3,638* |
+| **المجموع التقريبي للقيمة السعرية** |  |  |  | **~$1,067** |
+
+- الـ`null` ليست صفرًا؛ تعني أن Vybe لم يرجع تقييمًا غير محقق لهذا الصف. سعر DexScreener التقريبي يملأ فراغ السعر فقط ولا يحول PnL إلى ربح محقق.
+- كفحص ورقي منفصل فقط: إذا وُزعت تكلفة XRPN الجزئي تناسبيًا على الكمية المتبقية، فتكون تكلفة الوحدات الست المفتوحة نحو `$661.07` مقابل سعر معلن إجمالي يقارب `$1,066.68`؛ فرق نظري **+$405.61**. هذا ليس رقم Vybe ولا أضيفه إلى الإجمالي الأساسي، لأن السعر من مجمعات ضحلة ولا يضمن تصفية الرصيد بهذا السعر.
+- للمِنت SARP الأحدث `W7Ljd…` رجّع DexScreener زوج PumpSwap بسعر يقارب `$0.000003937`، كما رجّع زوج Pump.fun آخر بسعر مختلف جدًا (نحو `$0.00004806`) من دون سيولة معروضة في ذلك الصف. هذا اختلاف جوهري في التسعير/الأزواج؛ لذلك لا أستخدمه لحساب الربح الأساسي.
+- تقديرات السيولة لقطة لحظية، والسيولة في هذه الأزواج بضعة آلاف من الدولارات فقط. بيع الرصيد كاملًا قد يسبب انزلاقًا سعريًا، لذا **قيمة ~$1,067 ليست بالضرورة حصيلة بيع قابلة للتحقق**.
+
+### صف Wrapped SOL الذي يغيّر قراءة غير المحقق
+
+يسجل Vybe صفًا مستقلًا لـ`wSOL` (العنوان القياسي `So111…11112`): مشتريات `$8,064.32` على 57 عملية، ومبيعات `$4,162.35` على 34 عملية، PnL محقق `+$9.80` وغير محقق **−$328.38**. هذا أصل المقابل/التسعير المستخدم في صفقات SOL، وليس واحدًا من ميم كوينات `pump`. لا تعرض Solscan رصيد wSOL منفصلًا ضمن ملخص الحساب؛ لذلك يجب مطابقة هذا الصف مع أرصدة SOL والتحويلات قبل تفسير خسارته على أنها مركز مستقل. هذا الصف هو السبب الأكبر في أن رقم Vybe غير المحقق الإجمالي سالب رغم ظهور مكاسب غير محققة في بعض التوكنات المفتوحة.
+
+## 3. أسلوب التداول الذي تكشفه الصفقات
+
+1. **دخول صغير ومتكرر:** أغلب مشتريات ميم كوين واحدة لكل مِنت، بقيمة تقارب **$114–$121** (نحو 1.0–1.1 SOL عند السعر وقتها). توجد استثناءات أكبر، مثل UDR بنحو $178 وUSDF بنحو $175 وXRPN بنحو $172.
+2. **تدوير بين مِنتات كثيرة بدل الاحتفاظ بتوكن واحد:** السجل يعرض 34 مِنتًا بأسماء ميم/روايات مثل AORP وWOTF وGOIF وDOTF وSARP وAROS وNTDA وVSOF وWSOS. الأسماء والرموز تسميات للتوكنات وليست إثباتًا لارتباط رسمي بالنفط أو الحكومة أو أي مؤسسة.
+3. **خروج مجزأ أحيانًا:** لكل ميم كوين غالبًا عملية شراء واحدة، ثم عملية بيع واحدة إلى ثلاث عمليات. أمثلة واضحة: AORP بيعان، وStrategic American Protocol ثلاث مبيعات، وWOTF ثلاث مبيعات. هذا يتوافق مع جني أرباح على دفعات.
+4. **صفقات قصيرة نسبيًا في العينة:** SARP `GGMm…` بين أول شراء وآخر بيع قرابة ساعتين و45 دقيقة، وGOIF `qTy…` قرابة 8 ساعات، وAORP قرابة 38.6 ساعة. هذه أمثلة من مراكز رابحة وليست متوسط مدة محسوبًا لكل الصفقات.
+5. **الانطباع العام:** النمط أقرب إلى تدوير/زخم قصير الأجل في ميم كوينات منخفضة القيمة السوقية منه إلى استثمار طويل الأجل قائم على أصول أساسية. تكرار أحجام دخول متقاربة قد يشبه قواعد تداول آلية أو تنفيذًا منضبطًا، لكنه **لا يثبت** أن المحفظة بوت.
+6. **تركّز الربح:** أفضل ثلاثة مِنتات حققت مجتمعة نحو **$824.55**، وأفضل سبعة نحو **$1,571.52** (قرابة **55.4%** من الربح المحقق في الملخص). لذلك تعتمد نسبة معتبرة من النتيجة على عدد قليل من الصفقات الرابحة الكبيرة؛ لا يكفي عرض win rate وحده لوصف المخاطرة.
+
+## 4. الرصيد والتحويلات: لا تخلطها مع PnL
+
+- أحدث صفحة Solscan التي فُحصت تعرض **14.205940312 SOL** بقيمة **$1,549.01** عند سعر SOL المعروض **$109.04**، و**6 أرصدة توكن**. الرقم الدولاري الظاهر يساوي قيمة SOL المعروضة؛ صفحة الحساب لا تسعّر أرصدة التوكن الستة كلها في هذا الإجمالي. وتعرض الصفحة مالك الحساب `System Program` و`isOnCurve=True`، ما يتوافق مع حساب محفظة عادي لا برنامج/عقد ذكي؛ لكنه لا يكشف هوية صاحبه.
+- في **30 سبتمبر 2026** استقبل العنوان تحويلين ظاهرين من الوسيط `CyrKL8GZ9J1qtfF3oJniSimqe5w6ajEJFwahqo37Xygb`: `0.001265524 SOL` و`0.028646294 SOL`، أي **0.029911818 SOL** في هذين التحويلين. يوسم Orb مصدر الوسيط بأنه Binance Hot Wallet 2؛ هذا تصنيف مستكشف، وليس إثبات هوية المالك.
+- في **8 أكتوبر 2026 عند 14:08:42 UTC** خرج **8 SOL** إلى عنوان صنّفه Orb بأنه Binance Deposit (`Gmea…`). هذا تحويل إلى جهة موسومة من المستكشف، ولا يجوز احتسابه وحده كربح أو بيع.
+- بعد التحويل ظهرت مشتريات/مبيعات أخرى، ومنها شراء أحدث مِنت SARP `W7Ljd…`: نحو **50.47 مليون توكن**؛ Vybe يسجل شراءً بنحو **$108.05**، وسجل المعاملة/Orb يعرض شراءً يقارب **0.9876 SOL**. رصيد SOL الحالي انخفض لاحقًا إلى 14.20594 SOL.
+- لا تكفي التحويلات المذكورة وحدها لتحديد رأس المال الابتدائي أو صافي الإيداعات والسحوبات طوال عمر المحفظة. لذا لا أحسب منها ROI ولا أصف +$2,719.80 بأنه ربح المحفظة النقدي الكلي.
+
+## 5. تقييم المخاطر النوعي للتوكنات
+
+- صفحات Solscan المفحوصة لعينة من المراكز (AORP وSARP وWOTF وATFS) تصنفها **Meme** و**Pump.fun**؛ وتُظهر في هذه العينة ما بين 130 و315 حاملًا تقريبًا. هذا وصف للعينة وقت اللقطة، لا تدقيق أمني لكل المِنتات الـ34.
+- أزواج DexScreener التي فُحصت تعرض سيولة تقريبية في حدود **$2.6K–$7.9K** لبعض الصفقات/الأرصدة الحالية؛ مثل AORP نحو $5.7K، WOTF نحو $7.9K، SARP `GGMm…` نحو $3.3K، وATFS الخاسر نحو $2.9K. هذه سيولة ضحلة نسبيًا مقارنة ببيع بمئات الدولارات، وتزيد مخاطر الانزلاق وصعوبة الخروج بالسعر النظري.
+- الرمز الواحد قد يشير إلى مِنتات مختلفة: هناك عدة مِنتات باسم SARP وGOIF وDOTF وATFS وغيرها. يجب اعتماد عنوان المِنت في الجداول، لا الرمز أو الاسم فقط.
+- لم أجد في البيانات المفحوصة ما يثبت أن عنوان المحفظة احتيالي، ولا ما يحدد هوية مالكه. نمط ميم كوينات حديثة وسيولة محدودة يعني **مخاطر سوق مرتفعة**، لكنه ليس وحده دليلًا على نصب أو غسل أموال.
+
+## 6. منهجية وحدود الثقة
+
+- PnL وعمليات الشراء/البيع لكل مِنت مأخوذة من واجهة Vybe التجريبية بطلب `resolution=Full`. وثائق Vybe تشرح أن حقولها تشمل PnL محققًا وغير محققًا، حجم التداول، وعدد الصفقات، وتقول إن بياناتها مشتقة من أسواق موثقة/مفلترة.
+- الملخص يعرض تناقضًا داخليًا: `77` رابحة + `1` خاسرة لا تساوي `91` صفقة، رغم أن نسبة `84.615%` تساوي حسابيًا `77/91`. لذلك تُذكر نسبة الفوز كقيمة **يعلنها المزوّد** لا كمعدل تم التحقق منه مستقلًا.
+- بعض أرصدة التوكن المفتوحة بلا PnL غير محقق (`null`). تسعيرات DexScreener في التقرير مجرد تقدير لحظي من زوج تداول محدد، وقد لا تعكس سعر تنفيذ الكمية كاملة. ويوجد اختلاف واضح بين زوجين للـSARP الأحدث.
+- `PnL التداول`، و`قيمة المحفظة الحالية`، و`صافي النقد بعد الإيداع والسحب والرسوم` ثلاثة مقاييس مختلفة. تقرير نهائي محاسبي يحتاج سجلًا كاملًا للمعاملات، وأسعار تنفيذ كل مبادلة، والرسوم، والتحويلات الخارجية، وتحققًا من أرصدة التوكنات وأسعار بيعها الفعلية.
 
 ## المصادر
 
-1. [Solscan — صفحة الحساب والأرصدة](https://solscan.io/account/2dV2AzutJpBMDGzW2VS2LEFnVoqHxEGKq5J1UWnKC2Vb)
-2. [Orb — سجل الحساب](https://orbmarkets.io/address/2dV2AzutJpBMDGzW2VS2LEFnVoqHxEGKq5J1UWnKC2Vb/history)
-3. [Solana Explorer — صفحة الحساب الرسمية](https://explorer.solana.com/address/2dV2AzutJpBMDGzW2VS2LEFnVoqHxEGKq5J1UWnKC2Vb?cluster=mainnet-beta)
-4. [Orb — معاملة تحويل 8 SOL](https://orbmarkets.io/tx/4614PqCFjJ8StathzjzyPvsMLW8Eocc5Nmvsz11zcBwYJxxid3VbZZTZyEKc1HrYVKYD3ns1UyibZoysxDsojbY4)
-5. [Orb — التحويل الأول من المحفظة الوسيطة](https://orbmarkets.io/tx/2oShGpEr1wgd4vXCo2hTQ3zDB1trBU1SBmjwN2VYRDsrfWzEVkX2JZoN8Xv3pZVKFMKoeSBsWdqbaDHVPSLBfisy)
-6. [Orb — التحويل الثاني من المحفظة الوسيطة](https://orbmarkets.io/tx/5PReuEiQNzu4kM8679sKt5B7hwh3z4LEsLwS6eSBUxapnFY1uvijn62WCstysyNQsvQGzWLkk1oxcKsNpGwvVHcm)
-7. [Solscan — صفحة المحفظة الوسيطة](https://solscan.io/account/CyrKL8GZ9J1qtfF3oJniSimqe5w6ajEJFwahqo37Xygb)
-8. [Orb — مثال بيع XRPN](https://orbmarkets.io/tx/35tdk9TG2SEX9TbD8cr7YVRHbgiU52V5gz8W9JoM8kPvuBDpGrTVKqfkHqt5z8ESyPoGfLbuTebGeMoDj8UzkXNa)
-9. [Orb — مثال بيع DOTF](https://orbmarkets.io/tx/tQ23sZy4YnJ1K1tYzwjgnnpqRTewhkfZxGiMVfeZ4WNHw4K7bhvWii3myUNSZzVmYgixLA8fj9BhXcbQBs8HfZz)
-10. [Orb — مثال بيع ATFS](https://orbmarkets.io/tx/3PB73DZ2hxDmF6TqU2jPvdPETUUsK6RBcgJwRmRu5ZBpWPLoeePcCrVNZQEpU4JBzVnLo2T5WUFscVCEUEoG29dZ)
+1. [Solscan — الحساب والرصيد الحالي](https://solscan.io/account/2dV2AzutJpBMDGzW2VS2LEFnVoqHxEGKq5J1UWnKC2Vb)
+2. [Vybe — PnL المحفظة، كامل التاريخ](https://solana-trader-pnl-api.vybenetwork.com/api/wallets/2dV2AzutJpBMDGzW2VS2LEFnVoqHxEGKq5J1UWnKC2Vb/pnl?resolution=Full&limit=1000)
+3. [توثيق Vybe — Wallet PnL API ومنهج الحقول](https://docs.vybenetwork.com/docs/fetch-wallet-pnls)
+4. [Orb — سجل المحفظة](https://orbmarkets.io/address/2dV2AzutJpBMDGzW2VS2LEFnVoqHxEGKq5J1UWnKC2Vb/history)
+5. [Orb — معاملة تحويل 8 SOL إلى العنوان الموسوم Binance Deposit](https://orbmarkets.io/tx/4614PqCFjJ8StathzjzyPvsMLW8Eocc5Nmvsz11zcBwYJxxid3VbZZTZyEKc1HrYVKYD3ns1UyibZoysxDsojbY4)
+6. [Orb — تحويل شراء SARP الأحدث](https://orbmarkets.io/tx/3t1fuBpf76s3RF8g1Fdm8wES34WQWvqoMKiXbvBJZqySYmBcW7g4ZJGZq82SSBwVSnzxJ6EK2soj5cJbjLLu97Tn)
+7. [Solscan — صفحة توكن AORP](https://solscan.io/token/G7UJPfu4Xh4Lv5H1ETmwn1Q9uMScw3GSFgBqzKppump)؛ [DexScreener API — AORP](https://api.dexscreener.com/latest/dex/tokens/G7UJPfu4Xh4Lv5H1ETmwn1Q9uMScw3GSFgBqzKppump)
+8. [Solscan — صفحة SARP `GGMm…`](https://solscan.io/token/GGMm5EmstNMQh4tvR127joSzBDa5UeE4FkVYZZmtpump)؛ [DexScreener API — SARP `GGMm…`](https://api.dexscreener.com/latest/dex/tokens/GGMm5EmstNMQh4tvR127joSzBDa5UeE4FkVYZZmtpump)
+9. [Solscan — صفحة WOTF](https://solscan.io/token/6DWHBW3R5NE2LUShJRbvDyi9GZ8Hz4EFFRgcfP3apump)؛ [DexScreener API — WOTF](https://api.dexscreener.com/latest/dex/tokens/6DWHBW3R5NE2LUShJRbvDyi9GZ8Hz4EFFRgcfP3apump)
+10. [Solscan — صفحة مِنت ATFS الخاسر](https://solscan.io/token/HE2kCYoqisUpFCjVa6QDat8Aqrn4DWkxaRbF7CPpump)؛ [DexScreener API — ATFS](https://api.dexscreener.com/latest/dex/tokens/HE2kCYoqisUpFCjVa6QDat8Aqrn4DWkxaRbF7CPpump)
+11. [DexScreener API — أزواج المراكز المفتوحة XRPN `iTbVz…`](https://api.dexscreener.com/latest/dex/tokens/iTbVzEXiw7eC9ftbv5eNVCQUrY64AQLHCfgW4DGpump)، [GOIF `Bm7…`](https://api.dexscreener.com/latest/dex/tokens/Bm7Uxam9efqL8gu9CX5kZ3A7t5nj2v2titSC7nnpump)، [GOIF `nZbP…`](https://api.dexscreener.com/latest/dex/tokens/nZbPjCn4GJcLxrdHWRnMhPt875EyHSNTzhFmD6Dpump)، [AROS `VEnb…`](https://api.dexscreener.com/latest/dex/tokens/VEnbFNs7yCnN4aeNRXkgL25cBXg96nWVfHiQBN1pump)، [XRPN `mHinvys…`](https://api.dexscreener.com/latest/dex/tokens/mHinvysGkV4YPfj1PYxHGgyc4S7LCDwVki4r1Phpump)، [SARP `W7Ljd…`](https://api.dexscreener.com/latest/dex/tokens/W7LjdSHiGM6nE376hFUHpGMVGLuj1nokhy8v2r5pump)
+12. [Solana Explorer — الحساب](https://explorer.solana.com/address/2dV2AzutJpBMDGzW2VS2LEFnVoqHxEGKq5J1UWnKC2Vb?cluster=mainnet-beta)
 
 ---
 
-**تنبيه:** هذا ملخص معلومات عامة على السلسلة، وليس نصيحة استثمارية أو تقريرًا جنائيًا ماليًا. تحقق من عنوان التوكن والمعاملة مباشرة قبل اتخاذ أي قرار، ولا تشارك عبارة الاسترداد أو المفتاح الخاص مع أي جهة.
+**تنبيه:** هذه دراسة بيانات عامة على السلسلة وليست نصيحة استثمارية أو تقريرًا جنائيًا. الأسعار والسيولة وأسماء العناوين قد تتغير أو تكون غير دقيقة؛ تحقق من عنوان المِنت والمعاملة مباشرة قبل أي قرار.
