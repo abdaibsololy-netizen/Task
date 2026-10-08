@@ -181,6 +181,23 @@
 
 هذه **ليست أرباحًا متوقعة**: هي متوسط مراكز ناجحة/خاسرة أُغلقت تاريخيًا، وتفترض أن صفقتك ستخرج عند نفس سعر خروجه؛ وهذا افتراض متفائل إذا انتظرتَ حتى ظهور بيعه على السلسلة. لا تشمل تأخر النسخ أو الانزلاق والرسوم، وقد تحصل على سعر أسوأ بعد أن يكون بيعه قد حرّك المجمع. وتُظهر ببساطة أن الارتفاع الذي يساعد صاحب الصفقة قد يستهلك معظم أفضلية الناسخ إذا انتظر طويلًا؛ عند دخول متأخر بنحو 80% تكون الأفضلية التاريخية المتوسطة قد اختفت تقريبًا قبل التكاليف.
 
+### منطقة الدخول والقاع الظاهر في عينة تاريخية
+
+بحساب **حجم الشراء بالدولار ÷ عدد التوكنات التي استلمها** عبر 34 مِنت ميم في بيانات Vybe، تراوحت أسعار الدخول الضمنية بين **$0.0000021409 و$0.0000025605**؛ الوسيط نحو **$0.0000023313**. وبافتراض معروض قريب من مليار توكن — كما في صفحات Solscan التي تحققت منها — فهذا يعادل تقريبًا منطقة FDV من **$2.14K إلى $2.56K** (وسيط ~$2.33K). هذه **منطقة دخول تاريخية متكررة**، وليست مستوى دعم مضمونًا أو قاعًا مستقبليًا.
+
+في ستة أمثلة، قارنت سعر دخوله بأدنى سعر في شمعة الدقيقة التي وقعت عند/حول عملية الشراء:
+
+| المِنت | متوسط سعر دخول المحفظة | أدنى سعر في شمعة الدقيقة حول الدخول | الفرق التقريبي |
+|---|---:|---:|---:|
+| [AORP `G7UJP…`](https://solscan.io/token/G7UJPfu4Xh4Lv5H1ETmwn1Q9uMScw3GSFgBqzKppump) | $0.000002349 | $0.000002222 | +5.7% |
+| [SARP — Strategic American Protocol `6Wbi…`](https://solscan.io/token/6WbiJtjXoNpLH6GhSvDX4HqRUN3ShQgxsk56Synpump) | $0.000002307 | $0.000002307 | نحو 0% |
+| [WOTF `6DWH…`](https://solscan.io/token/6DWHBW3R5NE2LUShJRbvDyi9GZ8Hz4EFFRgcfP3apump) | $0.000002553 | $0.000002172 | +17.5% |
+| [ATFS `HE2k…`](https://solscan.io/token/HE2kCYoqisUpFCjVa6QDat8Aqrn4DWkxaRbF7CPpump) | $0.000002472 | $0.000002225 | +11.1% |
+| [GOIF `qTy…`](https://solscan.io/token/qTyZGgDKVH1fZNhBAnGcUgtyVbVrWZ3uNeuCgJ4pump) | $0.000002560 | $0.000002235 | +14.6% |
+| [DOTF `tY5…`](https://solscan.io/token/tY5KSvxu3iBMwVZzVpYqrVbxAVbAXMKTJ7SxW6Wpump) | $0.000002332 | $0.000002329 | +0.1% |
+
+هذا يوحي أن بعض دخولاته كانت قريبة من قيعان **مسجلة على الرسم**، لكن أدنى سعر داخل شمعة الدقيقة قد يكون حدث قبل صفقة المحفظة أو بعدها، ولا يثبت أنه كان معروفًا وقت الدخول. كما أن مصدر الشموع أظهر قفزات سعرية شاذة، لذلك لا أتعامل مع تلك القيعان كدعم قابل للاعتماد. أحدث SARP `W7Ljd…` مثال إضافي على عدم تطابق سعر الصفقة مع إحدى الشموع، ما يمنع اعتماد السعر اللحظي كـ«قاع دقيق».
+
 ### هل يشتري فعلًا «بعد الانهيار»؟ وهل يمكن نسخه في اللحظة نفسها؟
 
 - أمثلة معاملات فعلية تؤكد أن دخوله متكرر قرب **0.9876 SOL** عبر Bloom Router إلى Pump.fun AMM: اشترى AORP بنحو 49.99M توكن، وSARP `6Wbi…` بنحو 51.27M، وATFS الخاسر بنحو 48.23M. هذا يثبت حجم دخوله وطريق التنفيذ في هذه الأمثلة، لا سبب اختياره للتوقيت.
@@ -205,8 +222,8 @@
 12. [Solana Explorer — الحساب](https://explorer.solana.com/address/2dV2AzutJpBMDGzW2VS2LEFnVoqHxEGKq5J1UWnKC2Vb?cluster=mainnet-beta)
 13. [DexScreener API — UDR `5iUR…`](https://api.dexscreener.com/latest/dex/tokens/5iURQEWL4NcbqhXRnhssfCzhAnghWbEGUoTWiWhpump) و[DOTF `tY5…`](https://api.dexscreener.com/latest/dex/tokens/tY5KSvxu3iBMwVZzVpYqrVbxAVbAXMKTJ7SxW6Wpump) — أسعار/احتياطيات أزواج وقت الفحص.
 14. معاملات الدخول التي استُخدمت لعينة النسخ: [شراء AORP](https://orbmarkets.io/tx/41wz7Poe7QBxHd8CQbEVbBGqpeXFVodUGH7qJizA9inqw5JGL8awDVcqfgby1FuGt9zyfgG3HDpVgkGpp9sCuNVt)، [شراء SARP `6Wbi…`](https://orbmarkets.io/tx/67GTFqS6X1SgKdEnupmeP494sgxHMKvDp9v5FYRrS9ZyYsC87prATw4zpWfmDG6q9FsYuuNdV3RjPV5i18AxDGrb)، [شراء ATFS الخاسر](https://orbmarkets.io/tx/4NAJQsr6eJX9frMtKFHBUaedg53nKYC58yMpkKnZNzeYx5efPcJjtpmGQn41xVm1aaARhscmros4dmZrPjQR5A8f).
-15. [GeckoTerminal — شموع AORP حول الدخول](https://api.geckoterminal.com/api/v2/networks/solana/pools/8sKzmW8r2hQH8wuBCcAB8WHWvRHmJk8hqprme1novPxw/ohlcv/minute?aggregate=1&limit=30&before_timestamp=1790901999&currency=usd&token=base)، [SARP `6Wbi…`](https://api.geckoterminal.com/api/v2/networks/solana/pools/9Z1cRcyxQCLMBLaSACAimrBv5ZA2nhBHESbjxviLTbgg/ohlcv/minute?aggregate=1&limit=30&before_timestamp=1791057341&currency=usd&token=base)، و[ATFS](https://api.geckoterminal.com/api/v2/networks/solana/pools/EXQ4omc4xKw6wb2X9mD1NCxrMixxviBqCFo2mUjbhkGT/ohlcv/minute?aggregate=1&limit=30&before_timestamp=1791244489&currency=usd&token=base) — لقطات تاريخية أتعامل معها بتحفظ بسبب قفزات سعر غير متسقة.
-
+15. [GeckoTerminal — شموع الدقيقة لـAORP حول الدخول](https://api.geckoterminal.com/api/v2/networks/solana/pools/8sKzmW8r2hQH8wuBCcAB8WHWvRHmJk8hqprme1novPxw/ohlcv/minute?aggregate=1&limit=30&before_timestamp=1790901999&currency=usd&token=base)، [SARP `6Wbi…`](https://api.geckoterminal.com/api/v2/networks/solana/pools/9Z1cRcyxQCLMBLaSACAimrBv5ZA2nhBHESbjxviLTbgg/ohlcv/minute?aggregate=1&limit=30&before_timestamp=1791057341&currency=usd&token=base)، [ATFS](https://api.geckoterminal.com/api/v2/networks/solana/pools/EXQ4omc4xKw6wb2X9mD1NCxrMixxviBqCFo2mUjbhkGT/ohlcv/minute?aggregate=1&limit=30&before_timestamp=1791244489&currency=usd&token=base)، [WOTF](https://api.geckoterminal.com/api/v2/networks/solana/pools/FhXq6akCDx47spG5XGqd2CFJGGgGRQpdNBpjiUpSNVQ3/ohlcv/minute?aggregate=1&limit=30&before_timestamp=1791136721&currency=usd&token=base)، [GOIF `qTy…`](https://api.geckoterminal.com/api/v2/networks/solana/pools/ANcPJyoPyos5hoGioj6UvkzA4RpU5FRNTb626xSMX6dB/ohlcv/minute?aggregate=1&limit=30&before_timestamp=1790946676&currency=usd&token=base)، و[DOTF `tY5…`](https://api.geckoterminal.com/api/v2/networks/solana/pools/FKajTTeLMZ59oxNhrNf9YTbG8GkAgwe2ELDEbQ2iM7mp/ohlcv/minute?aggregate=1&limit=30&before_timestamp=1791209004&currency=usd&token=base). هذه لقطات تاريخية أتعامل معها بتحفظ بسبب قفزات سعر غير متسقة.
+16. [GeckoTerminal — شموع الدقيقة لأحدث SARP `W7Ljd…`](https://api.geckoterminal.com/api/v2/networks/solana/pools/AdvA19rgGhN1ZUNHP7nQPxZ29x1P263g2FHnQdyPHVYi/ohlcv/minute?aggregate=1&limit=30&before_timestamp=1791473508&currency=usd&token=base) — تُظهر تعارضًا مع سعر الدخول المحسوب من بيانات المبادلة.
 ---
 
 **تنبيه:** هذه دراسة بيانات عامة على السلسلة وليست نصيحة استثمارية أو تقريرًا جنائيًا. الأسعار والسيولة وأسماء العناوين قد تتغير أو تكون غير دقيقة؛ تحقق من عنوان المِنت والمعاملة مباشرة قبل أي قرار.
