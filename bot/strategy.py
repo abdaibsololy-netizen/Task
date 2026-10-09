@@ -49,6 +49,7 @@ class Position:
     phase: Phase = Phase.OPEN
     peak_mult: float = 1.0
     liq_usd_at_entry: float = 0.0
+    norm_symbol: str = ""          # التيكر الموحد (لمتابعة العائلة)
 
     def mult(self, price: float) -> float:
         return price / self.entry_price if self.entry_price else 0.0

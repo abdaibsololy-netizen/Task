@@ -26,6 +26,7 @@ from typing import Optional
 import aiohttp
 
 from executor import LiveExecutor, PaperExecutor
+from family import FamilyTracker
 from market import DipConfig, DipDetector, PriceWindow
 from portfolio import Portfolio, RiskManager
 from scanner import MetadataFetcher, PumpPortalStream, parse_trade_event
@@ -39,6 +40,15 @@ class AlphaBot:
         exit_params = {k: v for k, v in cfg["exit"].items() if k != "dust_overhead_sol"}
         self.strategy = Strategy(self.entry_cfg, ExitConfig(**exit_params))
         self.dip = DipDetector(DipConfig(**cfg.get("alpha", {}).get("dip", {})))
+        fam_cfg = cfg.get("alpha", {}).get("family", {})
+        self.family = FamilyTracker(
+            wave_window_h=fam_cfg.get("wave_window_h", 72.0),
+            min_members=fam_cfg.get("min_members", 2),
+            family_stop_losses=fam_cfg.get("family_stop_losses", 2),
+        )
+        self.family_enabled = fam_cfg.get("enabled", True)
+        self.family_wave_bonus = fam_cfg.get("wave_bonus", 1.6)
+        self.family_require_wave = fam_cfg.get("require_wave", False)
         self.pf = Portfolio(cfg["persistence"].get("alpha_state_file", "alpha_state.json"))
         self.risk = RiskManager(cfg["risk"]["max_daily_loss_sol"],
                                 cfg["risk"]["max_open_sol"],
@@ -82,6 +92,10 @@ class AlphaBot:
                              mcap_usd=mcap, liq_usd=liq, liq_to_mcap_pct=liq_pct,
                              age_h=age_h, pool="pumpswap")
         self.meta_cache[mint] = (now, snap)
+        # سجّل العضو في عائلة التيكر (سر الاختيار)
+        if self.family_enabled and snap.symbol:
+            in_zone = (self.strategy.entry_score(snap) > 0)
+            self.family.observe(mint, snap.symbol, mcap, age_h, in_zone, now)
         return snap
 
     # ------------------------------------------------------------------
@@ -110,7 +124,7 @@ class AlphaBot:
             await self._manage(pos, price)
             return
 
-        # ب) فحص دخول جديد (نفس معاييره + الهبوط)
+        # ب) فحص دخول جديد (نفس معاييره + موجة التيكر + الهبوط)
         await self._try_entry(mint, price, now)
 
     async def _manage(self, pos: Position, price: float) -> None:
@@ -121,6 +135,8 @@ class AlphaBot:
             if pos.phase.value == "closed":
                 rec = self.pf.close_if_done(pos, price)
                 if rec:
+                    if self.family_enabled:
+                        self.family.mark_result(pos.norm_symbol, won=rec["pnl_sol"] > 0)
                     print(f"[CLOSED] {rec['symbol'] or rec['mint'][:12]} | PnL {rec['pnl_sol']:+.3f} SOL | {rec['held_h']}h")
 
     async def _try_entry(self, mint: str, price: float, now: float) -> None:
@@ -131,7 +147,24 @@ class AlphaBot:
             return
 
         # معاييره — نفس اللي استخرجناها من بياناته (entry_score > 0)
-        if self.strategy.entry_score(snap) <= 0:
+        base_score = self.strategy.entry_score(snap)
+        if base_score <= 0:
+            return
+
+        # 👑 سر الاختيار: موجة التيكر (GOIF×5, DOTF×5, SARP×4 في بياناته)
+        norm = ""
+        fam_score = 1.0
+        if self.family_enabled and snap.symbol:
+            norm = self.family.observe(mint, snap.symbol, snap.mcap_usd, snap.age_h,
+                                       base_score > 0, now)
+            if self.family.is_blacklisted(norm):
+                return
+            if self.family_require_wave and not self.family.is_wave(norm, now):
+                return
+            fam_score = self.family.score(norm, now)
+            if fam_score >= 0.5:
+                fam_score *= self.family_wave_bonus   # مضاعف الموجة
+        if fam_score < 0.2 and self.family_require_wave:
             return
 
         # الهبوط — "يشتري عند الانهيار"
@@ -147,11 +180,13 @@ class AlphaBot:
             print(f"[RISK] {snap.symbol or mint[:12]}: {risk_why}")
             return
 
+        wave_tag = f"🌊{norm}×{self.family.family_size(norm, now)}" if norm and self.family.is_wave(norm, now) else "—"
         sig = type("S", (), {"mint": mint, "size_sol": size,
-                             "reason": f"{snap.symbol} MCap=${snap.mcap_usd:.0f} age={snap.age_h:.1f}h | {why}"})()
+                             "reason": f"{snap.symbol} {wave_tag} MCap=${snap.mcap_usd:.0f} age={snap.age_h:.1f}h | {why}"})()
         pos = await self.ex.buy(sig, price, snap.symbol)
         if pos:
             pos.liq_usd_at_entry = snap.liq_usd
+            pos.norm_symbol = norm
             self.pf.add_entry(pos)
             if self.stream:
                 await self.stream.subscribe_trades(mint)

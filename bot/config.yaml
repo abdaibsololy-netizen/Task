@@ -19,6 +19,14 @@ alpha:
     bounce_limit_pct: 5      # لا تطارد إذا ارتد عن القاع
     min_activity_trades: 5   # صفقات كافية في 30 دقيقة (عملة حية)
     activity_window_min: 30
+  # 👑 سر الاختيار — موجة التيكر (76% من مشترياته كانت داخل عائلات!)
+  family:
+    enabled: true
+    min_members: 2           # موجة = توكنان+ بنفس التيكر في النطاق
+    wave_window_h: 72        # نافذة الموجة (فجوات شراءه كانت 2–76 ساعة)
+    require_wave: true       # لا يشتري إلا داخل موجة (مثله تماماً)
+    wave_bonus: 1.6          # أفضالية الموجة عند الترتيب
+    family_stop_losses: 2    # احظر العائلة بعد خسارتين (GOIF ماتت 4 من 6)
   alpha_state_file: alpha_state.json
 
 entry:
