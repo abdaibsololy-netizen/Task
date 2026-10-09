@@ -26,11 +26,10 @@ def test_window_high_low_drawdown():
 
 
 def test_dip_detected_on_stabilized_dump():
-    """هبوط 20% عن القمة + توقف السقوط → دخول."""
+    """انهيار 33% عن قمة الاندلاع + توقف السقوط → دخول (مثل wick شرائه)."""
     det = DipDetector(DipConfig())
-    # قمة 1.5 ثم سقوط لـ 1.15 (−23%) مع تثبيت
-    w, now = mk_window([1.0, 1.5, 1.35, 1.2, 1.15, 1.15, 1.15])
-    ok, why = det.want_buy(w, 1.15, recent_trades=10, now=now)
+    w, now = mk_window([1.0, 1.5, 1.3, 1.1, 1.0, 1.0, 1.0])
+    ok, why = det.want_buy(w, 1.0, recent_trades=10, now=now)
     assert ok, why
 
 
@@ -50,19 +49,19 @@ def test_no_buy_falling_knife():
 
 
 def test_no_buy_dead_dump():
-    """هبوط > 35% = rug — لا تمس."""
+    """هبوط > 70% = انهيار مميت — لا تمس."""
     det = DipDetector(DipConfig())
-    w, now = mk_window([1.5, 1.2, 0.95, 0.9, 0.9, 0.9])
-    ok, why = det.want_buy(w, 0.9, recent_trades=10, now=now)
+    w, now = mk_window([1.5, 0.9, 0.5, 0.4, 0.4, 0.4])
+    ok, why = det.want_buy(w, 0.4, recent_trades=10, now=now)
     assert not ok and "مميت" in why
 
 
 def test_no_chase_after_bounce():
-    """ارتد عن القاع أكثر من 5% → فات القطار."""
+    """ارتد عن القاع أكثر من 10% → فات القطار."""
     det = DipDetector(DipConfig())
-    # قمة 1.5، قاع 1.2، الآن 1.28 (ارتداد 6.7%)
-    w, now = mk_window([1.5, 1.35, 1.2, 1.22, 1.25, 1.28])
-    ok, why = det.want_buy(w, 1.28, recent_trades=10, now=now)
+    # قمة 1.5، قاع 0.95، الآن 1.07 (ارتداد 12.6%)
+    w, now = mk_window([1.5, 1.1, 0.95, 1.0, 1.05, 1.07])
+    ok, why = det.want_buy(w, 1.07, recent_trades=10, now=now)
     assert not ok and "القطار" in why
 
 

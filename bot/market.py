@@ -74,14 +74,15 @@ class PriceWindow:
 
 @dataclass
 class DipConfig:
-    lookback_min: float = 60.0      # نافذة القمة
-    dip_pct: float = 10.0           # الهبوط المطلوب عن القمة
-    min_dip_pct: float = 5.0        # أدنى هبوط (لا نشتري "هبوط" وهمي)
-    max_dip_pct: float = 35.0       # فوق كذا = انهيار/rug — لا تمسّه
+    lookback_min: float = 15.0      # الـ wick يتشكّل بالدقائق (مثبت بـ3 شارتات)
+    dip_pct: float = 30.0           # الانهيار النموذجي عن قمة الاندلاع
+    min_dip_pct: float = 25.0       # أدنى انهيار = الفرصة الذهبية
+    max_dip_pct: float = 70.0       # فوق كذا = انهيار مميت — لا تمسّه
     confirm_ticks: int = 2          # تثبيت: آخر حركتين مستقرتين
-    bounce_limit_pct: float = 5.0   # لا تطارد إذا ارتد عن القاع
-    min_activity_trades: int = 5    # تداولات كافية في آخر 30 دقيقة (حياة)
-    activity_window_min: float = 30.0
+    bounce_limit_pct: float = 10.0  # القاع ±10% — بعدها فات القطار
+    min_activity_trades: int = 5    # تداولات كافية (اندلاع الموجة)
+    activity_window_min: float = 15.0
+    eruption_volume_usd: float = 50000.0   # حجم ساعة الاندلاع
 
 
 class DipDetector:
