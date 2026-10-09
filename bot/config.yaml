@@ -49,6 +49,20 @@ risk:
 
 sol_price_usd: null            # null = يجلب تلقائياً (لتقدير MCap بالدولار)
 
+# ============================================================
+# وضع النسخ المباشر (copytrade.py) — أرقامه من تحليل التأثير
+# ============================================================
+copy:
+  size_sol: 0.5                # أصغر من صاحبه (1.02) → تأثيرك ~5% بدل 10%
+  size_ratio: 0.0              # 0=حجم ثابت | 0.5 = نصف حجمه دائماً
+  max_drift_pct: 5.0           # حارس الانحراف: إذا سعرك أسوأ من سعره +5% → تخطّ
+  max_delay_s: 10              # أقدم صفقة ننسخها (بعدها المنافسة أكلت الفرصة)
+  min_his_size_sol: 0.5        # لا ننسخ الشراءات التافهة
+  max_his_size_sol: 2.0
+  max_copies_per_trade: 1      # مرة واحدة لكل عملة — لا تراكم
+  skip_mints: []
+  copy_state_file: copy_state.json
+
 pumpportal:
   data_ws: wss://pumpportal.fun/api/data
   trade_api: https://pumpportal.fun/api/trade
