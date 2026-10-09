@@ -1,0 +1,392 @@
+=== التقرير الشامل لتحليل استراتيجية المحفظة (Pump.fun Strategy) ===
+
+
+============================================================
+### 1. سجل المعاملات التاريخي (Helius Transactions)
+============================================================
+
+| Date                | Type           |   Net_SOL |   SOL_Out |   SOL_In | Source         | Description                                                                                                               | Signature       |
+|:--------------------|:---------------|----------:|----------:|---------:|:---------------|:--------------------------------------------------------------------------------------------------------------------------|:----------------|
+| 2026-10-09 15:09:16 | خروج / شراء 🔴 |   -0.0139 |    0.0139 |   0      | PUMP_AMM       | nan                                                                                                                       | 221JbkyVA6Uy... |
+| 2026-10-09 13:47:30 | دخول / بيع 🟢  |    1.0225 |    0.0106 |   1.0331 | PUMP_AMM       | nan                                                                                                                       | 5Gnd8tEZANYR... |
+| 2026-10-09 13:44:44 | دخول / بيع 🟢  |    0.6924 |    0.0073 |   0.6997 | PUMP_AMM       | nan                                                                                                                       | 3x6bXKv7pmim... |
+| 2026-10-09 13:18:25 | خروج / شراء 🔴 |   -0.0139 |    0.0139 |   0      | PUMP_AMM       | nan                                                                                                                       | 3j5GDGbkttsB... |
+| 2026-10-09 11:17:41 | خروج / شراء 🔴 |   -0.0139 |    0.0139 |   0      | PUMP_AMM       | nan                                                                                                                       | 2H2WTYsNrCdA... |
+| 2026-10-09 09:08:52 | دخول / بيع 🟢  |    0.9288 |    0.0097 |   0.9385 | PUMP_AMM       | nan                                                                                                                       | 4YbV7iv4zA61... |
+| 2026-10-09 05:26:10 | خروج / شراء 🔴 |   -0.0139 |    0.0139 |   0      | PUMP_AMM       | nan                                                                                                                       | 2SdVMW3XNvbg... |
+| 2026-10-09 02:58:02 | دخول / بيع 🟢  |    1.1523 |    0.0119 |   1.1643 | PUMP_AMM       | nan                                                                                                                       | 5MMJ6WxaoJ1g... |
+| 2026-10-09 02:47:36 | خروج / شراء 🔴 |   -0.0139 |    0.0139 |   0      | PUMP_AMM       | nan                                                                                                                       | 54WeaxA3GCPj... |
+| 2026-10-09 00:20:58 | دخول / بيع 🟢  |    1.1047 |    0.0115 |   1.1161 | PUMP_AMM       | nan                                                                                                                       | 2rmLRVvTeVFq... |
+| 2026-10-08 15:31:48 | خروج / شراء 🔴 |   -0.0139 |    0.0139 |   0      | PUMP_AMM       | nan                                                                                                                       | 3t1fuBpf76s3... |
+| 2026-10-08 14:10:31 | دخول / بيع 🟢  |    0      |    0      |   0      | SYSTEM_PROGRAM | GmeaHNsGeQaVFS8XLeQZ3qw9ecU3wXk1ErV4y4RyKVTX transferred 0.00001 SOL to 2dV2AzutJpBMDGzW2VS2LEFnVoqHxEGKq5J1UWnKC2Vb.     | 4Gh8wEmHfEYv... |
+| 2026-10-08 14:09:32 | دخول / بيع 🟢  |    0      |    0      |   0      | SYSTEM_PROGRAM | GmeaWan6875gZcWEa6APe7gyhLdQgTN8fNFTtAJR4VTX transferred 0.000001 SOL to 2dV2AzutJpBMDGzW2VS2LEFnVoqHxEGKq5J1UWnKC2Vb.    | 2sFVTyVsjz1n... |
+| 2026-10-08 14:08:42 | خروج / شراء 🔴 |   -8      |    8      |   0      | SYSTEM_PROGRAM | 2dV2AzutJpBMDGzW2VS2LEFnVoqHxEGKq5J1UWnKC2Vb transferred 8 SOL to Gmeap2HJ8SHsCRZAAaNU8JvC3mfienyAeGrLtkjWKVTX.           | 4614PqCFjJ8S... |
+| 2026-10-08 14:08:42 | خروج / شراء 🔴 |   -0      |    0      |   0      | SYSTEM_PROGRAM | 2dV2AzutJpBMDGzW2VS2LEFnVoqHxEGKq5J1UWnKC2Vb transferred 0.000007099 SOL to DttWaMuVvTiduZRnguLF7jNxTgiMBZ1hyAumKUiL2KRL. | 62C1PA2UJm9m... |
+| 2026-10-08 14:01:39 | دخول / بيع 🟢  |    0.7243 |    0.0076 |   0.7319 | PUMP_AMM       | nan                                                                                                                       | 35tdk9TG2SEX... |
+| 2026-10-08 13:57:46 | دخول / بيع 🟢  |    1.1184 |    0.0116 |   1.13   | PUMP_AMM       | nan                                                                                                                       | tQ23sZy4YnJ1... |
+| 2026-10-08 13:57:24 | دخول / بيع 🟢  |    0.5112 |    0.0052 |   0.5163 | PUMP_AMM       | nan                                                                                                                       | SY8emFmEmeMK... |
+| 2026-10-08 13:56:42 | دخول / بيع 🟢  |    1.0256 |    0.0107 |   1.0363 | PUMP_AMM       | nan                                                                                                                       | 3PB73DZ2hxDm... |
+| 2026-10-08 13:56:24 | دخول / بيع 🟢  |    1.0293 |    0.0107 |   1.04   | PUMP_AMM       | nan                                                                                                                       | 4LYXkJZYJkYr... |
+| 2026-10-08 13:55:48 | دخول / بيع 🟢  |    1.15   |    0.0119 |   1.1619 | PUMP_AMM       | nan                                                                                                                       | HcXthhhH1LAE... |
+| 2026-10-08 13:55:19 | دخول / بيع 🟢  |    1.1654 |    0.0121 |   1.1775 | PUMP_AMM       | nan                                                                                                                       | 4NgCjzWDhnmq... |
+| 2026-10-08 13:54:58 | دخول / بيع 🟢  |    1.1867 |    0.0123 |   1.199  | PUMP_AMM       | nan                                                                                                                       | 3AXTZrcZdwDw... |
+| 2026-10-08 13:54:44 | دخول / بيع 🟢  |    1.2311 |    0.0127 |   1.2439 | PUMP_AMM       | nan                                                                                                                       | 495XTsCwAgFt... |
+| 2026-10-08 13:51:03 | دخول / بيع 🟢  |    1.8199 |    0.0187 |   1.8386 | PUMP_AMM       | nan                                                                                                                       | 29EJefNo157v... |
+| 2026-10-08 03:20:11 | خروج / شراء 🔴 |   -0.0139 |    0.0139 |   0      | PUMP_AMM       | nan                                                                                                                       | 2SxJbHRJLzuX... |
+| 2026-10-08 02:16:53 | دخول / بيع 🟢  |    0.5315 |    0.0057 |   0.5372 | PUMP_AMM       | nan                                                                                                                       | 5dFpJLM1N1eV... |
+| 2026-10-08 02:15:46 | دخول / بيع 🟢  |    1.0958 |    0.0114 |   1.1072 | PUMP_AMM       | nan                                                                                                                       | 4cvDaMFtgCyc... |
+| 2026-10-07 23:28:52 | خروج / شراء 🔴 |   -0.0139 |    0.0139 |   0      | PUMP_AMM       | nan                                                                                                                       | 24wMGzCmEU9q... |
+| 2026-10-07 23:21:13 | خروج / شراء 🔴 |   -0.0191 |    0.0191 |   0      | PUMP_AMM       | nan                                                                                                                       | 5FEDzy4ysCLp... |
+| 2026-10-07 17:18:07 | خروج / شراء 🔴 |   -0.0139 |    0.0139 |   0      | PUMP_AMM       | nan                                                                                                                       | 3kEW1YPbexGV... |
+| 2026-10-07 14:09:59 | دخول / بيع 🟢  |    1.229  |    0.0127 |   1.2418 | PUMP_AMM       | nan                                                                                                                       | 2TNoKi9eUYe6... |
+| 2026-10-07 13:17:21 | دخول / بيع 🟢  |    1.7814 |    0.0183 |   1.7997 | PUMP_AMM       | nan                                                                                                                       | 39YaLHVxfg3P... |
+| 2026-10-07 13:10:55 | خروج / شراء 🔴 |   -0.0139 |    0.0139 |   0      | PUMP_AMM       | nan                                                                                                                       | 2FTxP6Es5cv8... |
+| 2026-10-07 08:04:41 | خروج / شراء 🔴 |   -0.0139 |    0.0139 |   0      | PUMP_AMM       | nan                                                                                                                       | 5TCChiDTSdiL... |
+| 2026-10-07 06:01:13 | دخول / بيع 🟢  |    1.0862 |    0.011  |   1.0972 | PUMP_AMM       | nan                                                                                                                       | 4eqFjHHiyySj... |
+| 2026-10-07 05:28:48 | دخول / بيع 🟢  |    1.5072 |    0.0152 |   1.5224 | PUMP_AMM       | nan                                                                                                                       | 3BNUp8sjHvLz... |
+| 2026-10-07 04:49:53 | دخول / بيع 🟢  |    1.0605 |    0.011  |   1.0716 | PUMP_AMM       | nan                                                                                                                       | 5LARXDJx8MBL... |
+| 2026-10-07 04:48:07 | خروج / شراء 🔴 |   -0.0139 |    0.0139 |   0      | PUMP_AMM       | nan                                                                                                                       | 5PWUDLoNUgSw... |
+| 2026-10-07 04:42:29 | خروج / شراء 🔴 |   -0.0139 |    0.0139 |   0      | PUMP_AMM       | nan                                                                                                                       | 4jJj9y3HTtGH... |
+| 2026-10-07 04:13:08 | خروج / شراء 🔴 |   -0.0191 |    0.0191 |   0      | PUMP_AMM       | nan                                                                                                                       | 648zPBSQ3SDg... |
+| 2026-10-07 04:13:03 | خروج / شراء 🔴 |   -0.0139 |    0.0139 |   0      | PUMP_AMM       | nan                                                                                                                       | 3QedZuoWR3vy... |
+| 2026-10-07 02:06:41 | خروج / شراء 🔴 |   -0.0139 |    0.0139 |   0      | PUMP_AMM       | nan                                                                                                                       | 4iyCBKQE9NRf... |
+| 2026-10-06 18:53:14 | دخول / بيع 🟢  |    1.8643 |    0.0191 |   1.8835 | PUMP_AMM       | nan                                                                                                                       | 2bEfQySXb9jN... |
+| 2026-10-06 12:17:41 | دخول / بيع 🟢  |    2.5315 |    0.0259 |   2.5574 | PUMP_AMM       | nan                                                                                                                       | 64665coAfuWi... |
+| 2026-10-06 12:01:45 | خروج / شراء 🔴 |   -0.0149 |    0.0149 |   0      | PUMP_AMM       | nan                                                                                                                       | 5zHh1dDw3wCX... |
+| 2026-10-06 08:43:38 | دخول / بيع 🟢  |    1.0868 |    0.0111 |   1.0979 | PUMP_AMM       | nan                                                                                                                       | 3vfAEkK4q7jH... |
+| 2026-10-06 07:58:13 | خروج / شراء 🔴 |   -0.0191 |    0.0191 |   0      | PUMP_AMM       | nan                                                                                                                       | 3m5Z7BC31eBD... |
+| 2026-10-06 01:44:39 | دخول / بيع 🟢  |    0.5552 |    0.0056 |   0.5609 | PUMP_AMM       | nan                                                                                                                       | CVBTCnMZY7BR... |
+| 2026-10-05 23:54:49 | خروج / شراء 🔴 |   -0.0139 |    0.0139 |   0      | PUMP_AMM       | nan                                                                                                                       | 4NAJQsr6eJX9... |
+| 2026-10-05 22:02:00 | دخول / بيع 🟢  |    1.2482 |    0.0128 |   1.261  | PUMP_AMM       | nan                                                                                                                       | 3cEHr6Z7AESH... |
+| 2026-10-05 19:11:42 | دخول / بيع 🟢  |    0      |    0      |   0      | SYSTEM_PROGRAM | GmeaHNsGeQaVFS8XLeQZ3qw9ecU3wXk1ErV4y4RyKVTX transferred 0.00001 SOL to 2dV2AzutJpBMDGzW2VS2LEFnVoqHxEGKq5J1UWnKC2Vb.     | cbHc8RbHidui... |
+| 2026-10-05 19:10:56 | دخول / بيع 🟢  |    0      |    0      |   0      | SYSTEM_PROGRAM | GmeaWan6875gZcWEa6APe7gyhLdQgTN8fNFTtAJR4VTX transferred 0.000001 SOL to 2dV2AzutJpBMDGzW2VS2LEFnVoqHxEGKq5J1UWnKC2Vb.    | 3qrFhS7mpj2o... |
+| 2026-10-05 19:10:09 | خروج / شراء 🔴 |   -5      |    5      |   0      | SYSTEM_PROGRAM | 2dV2AzutJpBMDGzW2VS2LEFnVoqHxEGKq5J1UWnKC2Vb transferred 5 SOL to Gmeap2HJ8SHsCRZAAaNU8JvC3mfienyAeGrLtkjWKVTX.           | 3CZKYSQqGj6U... |
+| 2026-10-05 19:10:09 | خروج / شراء 🔴 |   -0      |    0      |   0      | SYSTEM_PROGRAM | 2dV2AzutJpBMDGzW2VS2LEFnVoqHxEGKq5J1UWnKC2Vb transferred 0.000017577 SOL to DfXygSm4jCyNCybVYYK6DwvWqjKee8pbDmJGcLWNDXjh. | 5RdEAYiVWMyS... |
+| 2026-10-05 19:09:07 | دخول / بيع 🟢  |    1.2185 |    0.0123 |   1.2308 | PUMP_AMM       | nan                                                                                                                       | 47wo83EkUAiZ... |
+| 2026-10-05 19:06:23 | دخول / بيع 🟢  |    1.4146 |    0.0143 |   1.4289 | PUMP_AMM       | nan                                                                                                                       | 3AVck42p6hzi... |
+| 2026-10-05 14:03:38 | دخول / بيع 🟢  |    0      |    0      |   0      | SYSTEM_PROGRAM | HwBZi8ngW6auUrBy6SXWUFPNnwxK2npt5PE3S78ZS7Fj transferred a total 0.000005019 SOL to multiple accounts.                    | 62qhdAQQTGx3... |
+| 2026-10-05 14:03:24 | خروج / شراء 🔴 |   -0.0139 |    0.0139 |   0      | PUMP_AMM       | nan                                                                                                                       | 3czepaaxovw1... |
+| 2026-10-05 10:24:18 | دخول / بيع 🟢  |    0      |    0      |   0      | SYSTEM_PROGRAM | CHRnPPkfg5CdLiNhyKoJxRae9abckU4iVGeX4Z522gEH transferred a total 0.000005019 SOL to multiple accounts.                    | 2rLRCKTQ9pEz... |
+| 2026-10-05 10:23:59 | دخول / بيع 🟢  |    0.931  |    0.0097 |   0.9408 | PUMP_AMM       | nan                                                                                                                       | 2cLTCduSRVWg... |
+| 2026-10-05 06:40:00 | دخول / بيع 🟢  |    1.1797 |    0.0122 |   1.1919 | PUMP_AMM       | nan                                                                                                                       | 2ZRMLSVLnXts... |
+| 2026-10-05 06:32:22 | دخول / بيع 🟢  |    0      |    0      |   0      | SYSTEM_PROGRAM | 5WcJofxCYhS3GCFNX2Bd63RvTAoEW6FXJ2FZ6fWEemKW transferred a total 0.000005015 SOL to multiple accounts.                    | 21MvKTRzLNFn... |
+| 2026-10-05 06:32:14 | دخول / بيع 🟢  |    2.2634 |    0.0232 |   2.2866 | PUMP_AMM       | nan                                                                                                                       | 2CpXaW68JMzZ... |
+| 2026-10-05 04:01:49 | خروج / شراء 🔴 |   -0.0139 |    0.0139 |   0      | PUMP_AMM       | nan                                                                                                                       | 65cCnBidNTv5... |
+| 2026-10-05 03:49:50 | دخول / بيع 🟢  |    0.9766 |    0.0107 |   0.9872 | PUMP_AMM       | nan                                                                                                                       | 3tEWeRQWKehY... |
+| 2026-10-05 03:47:38 | دخول / بيع 🟢  |    0      |    0      |   0      | SYSTEM_PROGRAM | C5ASqs52kVH3XLMpRTEZRWEzfRLjqQFE8bMK3vzRejXX transferred a total 0.000005019 SOL to multiple accounts.                    | 39BJ4tiHiMxB... |
+| 2026-10-05 03:47:30 | خروج / شراء 🔴 |   -0.0139 |    0.0139 |   0      | PUMP_AMM       | nan                                                                                                                       | M9QVcDLpt4iS... |
+| 2026-10-05 02:00:45 | دخول / بيع 🟢  |    0      |    0      |   0      | SYSTEM_PROGRAM | A4NxFxKwNXJkhNQ5ZCEGNPVjNhYQyKnE18DASKEWasrV transferred a total 0.000005062 SOL to multiple accounts.                    | 2T2j7KZgdyeb... |
+| 2026-10-05 01:54:50 | دخول / بيع 🟢  |    0      |    0      |   0      | SYSTEM_PROGRAM | 8cWLvT6PZyoffxMsBRUBN9NET194xvoBNv63cntKXgoc transferred a total 0.000005019 SOL to multiple accounts.                    | MSbKVX2xZUJM... |
+| 2026-10-05 01:54:20 | دخول / بيع 🟢  |    0.9767 |    0.01   |   0.9866 | PUMP_AMM       | nan                                                                                                                       | 2eETuUda6Qrb... |
+| 2026-10-04 19:39:24 | خروج / شراء 🔴 |   -0.0159 |    0.0159 |   0      | PUMP_AMM       | nan                                                                                                                       | 4bTmRnHXaGgZ... |
+| 2026-10-04 19:10:58 | دخول / بيع 🟢  |    1.1387 |    0.0115 |   1.1502 | PUMP_AMM       | nan                                                                                                                       | 7jWCZQQQm7oF... |
+| 2026-10-04 18:43:44 | دخول / بيع 🟢  |    0      |    0      |   0      | SYSTEM_PROGRAM | 5R5j3ZbRDLw5Ksy3KjaH1B8VFicDV9ex76QK81jsSf5b transferred a total 0.000005019 SOL to multiple accounts.                    | 3ZaJtD7RJPL2... |
+| 2026-10-04 18:43:20 | دخول / بيع 🟢  |    1.6261 |    0.0167 |   1.6429 | PUMP_AMM       | nan                                                                                                                       | 5gPgZvB2t1U4... |
+| 2026-10-04 17:58:57 | دخول / بيع 🟢  |    0      |    0      |   0      | SYSTEM_PROGRAM | HHJ63diumVEnZQPj3JaMuZdRvJfv9p2rrt1QX4akH3hc transferred a total 0.000005019 SOL to multiple accounts.                    | 4fkhetoWFSXF... |
+| 2026-10-04 17:58:41 | خروج / شراء 🔴 |   -0.0159 |    0.0159 |   0      | PUMP_AMM       | nan                                                                                                                       | 4azKQ6NU3Cpu... |
+| 2026-10-04 14:33:27 | دخول / بيع 🟢  |    0      |    0      |   0      | SYSTEM_PROGRAM | 4XxKKunRv6ZjcPXiVHq7WwTvm44KyENJQLqcSrcmnj45 transferred a total 0.000005019 SOL to multiple accounts.                    | 5y1TuQoYJZ3k... |
+| 2026-10-04 14:33:04 | خروج / شراء 🔴 |   -0.0159 |    0.0159 |   0      | PUMP_AMM       | nan                                                                                                                       | qgqfdABF1o3c... |
+| 2026-10-04 08:52:01 | دخول / بيع 🟢  |    1.3786 |    0.0142 |   1.3929 | PUMP_AMM       | nan                                                                                                                       | pXQ27DrhZ6Rq... |
+| 2026-10-04 08:51:04 | دخول / بيع 🟢  |    0      |    0      |   0      | SYSTEM_PROGRAM | Evhf6WySBQm3KmMRpUKjH7h7CQpb54VbqRiCorbbVRxR transferred a total 0.000005018 SOL to multiple accounts.                    | 3G4kMjC5WD9J... |
+| 2026-10-04 08:50:43 | دخول / بيع 🟢  |    1.3832 |    0.0143 |   1.3975 | PUMP_AMM       | nan                                                                                                                       | 2ETXrX16pase... |
+| 2026-10-04 07:41:11 | دخول / بيع 🟢  |    0      |    0      |   0      | SYSTEM_PROGRAM | D2qZtyYUhiQuvdA6SocpPzxX414qKGRTBzf14z4kkteG transferred a total 0.000005018 SOL to multiple accounts.                    | 3sddLJQrza4H... |
+| 2026-10-04 07:41:08 | خروج / شراء 🔴 |   -0.0159 |    0.0159 |   0      | PUMP_AMM       | nan                                                                                                                       | 2sco9F9XNf8u... |
+| 2026-10-03 20:14:28 | دخول / بيع 🟢  |    1.0068 |    0.011  |   1.0178 | PUMP_AMM       | nan                                                                                                                       | 1Q5VEvfV5TMW... |
+| 2026-10-03 19:55:46 | دخول / بيع 🟢  |    0      |    0      |   0      | SYSTEM_PROGRAM | CHRnPPkfg5CdLiNhyKoJxRae9abckU4iVGeX4Z522gEH transferred a total 0.000005019 SOL to multiple accounts.                    | 4kQCGVAFiStZ... |
+| 2026-10-03 19:55:41 | خروج / شراء 🔴 |   -0.0164 |    0.0164 |   0      | PUMP_AMM       | nan                                                                                                                       | 67GTFqS6X1Sg... |
+| 2026-10-03 15:38:43 | دخول / بيع 🟢  |    0      |    0      |   0      | SYSTEM_PROGRAM | GmeaHNsGeQaVFS8XLeQZ3qw9ecU3wXk1ErV4y4RyKVTX transferred 0.00001 SOL to 2dV2AzutJpBMDGzW2VS2LEFnVoqHxEGKq5J1UWnKC2Vb.     | 4nCzs9fcioUC... |
+| 2026-10-03 15:37:09 | خروج / شراء 🔴 |   -6      |    6      |   0      | SYSTEM_PROGRAM | 2dV2AzutJpBMDGzW2VS2LEFnVoqHxEGKq5J1UWnKC2Vb transferred 6 SOL to Gmeap2HJ8SHsCRZAAaNU8JvC3mfienyAeGrLtkjWKVTX.           | 4JN8vFUJheVR... |
+| 2026-10-03 15:37:09 | خروج / شراء 🔴 |   -0      |    0      |   0      | SYSTEM_PROGRAM | 2dV2AzutJpBMDGzW2VS2LEFnVoqHxEGKq5J1UWnKC2Vb transferred 0.00001 SOL to 96gYZGLnJYVFmbjzopPSU6QiEV5fGqZNyN9nmNhvrZU5.     | 5XgoTd84zGC9... |
+| 2026-10-03 15:23:40 | دخول / بيع 🟢  |    0      |    0      |   0      | SYSTEM_PROGRAM | 2yVUafPEY1phGPQv8uhe3YA6ocK5aR38M7YgD15sCQRX transferred a total 0.000005019 SOL to multiple accounts.                    | 5QDdkwtDwz5R... |
+| 2026-10-03 15:23:37 | دخول / بيع 🟢  |    2.3417 |    0.0238 |   2.3655 | PUMP_AMM       | nan                                                                                                                       | zodCGi3s23M2... |
+| 2026-10-03 14:21:52 | دخول / بيع 🟢  |    1.2325 |    0.0128 |   1.2453 | PUMP_AMM       | nan                                                                                                                       | 5fYQetBccboQ... |
+| 2026-10-03 14:14:59 | دخول / بيع 🟢  |    0.9054 |    0.0094 |   0.9148 | PUMP_AMM       | nan                                                                                                                       | 2WS8U8oJ1uvQ... |
+| 2026-10-03 14:11:31 | دخول / بيع 🟢  |    0      |    0      |   0      | SYSTEM_PROGRAM | 6mbJLX3qRNDYcqqtXUt81sDEETHA5CLXNMTMKngSoBGP transferred a total 0.000005019 SOL to multiple accounts.                    | 4Gx49pmwHjbd... |
+| 2026-10-03 14:11:16 | دخول / بيع 🟢  |    0.6557 |    0.0069 |   0.6626 | PUMP_AMM       | nan                                                                                                                       | 21KzqmFbtWc6... |
+| 2026-10-03 09:05:46 | دخول / بيع 🟢  |    0      |    0      |   0      | SYSTEM_PROGRAM | 2yVUafPEY1phGPQv8uhe3YA6ocK5aR38M7YgD15sCQRX transferred a total 0.000005019 SOL to multiple accounts.                    | 4vFWu7FFKPy4... |
+| 2026-10-03 09:05:45 | خروج / شراء 🔴 |   -0.0149 |    0.0149 |   0      | PUMP_AMM       | nan                                                                                                                       | 9Y4aMY3LUWpH... |
+| 2026-10-03 07:43:43 | دخول / بيع 🟢  |    0      |    0      |   0      | SYSTEM_PROGRAM | E43vvTDY6hgjSGkaDWCQZx1df8Y2SPLuJDLcyVGraLkE transferred a total 0.000005019 SOL to multiple accounts.                    | 36VM6sxhsrXJ... |
+| 2026-10-03 07:43:34 | دخول / بيع 🟢  |    0.9654 |    0.0101 |   0.9755 | PUMP_AMM       | nan                                                                                                                       | 34zMUj4qW7fn... |
+
+
+============================================================
+### 2. تقرير الأرباح والخسائر التفصيلي للعملات (Detailed Tokens PnL)
+============================================================
+
+| Token_Contract                               |   Invested_SOL |   Returned_SOL |   Total_Trades |   Profit_SOL | Status   |
+|:---------------------------------------------|---------------:|---------------:|---------------:|-------------:|:---------|
+| 1Atst4LcMEYfAXACbCaBpdk166CU8eopNkjyD8jpump  |         0      |         1.4138 |              1 |       1.4138 | ربح 🟢   |
+| 4cYJ8eGZaKMF1iuoUXskhfTHSi6VxL7Jq7xaTJHbpump |         1.0219 |         1.5064 |              2 |       0.4845 | ربح 🟢   |
+| 5iURQEWL4NcbqhXRnhssfCzhAnghWbEGUoTWiWhpump  |         1.5291 |         2.5312 |              2 |       1.0021 | ربح 🟢   |
+| 6BfTBNYJcZW9AnxRQ7aAx4Luf2K4BpmWpR7FWTPZpump |         0      |         0.6554 |              1 |       0.6554 | ربح 🟢   |
+| 6DWHBW3R5NE2LUShJRbvDyi9GZ8Hz4EFFRgcfP3apump |         1.0199 |         2.6689 |              4 |       1.649  | ربح 🟢   |
+| 6WbiJtjXoNpLH6GhSvDX4HqRUN3ShQgxsk56Synpump  |         1.0209 |         3.1781 |              4 |       2.1572 | ربح 🟢   |
+| 6bcjVdK2k9AS3cH4wEzc5x61myRLLAEkTSxwzVygpump |         1.0164 |         1.0602 |              2 |       0.0438 | ربح 🟢   |
+| AQ7A9nsCcrfbftRq2kfFjCkaG6NicixZ1Vy4RZ4Hpump |         1.0249 |         1.0222 |              2 |      -0.0027 | خسارة 🔴 |
+| Bm7Uxam9efqL8gu9CX5kZ3A7t5nj2v2titSC7nnpump  |         1.0239 |         0      |              1 |      -1.0239 | خسارة 🔴 |
+| CnrPtHUeeM6QtHjkEArLF68B2pf2TvhJfSvShaQpump  |         0      |         1.0416 |              2 |       1.0416 | ربح 🟢   |
+| DBoeuAaioaQSqDMD4vwKUZLFcXyCS9S6tRfkENQXpump |         0      |         0.9307 |              1 |       0.9307 | ربح 🟢   |
+| DgrnPbwNC2s2CQtVR8QNptZoG95MZd2Sirvfeoe4pump |         1.0249 |         1.152  |              2 |       0.1271 | ربح 🟢   |
+| FsJAn2icHwMM68bB67ccZfog4czywSioTgiHrDVSpump |         1.0199 |         1.2308 |              2 |       0.2109 | ربح 🟢   |
+| G7UJPfu4Xh4Lv5H1ETmwn1Q9uMScw3GSFgBqzKppump  |         0      |         2.3416 |              1 |       2.3416 | ربح 🟢   |
+| GC9GWsd9mQhj4GWpUQBxw7peBEimGjgpUrGgkWBpump  |         0      |         1.864  |              1 |       1.864  | ربح 🟢   |
+| GGMm5EmstNMQh4tvR127joSzBDa5UeE4FkVYZZmtpump |         1.0199 |         3.2389 |              3 |       2.219  | ربح 🟢   |
+| GkNBBV3TstnLb4Fxj1bmToza8ikx5UReSBw3LEWmpump |         1.0249 |         1.1181 |              2 |       0.0932 | ربح 🟢   |
+| HE2kCYoqisUpFCjVa6QDat8Aqrn4DWkxaRbF7CPpump  |         1.0199 |         1.0253 |              2 |       0.0054 | ربح 🟢   |
+| HQowBX7JqXUEDPWHB4bS6q6KEzvSdfDPXv6qefipump  |         1.0249 |         0      |              1 |      -1.0249 | خسارة 🔴 |
+| Hv2UnbVSjV9kwXWVZvpB2WbMUjPoDkHCgGwJzD5jpump |         1.0249 |         0.9285 |              2 |      -0.0964 | خسارة 🔴 |
+| PUXx1iSexu15p8FLG4FoFyRpyVtARFEf6CYbUzopump  |         1.0219 |         1.0955 |              2 |       0.0736 | ربح 🟢   |
+| Ph1ie3e4aMXCEVCjTcTzkyVhTRC7k9kpkq5MKSUpump  |         1.0239 |         1.1864 |              2 |       0.1625 | ربح 🟢   |
+| RvkFYybWAGhgcsmvkQvFdUgqnVREbcSQhHFUW6Ypump  |         1.0259 |         1.1497 |              2 |       0.1238 | ربح 🟢   |
+| SH6SfUf5pPbdq9h7RjnsoGjNvP3onox7P5tKJGEpump  |         1.0199 |         1.1651 |              2 |       0.1452 | ربح 🟢   |
+| VEnbFNs7yCnN4aeNRXkgL25cBXg96nWVfHiQBN1pump  |         1.0219 |         0      |              1 |      -1.0219 | خسارة 🔴 |
+| ViKiUNWGrkubQDnAxg2y7xk3codLN1MLabvqaiPpump  |         1.0249 |         0      |              1 |      -1.0249 | خسارة 🔴 |
+| W7LjdSHiGM6nE376hFUHpGMVGLuj1nokhy8v2r5pump  |         1.0249 |         1.1044 |              2 |       0.0795 | ربح 🟢   |
+| apy9dR4PyLzqAs6eZHKDLsLRE1qbc6GHaGsgaNTpump  |         1.0204 |         1.2177 |              2 |       0.1973 | ربح 🟢   |
+| fSK8y3f3Hz1mTeSYap6FeqhZ8ResekAAuhZYddnpump  |         1.0164 |         1.8196 |              2 |       0.8032 | ربح 🟢   |
+| iTbVzEXiw7eC9ftbv5eNVCQUrY64AQLHCfgW4DGpump  |         1.0204 |         2.5955 |              4 |       1.5751 | ربح 🟢   |
+| kgLfVJiPwuEXXQBcY2AV3zh6MCkJvZfWLcNHjHJpump  |         0      |         1.3783 |              1 |       1.3783 | ربح 🟢   |
+| mHinvysGkV4YPfj1PYxHGgyc4S7LCDwVki4r1Phpump  |         1.5341 |         0      |              1 |      -1.5341 | خسارة 🔴 |
+| nZbPjCn4GJcLxrdHWRnMhPt875EyHSNTzhFmD6Dpump  |         1.0219 |         0      |              1 |      -1.0219 | خسارة 🔴 |
+| nktiJ91NxzY8Dq1JB6YvZq97bpCiELxrRgBzwKupump  |         0      |         1.6258 |              1 |       1.6258 | ربح 🟢   |
+| rtyCb78V7G3yEX3zqFRGn94Zy6nJYx5rKQrhDZ5pump  |         1.0249 |         1.029  |              2 |       0.0041 | ربح 🟢   |
+| tCHCHiqVVcsL69ab94xGHV8zdpKyFYNiz92Behjpump  |         0      |         0.9051 |              1 |       0.9051 | ربح 🟢   |
+| tY5KSvxu3iBMwVZzVpYqrVbxAVbAXMKTJ7SxW6Wpump  |         1.0199 |         2.4767 |              3 |       1.4568 | ربح 🟢   |
+| tYLAYuNEJbuvDzuERBHSHAeVFZTgkkSLPwrRwHzpump  |         1.5271 |         1.7811 |              2 |       0.254  | ربح 🟢   |
+| waW5EVqWFtDVpwoudzYQxCoP8DCFUz91trdyg2Zpump  |         0      |         1.3829 |              1 |       1.3829 | ربح 🟢   |
+| yjzc1AyMT4KX84WpsYEF2MT5bwXiA7nY3yBVRVgpump  |         0      |         1.2322 |              1 |       1.2322 | ربح 🟢   |
+| zzmUs44ZwUZK6MAnJh3M61vL4YcJGZLzkRVmxhFpump  |         0      |         0.9651 |              1 |       0.9651 | ربح 🟢   |
+
+
+============================================================
+### 3. السيولة والماركت كاب ونسبة السيولة (Liquidity & MCap)
+============================================================
+
+| Symbol   | Mint                                         |   Profit_SOL | Status   |   Market_Cap_USD |   Liquidity_USD |   Liq_to_MCap_% |   Price_USD | DEX      |
+|:---------|:---------------------------------------------|-------------:|:---------|-----------------:|----------------:|----------------:|------------:|:---------|
+| AROS     | 1Atst4LcMEYfAXACbCaBpdk166CU8eopNkjyD8jpump  |       1.4138 | ربح 🟢   |             3057 |         2962.35 |           96.9  |   3.057e-06 | pumpswap |
+| D O T F  | 4cYJ8eGZaKMF1iuoUXskhfTHSi6VxL7Jq7xaTJHbpump |       0.4845 | ربح 🟢   |             4914 |         4294.65 |           87.4  |   4.913e-06 | pumpswap |
+| UDR      | 5iURQEWL4NcbqhXRnhssfCzhAnghWbEGUoTWiWhpump  |       1.0021 | ربح 🟢   |             2087 |         2135.62 |          102.33 |   2.086e-06 | pumpswap |
+| nan      | 6BfTBNYJcZW9AnxRQ7aAx4Luf2K4BpmWpR7FWTPZpump |       0.6554 | ربح 🟢   |                0 |            0    |            0    |   0         | nan      |
+| WOTF     | 6DWHBW3R5NE2LUShJRbvDyi9GZ8Hz4EFFRgcfP3apump |       1.649  | ربح 🟢   |            14188 |         8654.79 |           61    |   1.418e-05 | pumpswap |
+| SARP     | 6WbiJtjXoNpLH6GhSvDX4HqRUN3ShQgxsk56Synpump  |       2.1572 | ربح 🟢   |             8512 |         6335.21 |           74.43 |   8.512e-06 | pumpswap |
+| nan      | 6bcjVdK2k9AS3cH4wEzc5x61myRLLAEkTSxwzVygpump |       0.0438 | ربح 🟢   |                0 |            0    |            0    |   0         | nan      |
+| GOIF     | AQ7A9nsCcrfbftRq2kfFjCkaG6NicixZ1Vy4RZ4Hpump |      -0.0027 | خسارة 🔴 |             2871 |         2820.45 |           98.24 |   2.87e-06  | pumpswap |
+| GOIF     | Bm7Uxam9efqL8gu9CX5kZ3A7t5nj2v2titSC7nnpump  |      -1.0239 | خسارة 🔴 |             3694 |         3499.18 |           94.73 |   3.694e-06 | pumpswap |
+| VSOF     | CnrPtHUeeM6QtHjkEArLF68B2pf2TvhJfSvShaQpump  |       1.0416 | ربح 🟢   |             4281 |         3870.34 |           90.41 |   4.28e-06  | pumpswap |
+| nan      | DBoeuAaioaQSqDMD4vwKUZLFcXyCS9S6tRfkENQXpump |       0.9307 | ربح 🟢   |                0 |            0    |            0    |   0         | nan      |
+| SI276    | DgrnPbwNC2s2CQtVR8QNptZoG95MZd2Sirvfeoe4pump |       0.1271 | ربح 🟢   |             3021 |         2934.18 |           97.13 |   3.021e-06 | pumpswap |
+| nan      | FsJAn2icHwMM68bB67ccZfog4czywSioTgiHrDVSpump |       0.2109 | ربح 🟢   |                0 |            0    |            0    |   0         | nan      |
+| AORP     | G7UJPfu4Xh4Lv5H1ETmwn1Q9uMScw3GSFgBqzKppump  |       2.3416 | ربح 🟢   |             7246 |         5650.85 |           77.99 |   7.252e-06 | pumpswap |
+| AROS     | GC9GWsd9mQhj4GWpUQBxw7peBEimGjgpUrGgkWBpump  |       1.864  | ربح 🟢   |             3213 |         3144.58 |           97.87 |   3.212e-06 | pumpswap |
+| SARP     | GGMm5EmstNMQh4tvR127joSzBDa5UeE4FkVYZZmtpump |       2.219  | ربح 🟢   |             3703 |         3482.42 |           94.04 |   3.702e-06 | pumpswap |
+| D O T F  | GkNBBV3TstnLb4Fxj1bmToza8ikx5UReSBw3LEWmpump |       0.0932 | ربح 🟢   |             2823 |         2770.27 |           98.13 |   2.822e-06 | pumpswap |
+| ATFS     | HE2kCYoqisUpFCjVa6QDat8Aqrn4DWkxaRbF7CPpump  |       0.0054 | ربح 🟢   |             2956 |         2873.06 |           97.19 |   2.956e-06 | pumpswap |
+| USDF     | HQowBX7JqXUEDPWHB4bS6q6KEzvSdfDPXv6qefipump  |      -1.0249 | خسارة 🔴 |             2763 |         2767.25 |          100.15 |   2.762e-06 | pumpswap |
+| USDP     | Hv2UnbVSjV9kwXWVZvpB2WbMUjPoDkHCgGwJzD5jpump |      -0.0964 | خسارة 🔴 |             2409 |         2414.31 |          100.22 |   2.408e-06 | pumpswap |
+| UDR      | PUXx1iSexu15p8FLG4FoFyRpyVtARFEf6CYbUzopump  |       0.0736 | ربح 🟢   |             2267 |         2373.16 |          104.68 |   2.267e-06 | pumpswap |
+| SARP     | Ph1ie3e4aMXCEVCjTcTzkyVhTRC7k9kpkq5MKSUpump  |       0.1625 | ربح 🟢   |             3855 |         3636.43 |           94.33 |   3.855e-06 | pumpswap |
+| DOTF     | RvkFYybWAGhgcsmvkQvFdUgqnVREbcSQhHFUW6Ypump  |       0.1238 | ربح 🟢   |             2611 |         2614.54 |          100.14 |   2.611e-06 | pumpswap |
+| DOTF     | SH6SfUf5pPbdq9h7RjnsoGjNvP3onox7P5tKJGEpump  |       0.1452 | ربح 🟢   |             2374 |         2408.79 |          101.47 |   2.373e-06 | pumpswap |
+| AROS     | VEnbFNs7yCnN4aeNRXkgL25cBXg96nWVfHiQBN1pump  |      -1.0219 | خسارة 🔴 |             3634 |         3453.69 |           95.04 |   3.635e-06 | pumpswap |
+| GOIF     | ViKiUNWGrkubQDnAxg2y7xk3codLN1MLabvqaiPpump  |      -1.0249 | خسارة 🔴 |             3297 |         3186.67 |           96.65 |   3.297e-06 | pumpswap |
+| SARP     | W7LjdSHiGM6nE376hFUHpGMVGLuj1nokhy8v2r5pump  |       0.0795 | ربح 🟢   |             4808 |         4233.17 |           88.04 |   4.807e-06 | pumpswap |
+| GOIF     | apy9dR4PyLzqAs6eZHKDLsLRE1qbc6GHaGsgaNTpump  |       0.1973 | ربح 🟢   |             3654 |         3437.19 |           94.07 |   3.654e-06 | pumpswap |
+| nan      | fSK8y3f3Hz1mTeSYap6FeqhZ8ResekAAuhZYddnpump  |       0.8032 | ربح 🟢   |                0 |            0    |            0    |   0         | nan      |
+| XRPN     | iTbVzEXiw7eC9ftbv5eNVCQUrY64AQLHCfgW4DGpump  |       1.5751 | ربح 🟢   |             5950 |         4888.87 |           82.17 |   5.95e-06  | pumpswap |
+| WOTF     | kgLfVJiPwuEXXQBcY2AV3zh6MCkJvZfWLcNHjHJpump  |       1.3783 | ربح 🟢   |            10206 |         7089.17 |           69.46 |   1.02e-05  | pumpswap |
+| XRPN     | mHinvysGkV4YPfj1PYxHGgyc4S7LCDwVki4r1Phpump  |      -1.5341 | خسارة 🔴 |             2873 |         2815.65 |           98    |   2.872e-06 | pumpswap |
+| GOIF     | nZbPjCn4GJcLxrdHWRnMhPt875EyHSNTzhFmD6Dpump  |      -1.0219 | خسارة 🔴 |             3560 |         3473.54 |           97.57 |   3.562e-06 | pumpswap |
+| nan      | nktiJ91NxzY8Dq1JB6YvZq97bpCiELxrRgBzwKupump  |       1.6258 | ربح 🟢   |                0 |            0    |            0    |   0         | nan      |
+| ATFS     | rtyCb78V7G3yEX3zqFRGn94Zy6nJYx5rKQrhDZ5pump  |       0.0041 | ربح 🟢   |             2294 |         2308.33 |          100.62 |   2.294e-06 | pumpswap |
+| WSOS     | tCHCHiqVVcsL69ab94xGHV8zdpKyFYNiz92Behjpump  |       0.9051 | ربح 🟢   |             5559 |         4681.88 |           84.22 |   5.559e-06 | pumpswap |
+| DOTF     | tY5KSvxu3iBMwVZzVpYqrVbxAVbAXMKTJ7SxW6Wpump  |       1.4568 | ربح 🟢   |             4703 |         4226.6  |           89.87 |   4.702e-06 | pumpswap |
+| USDF     | tYLAYuNEJbuvDzuERBHSHAeVFZTgkkSLPwrRwHzpump  |       0.254  | ربح 🟢   |             2811 |         2800.29 |           99.62 |   2.812e-06 | pumpswap |
+| GOIF     | waW5EVqWFtDVpwoudzYQxCoP8DCFUz91trdyg2Zpump  |       1.3829 | ربح 🟢   |             6953 |         5539.61 |           79.67 |   6.953e-06 | pumpswap |
+| NTDA     | yjzc1AyMT4KX84WpsYEF2MT5bwXiA7nY3yBVRVgpump  |       1.2322 | ربح 🟢   |             5585 |         4708.32 |           84.3  |   5.584e-06 | pumpswap |
+| nan      | zzmUs44ZwUZK6MAnJh3M61vL4YcJGZLzkRVmxhFpump  |       0.9651 | ربح 🟢   |                0 |            0    |            0    |   0         | nan      |
+
+
+============================================================
+### 4. مدة الاحتفاظ بالثواني والرسوم (Holding Time & Fees)
+============================================================
+
+| Token                                        | Holding_Time_Sec   |   Total_Tx_Fees_SOL |   Net_PnL_SOL | Status   |
+|:---------------------------------------------|:-------------------|--------------------:|--------------:|:---------|
+| 1Atst4LcMEYfAXACbCaBpdk166CU8eopNkjyD8jpump  | لم يُبع             |              0.0008 |        1.4138 | ربح 🟢   |
+| 4cYJ8eGZaKMF1iuoUXskhfTHSi6VxL7Jq7xaTJHbpump | 2779               |              0.0088 |        0.4845 | ربح 🟢   |
+| 5iURQEWL4NcbqhXRnhssfCzhAnghWbEGUoTWiWhpump  | 15568              |              0.0103 |        1.0021 | ربح 🟢   |
+| 6BfTBNYJcZW9AnxRQ7aAx4Luf2K4BpmWpR7FWTPZpump | لم يُبع             |              0.0003 |        0.6554 | ربح 🟢   |
+| 6DWHBW3R5NE2LUShJRbvDyi9GZ8Hz4EFFRgcfP3apump | 114358             |              0.0057 |        1.649  | ربح 🟢   |
+| 6WbiJtjXoNpLH6GhSvDX4HqRUN3ShQgxsk56Synpump  | 295532             |              0.0062 |        2.1572 | ربح 🟢   |
+| 6bcjVdK2k9AS3cH4wEzc5x61myRLLAEkTSxwzVygpump | 330248             |              0.0018 |        0.0438 | ربح 🟢   |
+| AQ7A9nsCcrfbftRq2kfFjCkaG6NicixZ1Vy4RZ4Hpump | 1745               |              0.0113 |       -0.0027 | خسارة 🔴 |
+| Bm7Uxam9efqL8gu9CX5kZ3A7t5nj2v2titSC7nnpump  | لم يُبع             |              0.01   |       -1.0239 | خسارة 🔴 |
+| CnrPtHUeeM6QtHjkEArLF68B2pf2TvhJfSvShaQpump  | لم يُبع             |              0.0011 |        1.0415 | ربح 🟢   |
+| DBoeuAaioaQSqDMD4vwKUZLFcXyCS9S6tRfkENQXpump | لم يُبع             |              0.0003 |        0.9307 | ربح 🟢   |
+| DgrnPbwNC2s2CQtVR8QNptZoG95MZd2Sirvfeoe4pump | 626                |              0.0113 |        0.1271 | ربح 🟢   |
+| FsJAn2icHwMM68bB67ccZfog4czywSioTgiHrDVSpump | 294775             |              0.0063 |        0.2109 | ربح 🟢   |
+| G7UJPfu4Xh4Lv5H1ETmwn1Q9uMScw3GSFgBqzKppump  | لم يُبع             |              0.0001 |        2.3416 | ربح 🟢   |
+| GC9GWsd9mQhj4GWpUQBxw7peBEimGjgpUrGgkWBpump  | لم يُبع             |              0.0003 |        1.864  | ربح 🟢   |
+| GGMm5EmstNMQh4tvR127joSzBDa5UeE4FkVYZZmtpump | 9884               |              0.0071 |        2.219  | ربح 🟢   |
+| GkNBBV3TstnLb4Fxj1bmToza8ikx5UReSBw3LEWmpump | 38255              |              0.0113 |        0.0932 | ربح 🟢   |
+| HE2kCYoqisUpFCjVa6QDat8Aqrn4DWkxaRbF7CPpump  | 223313             |              0.0063 |        0.0054 | ربح 🟢   |
+| HQowBX7JqXUEDPWHB4bS6q6KEzvSdfDPXv6qefipump  | لم يُبع             |              0.011  |       -1.0249 | خسارة 🔴 |
+| Hv2UnbVSjV9kwXWVZvpB2WbMUjPoDkHCgGwJzD5jpump | 13362              |              0.0113 |       -0.0964 | خسارة 🔴 |
+| PUXx1iSexu15p8FLG4FoFyRpyVtARFEf6CYbUzopump  | 86945              |              0.0083 |        0.0736 | ربح 🟢   |
+| Ph1ie3e4aMXCEVCjTcTzkyVhTRC7k9kpkq5MKSUpump  | 74211              |              0.0103 |        0.1625 | ربح 🟢   |
+| RvkFYybWAGhgcsmvkQvFdUgqnVREbcSQhHFUW6Ypump  | 89093              |              0.0123 |        0.1238 | ربح 🟢   |
+| SH6SfUf5pPbdq9h7RjnsoGjNvP3onox7P5tKJGEpump  | 343335             |              0.0043 |        0.1452 | ربح 🟢   |
+| VEnbFNs7yCnN4aeNRXkgL25cBXg96nWVfHiQBN1pump  | لم يُبع             |              0.008  |       -1.0219 | خسارة 🔴 |
+| ViKiUNWGrkubQDnAxg2y7xk3codLN1MLabvqaiPpump  | لم يُبع             |              0.011  |       -1.0249 | خسارة 🔴 |
+| W7LjdSHiGM6nE376hFUHpGMVGLuj1nokhy8v2r5pump  | 31750              |              0.0113 |        0.0795 | ربح 🟢   |
+| apy9dR4PyLzqAs6eZHKDLsLRE1qbc6GHaGsgaNTpump  | 127679             |              0.0053 |        0.1973 | ربح 🟢   |
+| fSK8y3f3Hz1mTeSYap6FeqhZ8ResekAAuhZYddnpump  | 179358             |              0.0018 |        0.8032 | ربح 🟢   |
+| iTbVzEXiw7eC9ftbv5eNVCQUrY64AQLHCfgW4DGpump  | 410720             |              0.0054 |        1.575  | ربح 🟢   |
+| kgLfVJiPwuEXXQBcY2AV3zh6MCkJvZfWLcNHjHJpump  | لم يُبع             |              0.0003 |        1.3783 | ربح 🟢   |
+| mHinvysGkV4YPfj1PYxHGgyc4S7LCDwVki4r1Phpump  | لم يُبع             |              0.015  |       -1.5341 | خسارة 🔴 |
+| nZbPjCn4GJcLxrdHWRnMhPt875EyHSNTzhFmD6Dpump  | لم يُبع             |              0.008  |       -1.0219 | خسارة 🔴 |
+| nktiJ91NxzY8Dq1JB6YvZq97bpCiELxrRgBzwKupump  | لم يُبع             |              0.0003 |        1.6258 | ربح 🟢   |
+| rtyCb78V7G3yEX3zqFRGn94Zy6nJYx5rKQrhDZ5pump  | 52052              |              0.0113 |        0.0041 | ربح 🟢   |
+| tCHCHiqVVcsL69ab94xGHV8zdpKyFYNiz92Behjpump  | لم يُبع             |              0.0003 |        0.9051 | ربح 🟢   |
+| tY5KSvxu3iBMwVZzVpYqrVbxAVbAXMKTJ7SxW6Wpump  | 173195             |              0.0065 |        1.4568 | ربح 🟢   |
+| tYLAYuNEJbuvDzuERBHSHAeVFZTgkkSLPwrRwHzpump  | 32653              |              0.0083 |        0.254  | ربح 🟢   |
+| waW5EVqWFtDVpwoudzYQxCoP8DCFUz91trdyg2Zpump  | لم يُبع             |              0.0003 |        1.3829 | ربح 🟢   |
+| yjzc1AyMT4KX84WpsYEF2MT5bwXiA7nY3yBVRVgpump  | لم يُبع             |              0.0003 |        1.2322 | ربح 🟢   |
+| zzmUs44ZwUZK6MAnJh3M61vL4YcJGZLzkRVmxhFpump  | لم يُبع             |              0.0003 |        0.9651 | ربح 🟢   |
+
+
+============================================================
+### 5. توقيت الشراء ورأس المال وكمية التوكنات (Buy Entries)
+============================================================
+
+| Token                                        | Buy_Time            |   SOL_Spent |   Tokens_Received |
+|:---------------------------------------------|:--------------------|------------:|------------------:|
+| ViKiUNWGrkubQDnAxg2y7xk3codLN1MLabvqaiPpump  | 2026-10-09 15:09:16 |      1.0249 |       4.96602e+07 |
+| AQ7A9nsCcrfbftRq2kfFjCkaG6NicixZ1Vy4RZ4Hpump | 2026-10-09 13:18:25 |      1.0249 |       4.66522e+07 |
+| HQowBX7JqXUEDPWHB4bS6q6KEzvSdfDPXv6qefipump  | 2026-10-09 11:17:41 |      1.0249 |       5.14984e+07 |
+| Hv2UnbVSjV9kwXWVZvpB2WbMUjPoDkHCgGwJzD5jpump | 2026-10-09 05:26:10 |      1.0249 |       4.24723e+07 |
+| DgrnPbwNC2s2CQtVR8QNptZoG95MZd2Sirvfeoe4pump | 2026-10-09 02:47:36 |      1.0249 |       4.67986e+07 |
+| W7LjdSHiGM6nE376hFUHpGMVGLuj1nokhy8v2r5pump  | 2026-10-08 15:31:48 |      1.0249 |       5.04672e+07 |
+| GkNBBV3TstnLb4Fxj1bmToza8ikx5UReSBw3LEWmpump | 2026-10-08 03:20:11 |      1.0249 |       5.2466e+07  |
+| rtyCb78V7G3yEX3zqFRGn94Zy6nJYx5rKQrhDZ5pump  | 2026-10-07 23:28:52 |      1.0249 |       4.85557e+07 |
+| mHinvysGkV4YPfj1PYxHGgyc4S7LCDwVki4r1Phpump  | 2026-10-07 23:21:13 |      1.5341 |       7.26629e+07 |
+| Ph1ie3e4aMXCEVCjTcTzkyVhTRC7k9kpkq5MKSUpump  | 2026-10-07 17:18:07 |      1.0239 |       5.12427e+07 |
+| RvkFYybWAGhgcsmvkQvFdUgqnVREbcSQhHFUW6Ypump  | 2026-10-07 13:10:55 |      1.0259 |       5.12442e+07 |
+| Bm7Uxam9efqL8gu9CX5kZ3A7t5nj2v2titSC7nnpump  | 2026-10-07 08:04:41 |      1.0239 |       4.65766e+07 |
+| nZbPjCn4GJcLxrdHWRnMhPt875EyHSNTzhFmD6Dpump  | 2026-10-07 04:48:07 |      1.0219 |       4.8659e+07  |
+| 4cYJ8eGZaKMF1iuoUXskhfTHSi6VxL7Jq7xaTJHbpump | 2026-10-07 04:42:29 |      1.0219 |       4.70115e+07 |
+| tYLAYuNEJbuvDzuERBHSHAeVFZTgkkSLPwrRwHzpump  | 2026-10-07 04:13:08 |      1.5271 |       7.48311e+07 |
+| VEnbFNs7yCnN4aeNRXkgL25cBXg96nWVfHiQBN1pump  | 2026-10-07 04:13:03 |      1.0219 |       5.14239e+07 |
+| PUXx1iSexu15p8FLG4FoFyRpyVtARFEf6CYbUzopump  | 2026-10-07 02:06:41 |      1.0219 |       5.04425e+07 |
+| fSK8y3f3Hz1mTeSYap6FeqhZ8ResekAAuhZYddnpump  | 2026-10-06 12:01:45 |      1.0164 |       5.17424e+07 |
+| 5iURQEWL4NcbqhXRnhssfCzhAnghWbEGUoTWiWhpump  | 2026-10-06 07:58:13 |      1.5291 |       7.22239e+07 |
+| HE2kCYoqisUpFCjVa6QDat8Aqrn4DWkxaRbF7CPpump  | 2026-10-05 23:54:49 |      1.0199 |       4.82299e+07 |
+| tY5KSvxu3iBMwVZzVpYqrVbxAVbAXMKTJ7SxW6Wpump  | 2026-10-05 14:03:24 |      1.0199 |       5.11785e+07 |
+| FsJAn2icHwMM68bB67ccZfog4czywSioTgiHrDVSpump | 2026-10-05 04:01:49 |      1.0199 |       5.10464e+07 |
+| GGMm5EmstNMQh4tvR127joSzBDa5UeE4FkVYZZmtpump | 2026-10-05 03:47:30 |      1.0199 |       5.19258e+07 |
+| iTbVzEXiw7eC9ftbv5eNVCQUrY64AQLHCfgW4DGpump  | 2026-10-04 19:39:24 |      1.0204 |       5.10197e+07 |
+| 6DWHBW3R5NE2LUShJRbvDyi9GZ8Hz4EFFRgcfP3apump | 2026-10-04 17:58:41 |      1.0199 |       4.70077e+07 |
+| SH6SfUf5pPbdq9h7RjnsoGjNvP3onox7P5tKJGEpump  | 2026-10-04 14:33:04 |      1.0199 |       5.18175e+07 |
+| apy9dR4PyLzqAs6eZHKDLsLRE1qbc6GHaGsgaNTpump  | 2026-10-04 07:41:08 |      1.0204 |       5.20976e+07 |
+| 6WbiJtjXoNpLH6GhSvDX4HqRUN3ShQgxsk56Synpump  | 2026-10-03 19:55:41 |      1.0209 |       5.12674e+07 |
+| 6bcjVdK2k9AS3cH4wEzc5x61myRLLAEkTSxwzVygpump | 2026-10-03 09:05:45 |      1.0164 |       4.71204e+07 |
+
+
+============================================================
+### 6. تفاصيل صفقات البيع وأسعار الخروج (Sell Executions)
+============================================================
+
+| Sell_Time           | Token                                        |   SOL_Received |   Tokens_Sold |   Price_Per_1M_SOL | Signature         |
+|:--------------------|:---------------------------------------------|---------------:|--------------:|-------------------:|:------------------|
+| 2026-10-09 13:47:30 | AQ7A9nsCcrfbftRq2kfFjCkaG6NicixZ1Vy4RZ4Hpump |         1.0222 |   4.66522e+07 |           0.021911 | 5Gnd8tEZANYRJ4... |
+| 2026-10-09 13:44:44 | iTbVzEXiw7eC9ftbv5eNVCQUrY64AQLHCfgW4DGpump  |         0.6921 |   1.27549e+07 |           0.054262 | 3x6bXKv7pmim4B... |
+| 2026-10-09 09:08:52 | Hv2UnbVSjV9kwXWVZvpB2WbMUjPoDkHCgGwJzD5jpump |         0.9285 |   4.24723e+07 |           0.021861 | 4YbV7iv4zA61j3... |
+| 2026-10-09 02:58:02 | DgrnPbwNC2s2CQtVR8QNptZoG95MZd2Sirvfeoe4pump |         1.152  |   4.67986e+07 |           0.024617 | 5MMJ6WxaoJ1gXS... |
+| 2026-10-09 00:20:58 | W7LjdSHiGM6nE376hFUHpGMVGLuj1nokhy8v2r5pump  |         1.1044 |   2.52336e+07 |           0.043766 | 2rmLRVvTeVFq1n... |
+| 2026-10-08 14:01:39 | iTbVzEXiw7eC9ftbv5eNVCQUrY64AQLHCfgW4DGpump  |         0.724  |   1.27549e+07 |           0.05676  | 35tdk9TG2SEX9T... |
+| 2026-10-08 13:57:46 | GkNBBV3TstnLb4Fxj1bmToza8ikx5UReSBw3LEWmpump |         1.1181 |   5.2466e+07  |           0.021312 | tQ23sZy4YnJ1K1... |
+| 2026-10-08 13:57:24 | CnrPtHUeeM6QtHjkEArLF68B2pf2TvhJfSvShaQpump  |         0.5104 |   1.30936e+07 |           0.038978 | SY8emFmEmeMKUa... |
+| 2026-10-08 13:56:42 | HE2kCYoqisUpFCjVa6QDat8Aqrn4DWkxaRbF7CPpump  |         1.0253 |   4.82299e+07 |           0.021259 | 3PB73DZ2hxDmF6... |
+| 2026-10-08 13:56:24 | rtyCb78V7G3yEX3zqFRGn94Zy6nJYx5rKQrhDZ5pump  |         1.029  |   4.85557e+07 |           0.021192 | 4LYXkJZYJkYrrv... |
+| 2026-10-08 13:55:48 | RvkFYybWAGhgcsmvkQvFdUgqnVREbcSQhHFUW6Ypump  |         1.1497 |   5.12442e+07 |           0.022436 | HcXthhhH1LAE8b... |
+| 2026-10-08 13:55:19 | SH6SfUf5pPbdq9h7RjnsoGjNvP3onox7P5tKJGEpump  |         1.1651 |   5.18175e+07 |           0.022485 | 4NgCjzWDhnmq4C... |
+| 2026-10-08 13:54:58 | Ph1ie3e4aMXCEVCjTcTzkyVhTRC7k9kpkq5MKSUpump  |         1.1864 |   5.12427e+07 |           0.023153 | 3AXTZrcZdwDwtf... |
+| 2026-10-08 13:54:44 | FsJAn2icHwMM68bB67ccZfog4czywSioTgiHrDVSpump |         1.2308 |   5.10464e+07 |           0.024112 | 495XTsCwAgFthD... |
+| 2026-10-08 13:51:03 | fSK8y3f3Hz1mTeSYap6FeqhZ8ResekAAuhZYddnpump  |         1.8196 |   5.17424e+07 |           0.035166 | 29EJefNo157v9D... |
+| 2026-10-08 02:16:53 | CnrPtHUeeM6QtHjkEArLF68B2pf2TvhJfSvShaQpump  |         0.5312 |   1.30936e+07 |           0.040568 | 5dFpJLM1N1eVfy... |
+| 2026-10-08 02:15:46 | PUXx1iSexu15p8FLG4FoFyRpyVtARFEf6CYbUzopump  |         1.0955 |   5.04425e+07 |           0.021718 | 4cvDaMFtgCycPS... |
+| 2026-10-07 14:09:59 | tY5KSvxu3iBMwVZzVpYqrVbxAVbAXMKTJ7SxW6Wpump  |         1.2287 |   2.55893e+07 |           0.048018 | 2TNoKi9eUYe6A8... |
+| 2026-10-07 13:17:21 | tYLAYuNEJbuvDzuERBHSHAeVFZTgkkSLPwrRwHzpump  |         1.7811 |   7.48311e+07 |           0.023801 | 39YaLHVxfg3PSZ... |
+| 2026-10-07 06:01:13 | 6WbiJtjXoNpLH6GhSvDX4HqRUN3ShQgxsk56Synpump  |         1.0854 |   1.28168e+07 |           0.084684 | 4eqFjHHiyySjmr... |
+| 2026-10-07 05:28:48 | 4cYJ8eGZaKMF1iuoUXskhfTHSi6VxL7Jq7xaTJHbpump |         1.5064 |   4.70115e+07 |           0.032043 | 3BNUp8sjHvLzU1... |
+| 2026-10-07 04:49:53 | 6bcjVdK2k9AS3cH4wEzc5x61myRLLAEkTSxwzVygpump |         1.0602 |   4.71204e+07 |           0.022501 | 5LARXDJx8MBLiU... |
+| 2026-10-06 18:53:14 | GC9GWsd9mQhj4GWpUQBxw7peBEimGjgpUrGgkWBpump  |         1.864  |   4.9929e+07  |           0.037334 | 2bEfQySXb9jN8z... |
+| 2026-10-06 12:17:41 | 5iURQEWL4NcbqhXRnhssfCzhAnghWbEGUoTWiWhpump  |         2.5312 |   7.22239e+07 |           0.035047 | 64665coAfuWi76... |
+| 2026-10-06 08:43:38 | 6WbiJtjXoNpLH6GhSvDX4HqRUN3ShQgxsk56Synpump  |         1.0867 |   1.28168e+07 |           0.08479  | 3vfAEkK4q7jHDP... |
+| 2026-10-06 01:44:39 | 6DWHBW3R5NE2LUShJRbvDyi9GZ8Hz4EFFRgcfP3apump |         0.5544 |   1.17519e+07 |           0.047179 | CVBTCnMZY7BRhK... |
+| 2026-10-05 22:02:00 | tY5KSvxu3iBMwVZzVpYqrVbxAVbAXMKTJ7SxW6Wpump  |         1.248  |   2.55893e+07 |           0.048771 | 3cEHr6Z7AESHFs... |
+| 2026-10-05 19:09:07 | apy9dR4PyLzqAs6eZHKDLsLRE1qbc6GHaGsgaNTpump  |         1.2177 |   5.20976e+07 |           0.023373 | 47wo83EkUAiZfP... |
+| 2026-10-05 19:06:23 | 1Atst4LcMEYfAXACbCaBpdk166CU8eopNkjyD8jpump  |         1.4138 |   5.12177e+07 |           0.027603 | 3AVck42p6hziED... |
+| 2026-10-05 10:23:59 | DBoeuAaioaQSqDMD4vwKUZLFcXyCS9S6tRfkENQXpump |         0.9307 |   2.42644e+07 |           0.038359 | 2cLTCduSRVWg4R... |
+| 2026-10-05 06:40:00 | iTbVzEXiw7eC9ftbv5eNVCQUrY64AQLHCfgW4DGpump  |         1.1794 |   2.55099e+07 |           0.046231 | 2ZRMLSVLnXtsK9... |
+| 2026-10-05 06:32:14 | GGMm5EmstNMQh4tvR127joSzBDa5UeE4FkVYZZmtpump |         2.2631 |   2.59629e+07 |           0.087168 | 2CpXaW68JMzZsh... |
+| 2026-10-05 03:49:50 | GGMm5EmstNMQh4tvR127joSzBDa5UeE4FkVYZZmtpump |         0.9758 |   2.59629e+07 |           0.037583 | 3tEWeRQWKehY24... |
+| 2026-10-05 01:54:20 | 6DWHBW3R5NE2LUShJRbvDyi9GZ8Hz4EFFRgcfP3apump |         0.9766 |   1.17519e+07 |           0.083097 | 2eETuUda6QrbeM... |
+| 2026-10-04 19:10:58 | 6DWHBW3R5NE2LUShJRbvDyi9GZ8Hz4EFFRgcfP3apump |         1.1379 |   2.35038e+07 |           0.048414 | 7jWCZQQQm7oFaa... |
+| 2026-10-04 18:43:20 | nktiJ91NxzY8Dq1JB6YvZq97bpCiELxrRgBzwKupump  |         1.6258 |   5.15485e+07 |           0.03154  | 5gPgZvB2t1U4PZ... |
+| 2026-10-04 08:52:01 | kgLfVJiPwuEXXQBcY2AV3zh6MCkJvZfWLcNHjHJpump  |         1.3783 |   2.55112e+07 |           0.054029 | pXQ27DrhZ6RqvQ... |
+| 2026-10-04 08:50:43 | waW5EVqWFtDVpwoudzYQxCoP8DCFUz91trdyg2Zpump  |         1.3829 |   2.55997e+07 |           0.054022 | 2ETXrX16paseeP... |
+| 2026-10-03 20:14:28 | 6WbiJtjXoNpLH6GhSvDX4HqRUN3ShQgxsk56Synpump  |         1.006  |   2.56337e+07 |           0.039245 | 1Q5VEvfV5TMWp7... |
+| 2026-10-03 15:23:37 | G7UJPfu4Xh4Lv5H1ETmwn1Q9uMScw3GSFgBqzKppump  |         2.3416 |   2.49967e+07 |           0.093678 | zodCGi3s23M2ZL... |
+| 2026-10-03 14:21:52 | yjzc1AyMT4KX84WpsYEF2MT5bwXiA7nY3yBVRVgpump  |         1.2322 |   2.60992e+07 |           0.047214 | 5fYQetBccboQNS... |
+| 2026-10-03 14:14:59 | tCHCHiqVVcsL69ab94xGHV8zdpKyFYNiz92Behjpump  |         0.9051 |   2.36467e+07 |           0.038276 | 2WS8U8oJ1uvQLX... |
+| 2026-10-03 14:11:16 | 6BfTBNYJcZW9AnxRQ7aAx4Luf2K4BpmWpR7FWTPZpump |         0.6554 |   2.60213e+07 |           0.025187 | 21KzqmFbtWc6re... |
+| 2026-10-03 07:43:34 | zzmUs44ZwUZK6MAnJh3M61vL4YcJGZLzkRVmxhFpump  |         0.9651 |   2.49032e+07 |           0.038756 | 34zMUj4qW7fng8... |
+
+
+============================================================
+### 7. عمر العملة بالدقائق لحظة اتخاذ قرار الشراء (Token Age at Buy)
+============================================================
+
+| Symbol   | Token           | Buy_Time            |   Age_At_Buy_Minutes |   SOL_Spent |
+|:---------|:----------------|:--------------------|---------------------:|------------:|
+| GOIF     | ViKiUNWGrkub... | 2026-10-09 15:09:16 |              13546.5 |      1.0249 |
+| GOIF     | AQ7A9nsCcrfb... | 2026-10-09 13:18:25 |               2718.7 |      1.0249 |
+| USDF     | HQowBX7JqXUE... | 2026-10-09 11:17:41 |               3055   |      1.0249 |
+| USDP     | Hv2UnbVSjV9k... | 2026-10-09 05:26:10 |               1175.1 |      1.0249 |
+| SI276    | DgrnPbwNC2s2... | 2026-10-09 02:47:36 |               1490.5 |      1.0249 |
+| SARP     | W7LjdSHiGM6n... | 2026-10-08 15:31:48 |               1335.6 |      1.0249 |
+| D O T F  | GkNBBV3TstnL... | 2026-10-08 03:20:11 |               2959.1 |      1.0249 |
+| ATFS     | rtyCb78V7G3y... | 2026-10-07 23:28:52 |               2836.6 |      1.0249 |
+| XRPN     | mHinvysGkV4Y... | 2026-10-07 23:21:13 |               1931.7 |      1.5341 |
+| SARP     | Ph1ie3e4aMXC... | 2026-10-07 17:18:07 |               2348.7 |      1.0239 |
+| DOTF     | RvkFYybWAGhg... | 2026-10-07 13:10:55 |               6429.1 |      1.0259 |
+| GOIF     | Bm7Uxam9efqL... | 2026-10-07 08:04:41 |               1809.6 |      1.0239 |
+| GOIF     | nZbPjCn4GJcL... | 2026-10-07 04:48:07 |              11756   |      1.0219 |
+| D O T F  | 4cYJ8eGZaKMF... | 2026-10-07 04:42:29 |               1358.4 |      1.0219 |
+| USDF     | tYLAYuNEJbuv... | 2026-10-07 04:13:08 |              11695.1 |      1.5271 |
+| AROS     | VEnbFNs7yCnN... | 2026-10-07 04:13:03 |              13629.4 |      1.0219 |
+| UDR      | PUXx1iSexu15... | 2026-10-07 02:06:41 |               1403.3 |      1.0219 |
+| nan      | fSK8y3f3Hz1m... | 2026-10-06 12:01:45 |                nan   |      1.0164 |
+| UDR      | 5iURQEWL4Ncb... | 2026-10-06 07:58:13 |               1057.5 |      1.5291 |
+| ATFS     | HE2kCYoqisUp... | 2026-10-05 23:54:49 |               2659.9 |      1.0199 |
+| DOTF     | tY5KSvxu3iBM... | 2026-10-05 14:03:24 |               1999.8 |      1.0199 |
+| nan      | FsJAn2icHwMM... | 2026-10-05 04:01:49 |                nan   |      1.0199 |
+| SARP     | GGMm5EmstNMQ... | 2026-10-05 03:47:30 |               3106.8 |      1.0199 |
+| XRPN     | iTbVzEXiw7eC... | 2026-10-04 19:39:24 |               2329.8 |      1.0204 |
+| WOTF     | 6DWHBW3R5NE2... | 2026-10-04 17:58:41 |               5633.8 |      1.0199 |
+| DOTF     | SH6SfUf5pPbd... | 2026-10-04 14:33:04 |               1673   |      1.0199 |
+| GOIF     | apy9dR4PyLzq... | 2026-10-04 07:41:08 |               1087.2 |      1.0204 |
+| SARP     | 6WbiJtjXoNpL... | 2026-10-03 19:55:41 |               2499.5 |      1.0209 |
+| nan      | 6bcjVdK2k9AS... | 2026-10-03 09:05:45 |                nan   |      1.0164 |
+
+
+============================================================
+### 8. الملخص المالي الإجمالي (Overall Summary)
+============================================================
+
+| Token_Mint                                  |   Total_Invested_SOL |   Total_Returned_SOL |   Trades_Count |   Net_Profit_SOL | Status   |
+|:--------------------------------------------|---------------------:|---------------------:|---------------:|-----------------:|:---------|
+| So11111111111111111111111111111111111111112 |              31.1647 |              53.0178 |             73 |          21.8531 | ربح 🟢   |
+
