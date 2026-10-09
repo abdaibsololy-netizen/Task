@@ -1,0 +1,60 @@
+# ============================================================
+# PumpBot — إعدادات مستخرجة من نمط المتداول (master_wallet_*)
+# كل رقم هنا له دليل في analysis/STRATEGY_PATTERN.md
+# ============================================================
+
+mode: paper            # paper = محاكاة | live = تداول حقيقي (خطر!)
+pool: pumpswap         # الاستراتيجية تعمل فقط على pumpswap (ما بعد التخرج)
+
+entry:
+  size_sol: 1.02               # 26/29 شراء كانت ~1.02 SOL
+  size_sol_high_conviction: 1.53  # 3/29 فقط
+  high_conviction_extra_liq: 95   # Liq/MCap% ≥ 95 لاستخدام الحجم الأكبر
+  mcap_min_usd: 2000
+  mcap_max_usd: 8000
+  liq_to_mcap_min: 85          # المتوسط المرصود 92%
+  age_min_h: 18                # الرابحة وسيط 39h — نبدأ من 18h
+  age_max_h: 72                # تجنب > 100h (كل الخسائر الطويلة كانت هناك)
+  cooldown_s: 1800             # لا شراءين خلال 30 دقيقة
+  max_entries_per_day: 6       # ~4/يوم متوسط
+  max_concurrent: 8            # أقصى مراكز مفتوحة
+
+exit:
+  # الدراجة: 50% → 25% → 25% (النمط المرصود حرفياً — 6/6 عملات)
+  tp1_frac: 0.50
+  tp1_mult: 1.9                # النطاق المرصود للنصف الأول: x1.91–2.45
+  tp2_frac: 0.25
+  tp2_mult: 3.5                # الذيل الأول عند x3.5+
+  tp3_frac: 0.25
+  tp3_mult: 4.0                # امتداد القمة x4.0+ (GGMm@4.44, 6Wbi@4.26)
+  # الخروج الكامل (17 صفقة مرصودة، وسيط x1.19)
+  full_exit_mult: 1.1          # حركة محتشمة x1.1–1.9 → خروج كامل فوري
+  slow_exit_mult: 1.05         # ركود بعد 8h عند x1.05+
+  slow_exit_after_h: 8
+  # مهلة الركّاب (إذا لم يمتد السعر نبيع الباقي)
+  runner_deadline_tp2_h: 36    # tY5KS@48h, iTbV@90h
+  runner_deadline_tp3_h: 60
+  # الحماية
+  stop_loss_mult: 0.92         # الخسارة المرصودة الوحيدة x0.91 (Hv2Un بعد 3.7h) — الحد يشملها
+  time_stop_h: 72              # إغلاق إجباري (يمنع "الأكياس الميتة" الستة)
+  trailing_after_mult: 3.5     # trailing بعد قمة x3.5
+  trailing_drop_pct: 20        # هبوط 20% من القمة → خروج (6DWH#3@x2.17)
+  rug_liq_drop_pct: 50         # هروب فوري إذا سقطت السيولة > 50%
+  dust_overhead_sol: 0.015     # الرسوم/الغبار المرصود (−0.0139 المتكرر)
+
+risk:
+  max_daily_loss_sol: 3.0      # ~3 مراكز كحد أقصى خسارة/يوم
+  max_open_sol: 10.0           # رأس المال المعرض كحد أقصى
+  max_position_sol: 1.55       # لا مركز أكبر من الحجم الأعلى المرصود
+
+sol_price_usd: null            # null = يجلب تلقائياً (لتقدير MCap بالدولار)
+
+pumpportal:
+  data_ws: wss://pumpportal.fun/api/data
+  trade_api: https://pumpportal.fun/api/trade
+  slippage_pct: 25
+  priority_fee_sol: 0.0005
+
+persistence:
+  state_file: bot_state.json
+  log_file: bot.log
