@@ -58,8 +58,13 @@ copy:
   max_drift_pct: 5.0           # حارس الانحراف: إذا سعرك أسوأ من سعره +5% → تخطّ
   max_delay_s: 10              # أقدم صفقة ننسخها (بعدها المنافسة أكلت الفرصة)
   min_his_size_sol: 0.5        # لا ننسخ الشراءات التافهة
-  max_his_size_sol: 2.0
+  max_his_size_sol: 1.2        # "القناعة العالية" 1.5 SOL كانت فخاً (1W/2L)
   max_copies_per_trade: 1      # مرة واحدة لكل عملة — لا تراكم
+  # --- فلاتر "النسخ الآمن" (safe_copy.py) — تحذف الأكياس الميتة ---
+  max_token_age_h: 100         # ماتت: 226h, 227h, 196h — كلها فوق 100
+  min_liq_usd: 3000            # تحت 3K: كل الأكياس الستة تقريباً + صفقات x1.0
+  family_skip_if_rejected_h: 24  # تخطَّ شراء العائلة إذا شقيقها مرفوض خلال 24h
+  safe_exit: true              # وقف −7% + إيقاف 24h (الملف الآمن) بدل −10%/72h
   skip_mints: []
   copy_state_file: copy_state.json
 

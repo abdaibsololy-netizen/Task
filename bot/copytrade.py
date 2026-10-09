@@ -38,8 +38,12 @@ class CopyConfig:
         self.max_delay_s: float = kw.get("max_delay_s", 10.0)   # أقدم صفقة نقبلها
         self.skip_mints: set = set(kw.get("skip_mints", []))
         self.min_his_size_sol: float = kw.get("min_his_size_sol", 0.5)
-        self.max_his_size_sol: float = kw.get("max_his_size_sol", 2.0)
-        self.max_copies_per_trade: int = kw.get("max_copies_per_trade", 1)  # لا تتراكم على نفس العملة
+        self.max_his_size_sol: float = kw.get("max_his_size_sol", 1.2)
+        self.max_copies_per_trade: int = kw.get("max_copies_per_trade", 1)
+        # فلاتر النسخ الآمن (safe_copy.py)
+        self.max_token_age_h: float = kw.get("max_token_age_h", 100.0)
+        self.min_liq_usd: float = kw.get("min_liq_usd", 3000.0)
+        self.family_skip_if_rejected_h: float = kw.get("family_skip_if_rejected_h", 24.0)
 
 
 class CopyTrader:
@@ -47,9 +51,13 @@ class CopyTrader:
         self.cfg = cfg
         cc = cfg.get("copy", {})
         self.c = CopyConfig(**cc)
-        self.strategy = Strategy(EntryConfig(**cfg["entry"]),
-                                 ExitConfig(**{k: v for k, v in cfg["exit"].items()
-                                               if k != "dust_overhead_sol"}))
+        exit_params = {k: v for k, v in cfg["exit"].items() if k != "dust_overhead_sol"}
+        ec = ExitConfig(**exit_params)
+        if cc.get("safe_exit", True):
+            # ملف الخروج الآمن: وقف أضيق + هروب مبكر + إيقاف زمني أقصر
+            ec.stop_loss_mult = 0.93
+            ec.time_stop_h = 24.0
+        self.strategy = Strategy(EntryConfig(**cfg["entry"]), ec)
         self.pf = Portfolio(cfg["persistence"].get("copy_state_file", "copy_state.json"))
         self.risk = RiskManager(cfg["risk"]["max_daily_loss_sol"],
                                 cfg["risk"]["max_open_sol"],
@@ -65,6 +73,7 @@ class CopyTrader:
         self.last_prices: dict[str, float] = {}
         self.his_fills: dict[str, dict] = {}   # mint -> أخر شراء له (لحراس الانحراف)
         self.copied_count: dict[str, int] = {}
+        self.family_log: dict[str, list] = {}  # symbol -> [(ts, rejected)]  قاعدة العائلة الذكية
 
     # ---------------------------------------------------------------
     async def on_his_buy(self, mint: str, sol_spent: float, tokens: float, ts: float) -> None:
@@ -72,15 +81,46 @@ class CopyTrader:
         delay = time.time() - ts
         print(f"[HIS BUY] {mint[:12]}.. {sol_spent:.3f} SOL @ {his_px:.3e} (تأخير {delay:.1f}s)")
 
+        rejected_reasons: list[str] = []
         if mint in self.c.skip_mints:
             return
         if not (self.c.min_his_size_sol <= sol_spent <= self.c.max_his_size_sol):
-            print("  → تخطٍ: حجمه خارج النطاق")
-            return
+            rejected_reasons.append(f"حجمه {sol_spent:.2f} خارج النطاق")
         if delay > self.c.max_delay_s:
             print(f"  → تخطٍ: التأخير {delay:.0f}s > {self.c.max_delay_s}s")
             return
         if self.copied_count.get(mint, 0) >= self.c.max_copies_per_trade:
+            return
+
+        # فلاتر النسخ الآمن: العمر والسيولة (من البيانات الوصفية)
+        symbol = ""
+        if self.meta is not None:
+            c = await self.meta.coin(mint)
+            if c:
+                symbol = (c.get("symbol") or "").strip()
+                created = c.get("created_timestamp") or c.get("createdTimestamp") or 0
+                if created:
+                    age_h = (time.time() * 1000 - created) / 3.6e6
+                    if age_h > self.c.max_token_age_h:
+                        rejected_reasons.append(f"عمر {age_h:.0f}h > {self.c.max_token_age_h:.0f}")
+                liq_usd = float(c.get("virtual_sol_reserves", 0)) or 0
+                mc = float(c.get("usd_market_cap") or 0)
+                if 0 < mc and liq_usd:
+                    est_liq = liq_usd * 2  # تقدير متحفظ
+                    if est_liq < self.c.min_liq_usd:
+                        rejected_reasons.append(f"سيولة ${est_liq:.0f} < {self.c.min_liq_usd:.0f}")
+
+        # قاعدة العائلة الذكية: شقيق مرفوض خلال 24h ← تخطَّ
+        if symbol:
+            for pts, was_rej in self.family_log.get(symbol, []):
+                if abs(ts - pts) < self.c.family_skip_if_rejected_h * 3600 and was_rej:
+                    rejected_reasons.append(f"عائلة {symbol} — شقيقها مرفوض خلال 24h")
+                    break
+
+        if rejected_reasons:
+            print(f"  ✗ فلاتر النسخ الآمن: {' + '.join(rejected_reasons)}")
+            if symbol:
+                self.family_log.setdefault(symbol, []).append((ts, True))
             return
 
         size = self.c.size_ratio * sol_spent if self.c.size_ratio > 0 else self.c.size_sol
@@ -104,6 +144,8 @@ class CopyTrader:
         print(f"  ✅ نسخنا الدخول: {size:.3f} SOL | انحراف +{drift:.2f}% عن سعره")
         self.his_fills[mint] = {"price": his_px, "ts": ts}
         self.copied_count[mint] = self.copied_count.get(mint, 0) + 1
+        if symbol:
+            self.family_log.setdefault(symbol, []).append((ts, False))
         self.pf.add_entry(pos)
 
     async def manage(self, mint: str, price: float) -> None:
