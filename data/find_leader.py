@@ -39,6 +39,7 @@ MAX_PAGES_MINT = 30      # 30×100 = 3000 معاملة لكل عملة
 MAX_PAGES_WALLET = 20
 RATE_SLEEP = 0.12
 MIN_SOL = 0.05
+MAX_SEEDS = 30          # أقصى عدد عملات للمسح (الأحدث أولاً)
 
 LAMPORTS = 1e9
 SOL_MINT = "So11111111111111111111111111111111111111112"
@@ -225,6 +226,8 @@ def main():
     print(f"1) بذور {TARGET_WALLET[:10]}…")
     txs = fetch_txs(TARGET_WALLET, MAX_PAGES_WALLET)
     seeds = token_buys(txs)
+    if len(seeds) > MAX_SEEDS:
+        seeds = dict(sorted(seeds.items(), key=lambda kv: -kv[1])[:MAX_SEEDS])
     print(f"   {len(txs)} معاملة → {len(seeds)} عملة")
     if not seeds:
         raise SystemExit("لا شراءات — تحقق من العنوان")
