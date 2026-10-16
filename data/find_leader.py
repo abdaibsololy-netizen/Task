@@ -110,12 +110,23 @@ def parse_fill(tx, mint):
     if side is None:
         return None
     sol = 0.0
+    # SOL الأصلي + WSOL (الملفوف). pump AMM يدفع غالباً بـ WSOL، وإغفاله
+    # يجعل كل شراء قيمته 0 فيُتجاهل، ويصفّر مبيعات المحافظ كلها.
     for nt in tx.get("nativeTransfers") or []:
         amt = float(nt.get("amount") or 0) / LAMPORTS
         if amt <= 0:
             continue
         if (side == "buy" and nt.get("fromUserAccount") == trader) or \
            (side == "sell" and nt.get("toUserAccount") == trader):
+            sol += amt
+    for tt in tx.get("tokenTransfers") or []:
+        if tt.get("mint") != SOL_MINT:
+            continue
+        amt = float(tt.get("tokenAmount") or 0)
+        if amt <= 0:
+            continue
+        if (side == "buy" and tt.get("fromUserAccount") == trader) or \
+           (side == "sell" and tt.get("toUserAccount") == trader):
             sol += amt
     return {"wallet": trader, "mint": mint, "side": side,
             "ts": float(tx.get("timestamp") or 0), "sol": sol,

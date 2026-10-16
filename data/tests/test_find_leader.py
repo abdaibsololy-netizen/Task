@@ -171,6 +171,39 @@ def test_sybil_cluster_found():
     assert cl[0]["size"] == "2"
 
 
+WSOL = FL.SOL_MINT
+
+
+def _wsol_tx(side):
+    """صفقة pump AMM تدفع بـ WSOL فقط، بلا أي تحويل SOL أصلي."""
+    trader = "WSOLTRADER" + "w" * 31
+    mint = "MINTW" + "x" * 30 + "pump"
+    if side == "buy":   # يدفع 1.5 WSOL ويستلم توكن
+        tt = [{"mint": mint, "toUserAccount": trader, "tokenAmount": 1000},
+              {"mint": WSOL, "fromUserAccount": trader, "tokenAmount": 1.5}]
+    else:               # يبيع توكن ويستلم 3 WSOL
+        tt = [{"mint": mint, "fromUserAccount": trader, "tokenAmount": 1000},
+              {"mint": WSOL, "toUserAccount": trader, "tokenAmount": 3.0}]
+    return {"feePayer": trader, "tokenTransfers": tt, "nativeTransfers": [],
+            "timestamp": 100, "slot": 1, "signature": "sig"}, mint
+
+
+def test_wsol_buy_is_counted_not_dropped():
+    """الشراء بـ WSOL كان قيمته 0 فيُتجاهل كـ 'تحويل ترابي'. يجب أن يُحسب."""
+    tx, mint = _wsol_tx("buy")
+    f = FL.parse_fill(tx, mint)
+    assert f is not None and f["side"] == "buy"
+    assert abs(f["sol"] - 1.5) < 1e-9
+
+
+def test_wsol_sell_value_is_counted():
+    """مبيع يستلم WSOL يجب أن تظهر قيمته، وإلا ROI يصير سالباً زوراً."""
+    tx, mint = _wsol_tx("sell")
+    f = FL.parse_fill(tx, mint)
+    assert f is not None and f["side"] == "sell"
+    assert abs(f["sol"] - 3.0) < 1e-9
+
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     for fn in fns:
