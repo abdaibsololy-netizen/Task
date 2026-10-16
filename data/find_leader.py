@@ -339,6 +339,26 @@ def main():
     print(f"\n★ فريق البلوك الواحد (BUNDLE): {len(bun)} — انظر candidates_ranked.csv")
     print("\nالملفات: cobuys_raw.csv · candidates_ranked.csv · insiders.csv · sybil_clusters.csv")
 
+    # ════════════════ كتلة للنسخ المباشر في المحادثة ════════════════
+    # حتى ما تحتاج ترفع ملفات — انسخ ما بين الخطين وأرسله.
+    print("\n\n" + "▓" * 70)
+    print("▓ انسخ من السطر التالي إلى آخر كتلة — والصقه في المحادثة")
+    print("▓" * 70)
+    print("```")
+    print(f"TARGET: {TARGET_WALLET}")
+    print(f"SEEDS: {len(seeds)}  CANDIDATES: {len(rows)}  "
+          f"LEADERS: {len(leaders)}  FOLLOWERS: {len(fol)}  BUNDLES: {len(bun)}")
+    print("ROLE,WALLET,OVERLAP,LEAD_S,ROI,WINRATE,CLOSED,BAND,SCORE,FUNDER")
+    for r in rows[:40]:
+        print(f"{r['role']},{r['wallet']},{r['overlap']},{r['lead_s']},"
+              f"{r['roi']},{r['winrate']},{r['closed']},{r['band']},"
+              f"{r['score']},{r.get('funder', '')}")
+    dup2 = {k: v for k, v in (clusters.items() if DEEPEN_LEADERS else [])
+            if len(v) >= 2}
+    for k, v in sorted(dup2.items(), key=lambda kv: -len(kv[1])):
+        print(f"SYBIL,{k},{len(v)},{'|'.join(v)}")
+    print("```")
+
 
 if __name__ == "__main__":
     main()
