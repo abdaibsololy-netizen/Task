@@ -3,3 +3,18 @@ __pycache__/
 bot_state.json
 bot.log
 .venv/
+
+# ── ملفات الحالة والأسرار (لا تُرفع أبداً) ─────────────────────
+*_state.json
+.alpha_state.json
+.copy_state.json
+.alert_state.json
+*.log
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+
+# ── مخرجات الفحص الأمني ───────────────────────────────────────
+security/findings/

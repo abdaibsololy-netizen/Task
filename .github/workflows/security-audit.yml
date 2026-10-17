@@ -1,0 +1,49 @@
+name: "Security Audit — فحص أمني تلقائي"
+
+on:
+  push:
+    branches: [main, "arena/**"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sec-audit
+  cancel-in-progress: true
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # نحتاج تاريخ git لكشف الأسرار المسرّبة سابقاً
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: تثبيت أدوات الفحص
+        run: pip install -q -r security/requirements.txt
+
+      - name: مسح الأسرار المسرّبة (ملفات + تاريخ git)
+        run: python security/secrets_scan.py --path . --out security/findings
+
+      - name: تحليل ساكن للكود
+        run: |
+          bandit -r bot data -x bot/.venv,.venv,__pycache__ -f screen -ll
+          bandit -r bot data -x bot/.venv,.venv,__pycache__ -f json -o security/findings/bandit.json -q
+
+      - name: اختبار الأدوات (خادم مصاب محلياً)
+        run: python security/selftest.py
+
+      - name: رفع التقرير
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-findings
+          path: security/findings/
+          retention-days: 14
