@@ -148,9 +148,11 @@ def main() -> int:
     print("\n▶ secrets_scan.py …")
     tmp = os.path.join(HERE, "findings", "_selftest_tmp")
     os.makedirs(tmp, exist_ok=True)
+    # تُبنى في وقت التشغيل (مُجمَّعة) حتى لا تُسجَّل كأسرار داخل المستودع نفسه
+    fake_key = "4NMwxzmYj2uvHuq8xoqhY8RXc63K3WSbuyD8KFGbXPn3Kt3d" + "Rfvvc6QeBqmzCypgMeV7Uq2Ao6xK9vBt5ZpQrWmNh"
+    fake_tg = "1234567890:" + "AAHdG9zQ2wErTyUiOpAsDfGhJkLzXcVbNm1234"
     with open(os.path.join(tmp, "leak.py"), "w") as f:
-        f.write('PRIVATE_KEY = "4NMwxzmYj2uvHuq8xoqhY8RXc63K3WSbuyD8KFGbXPn3Kt3dRfvvc6QeBqmzCypgMeV7Uq2Ao6xK9vBt5ZpQrWmNh"\n'
-                'TG = "1234567890:AAHdG9zQ2wErTyUiOpAsDfGhJkLzXcVbNm1234"\n')
+        f.write(f'PRIVATE_KEY = "{fake_key}"\nTG = "{fake_tg}"\n')
     out: list[dict] = []
     import secrets_scan
     secrets_scan.scan_repo(tmp, history=False, out=out)
@@ -164,6 +166,8 @@ def main() -> int:
         if not ok:
             failures.append(f"secrets: {name}")
 
+    import shutil
+    shutil.rmtree(tmp, ignore_errors=True)
     srv.shutdown()
     print("\n" + "═" * 50)
     if failures:

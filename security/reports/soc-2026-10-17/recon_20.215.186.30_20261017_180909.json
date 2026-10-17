@@ -1,0 +1,1953 @@
+{
+  "target": "http://20.215.186.30",
+  "started": "2026-10-17T18:08:23+00:00",
+  "finished": "2026-10-17T18:09:09+00:00",
+  "summary": {
+    "low": 1,
+    "medium": 1,
+    "high": 13
+  },
+  "facts": {
+    "root_status": 200,
+    "root_server": "nginx/1.31.7",
+    "root_headers": {
+      "Server": "nginx/1.31.7",
+      "Date": "Sat, 17 Oct 2026 18:08:23 GMT",
+      "Content-Type": "text/html",
+      "Content-Length": "467",
+      "Last-Modified": "Fri, 16 Oct 2026 01:36:49 GMT",
+      "Connection": "keep-alive",
+      "ETag": "\"6ad17fb1-1d3\"",
+      "X-Frame-Options": "SAMEORIGIN",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Accept-Ranges": "bytes"
+    },
+    "root_len": 467,
+    "root_sha256": "5343e5aafd16cfdf",
+    "root_title": "Smart SOC Platform",
+    "assets_found": 2,
+    "api_paths_from_js": [
+      "/api/docs"
+    ],
+    "external_urls_in_js": [
+      "http://fb.me/use-check-prop-types",
+      "http://www.w3.org/1998/Math/MathML",
+      "http://www.w3.org/1999/xhtml",
+      "http://www.w3.org/1999/xlink",
+      "http://www.w3.org/2000/svg",
+      "http://www.w3.org/XML/1998/namespace",
+      "https://192.168.126.131:55000",
+      "https://192.168.126.131:9200",
+      "https://github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md",
+      "https://reactjs.org/docs/error-decoder.html",
+      "https://secure-login-bank-verify.ru/token"
+    ],
+    "api_docs_urls": [
+      "/api/docs"
+    ],
+    "openapi_path": "/api/openapi.json"
+  },
+  "endpoints": [
+    {
+      "path": "/",
+      "methods": [
+        "GET"
+      ],
+      "note": "catch-all (SPA)",
+      "sample": "/",
+      "status_no_auth": 200,
+      "len": 467,
+      "status_fake_auth": 200,
+      "differs_with_fake_token": false,
+      "content_type": "text/html",
+      "spa_fallback": true
+    },
+    {
+      "path": "/api/activities",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/activities",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/ai/analyze-comprehensive",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/ai/analyze-comprehensive",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/ai/recommendations",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/ai/recommendations",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/ai/status",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/ai/status",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/ai/summarize",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/ai/summarize",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/ai/test",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/ai/test",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/alerts",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/alerts",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/alerts/dead-letter",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/alerts/dead-letter",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/alerts/dead-letter/{dlq_id}/retry",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/alerts/dead-letter/1/retry",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/alerts/ingest",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/alerts/ingest",
+      "status_no_auth": 422,
+      "len": 210,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/alerts/mitre/navigator-layer",
+      "methods": [
+        "GET"
+      ],
+      "note": "200 بلا مصادقة",
+      "sample": "/api/alerts/mitre/navigator-layer",
+      "status_no_auth": 200,
+      "len": 1431,
+      "status_fake_auth": 200,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/alerts/stats/summary",
+      "methods": [
+        "GET"
+      ],
+      "note": "200 بلا مصادقة",
+      "sample": "/api/alerts/stats/summary",
+      "status_no_auth": 200,
+      "len": 1383,
+      "status_fake_auth": 200,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/alerts/webhook",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/alerts/webhook",
+      "status_no_auth": 422,
+      "len": 211,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/alerts/{alert_id}",
+      "methods": [
+        "DELETE",
+        "GET",
+        "PUT"
+      ],
+      "note": "200 بلا مصادقة",
+      "sample": "/api/alerts/1",
+      "status_no_auth": 200,
+      "len": 8176,
+      "status_fake_auth": 200,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/alerts/{alert_id}/evidence",
+      "methods": [
+        "GET"
+      ],
+      "note": "200 بلا مصادقة",
+      "sample": "/api/alerts/1/evidence",
+      "status_no_auth": 200,
+      "len": 5506,
+      "status_fake_auth": 200,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/alerts/{alert_id}/investigate",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/alerts/1/investigate",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/alerts/{alert_id}/investigation-status/{task_id}",
+      "methods": [
+        "GET"
+      ],
+      "note": "200 بلا مصادقة",
+      "sample": "/api/alerts/1/investigation-status/1",
+      "status_no_auth": 200,
+      "len": 46,
+      "status_fake_auth": 200,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/alerts/{alert_id}/notes",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/alerts/1/notes",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/alerts/{alert_id}/verdict",
+      "methods": [
+        "PUT"
+      ],
+      "note": "",
+      "sample": "/api/alerts/1/verdict",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/analytics/artifacts",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/analytics/artifacts",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/analytics/artifacts/analyze",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/analytics/artifacts/analyze",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/analytics/artifacts/similarity-references",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/analytics/artifacts/similarity-references",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/analytics/behavior/observations",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/analytics/behavior/observations",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/analytics/network/analyze",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/analytics/network/analyze",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/analytics/network/observations",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/analytics/network/observations",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/analytics/network/suricata",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/analytics/network/suricata",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/analytics/network/zeek",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/analytics/network/zeek",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/auth/api-keys",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/auth/api-keys",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/auth/api-keys/{key_id}",
+      "methods": [
+        "DELETE"
+      ],
+      "note": "",
+      "sample": "/api/auth/api-keys/1",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/auth/change-password",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/auth/change-password",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/auth/login",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/auth/login",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/auth/me",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "note": "",
+      "sample": "/api/auth/me",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/auth/mfa/activate",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/auth/mfa/activate",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/auth/mfa/disable",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/auth/mfa/disable",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/auth/mfa/setup",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/auth/mfa/setup",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/auth/mfa/status",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/auth/mfa/status",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/auth/register",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/auth/register",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/auth/token",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/auth/token",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/auth/users",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/auth/users",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/auth/users/{user_id}",
+      "methods": [
+        "DELETE",
+        "PUT"
+      ],
+      "note": "",
+      "sample": "/api/auth/users/1",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/context/assets/{hostname}",
+      "methods": [
+        "PUT"
+      ],
+      "note": "",
+      "sample": "/api/context/assets/1",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/context/identities/{identity}",
+      "methods": [
+        "PUT"
+      ],
+      "note": "",
+      "sample": "/api/context/identities/1",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/context/indicators",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/context/indicators",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/detection-rules",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/detection-rules",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/detection-rules/export",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/detection-rules/export",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/detection-rules/hot-reload",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/detection-rules/hot-reload",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/detection-rules/sync",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/detection-rules/sync",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/detection-rules/{rule_id}",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "note": "",
+      "sample": "/api/detection-rules/1",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/detection-rules/{rule_id}/revisions",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/detection-rules/1/revisions",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/detection-rules/{rule_id}/rollback",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/detection-rules/1/rollback",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/detection-rules/{rule_id}/transition",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/detection-rules/1/transition",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/detection-rules/{rule_id}/validate",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/detection-rules/1/validate",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/dispatch/connectors",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "note": "",
+      "sample": "/api/dispatch/connectors",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/dlp/status",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/dlp/status",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/docs",
+      "methods": [],
+      "note": "200 (html/text)",
+      "sample": "/api/docs",
+      "status_no_auth": 200,
+      "len": 958,
+      "status_fake_auth": 200,
+      "differs_with_fake_token": false,
+      "content_type": "text/html; charset=utf-8",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/evaluation/guard",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/evaluation/guard",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/evaluation/guard/run",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/evaluation/guard/run",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/evaluation/run",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/evaluation/run",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/evaluation/runs",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/evaluation/runs",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/evidence/{evidence_id}",
+      "methods": [
+        "DELETE"
+      ],
+      "note": "",
+      "sample": "/api/evidence/1",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/findings",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/findings",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/findings/{finding_id}/status",
+      "methods": [
+        "PUT"
+      ],
+      "note": "",
+      "sample": "/api/findings/1/status",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/incidents",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/incidents",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/incidents/mitre/coverage",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/incidents/mitre/coverage",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/incidents/{incident_id}",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/incidents/1",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/incidents/{incident_id}/explain",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/incidents/1/explain",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/incidents/{incident_id}/notes",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/incidents/1/notes",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/incidents/{incident_id}/recompute",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/incidents/1/recompute",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/incidents/{incident_id}/status",
+      "methods": [
+        "PUT"
+      ],
+      "note": "",
+      "sample": "/api/incidents/1/status",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/incidents/{public_id}/contain",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/incidents/1/contain",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/incidents/{public_id}/contain/plan",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/incidents/1/contain/plan",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/incidents/{public_id}/dispatch",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/incidents/1/dispatch",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/incidents/{public_id}/evidence",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/incidents/1/evidence",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/incidents/{public_id}/timeline",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/incidents/1/timeline",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/intel/decay/run",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/intel/decay/run",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/intel/feeds/import",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/intel/feeds/import",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/intel/indicators",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/intel/indicators",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/policies",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "note": "",
+      "sample": "/api/policies",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/response/actions",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/response/actions",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/response/actions/catalog",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/response/actions/catalog",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/response/actions/{public_id}",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/response/actions/1",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/response/actions/{public_id}/approve",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/response/actions/1/approve",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/response/actions/{public_id}/cancel",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/response/actions/1/cancel",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/response/actions/{public_id}/reject",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/response/actions/1/reject",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/response/actions/{public_id}/rollback",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/response/actions/1/rollback",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/response/audit",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/response/audit",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/response/automation/halt",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/response/automation/halt",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/response/automation/resume",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/response/automation/resume",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/response/automation/status",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/response/automation/status",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/response/connectors/health",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/response/connectors/health",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/response/metrics",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/response/metrics",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/response/playbooks",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/response/playbooks",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/response/playbooks/reload",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/response/playbooks/reload",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/response/playbooks/{playbook_id}/simulate",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/response/playbooks/1/simulate",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/response/safeguards",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/response/safeguards",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/response/safeguards/{safeguard_id}",
+      "methods": [
+        "DELETE"
+      ],
+      "note": "",
+      "sample": "/api/response/safeguards/1",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/retention",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/retention",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/retention/run",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/retention/run",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/settings",
+      "methods": [
+        "GET",
+        "PUT"
+      ],
+      "note": "",
+      "sample": "/api/settings",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/settings/test-connection",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/settings/test-connection",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/threat-intel/abuseipdb/{ip_address}",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/threat-intel/abuseipdb/1",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/threat-intel/alienvault/{ip_address}",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/threat-intel/alienvault/1",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/threat-intel/bulk-check",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/threat-intel/bulk-check",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/threat-intel/bulk-lookup",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/threat-intel/bulk-lookup",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/threat-intel/cache/clear",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/threat-intel/cache/clear",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/threat-intel/cache/info",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/threat-intel/cache/info",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/threat-intel/cache/stats",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/threat-intel/cache/stats",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/threat-intel/check-domain",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/threat-intel/check-domain",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/threat-intel/check-ip",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/threat-intel/check-ip",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/threat-intel/check-ip/{ip_address}",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/threat-intel/check-ip/1",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/threat-intel/check-url",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/threat-intel/check-url",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/threat-intel/lookup",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/threat-intel/lookup",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/threat-intel/virustotal/{ip_address}",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/threat-intel/virustotal/1",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/v1/audit/verify",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/v1/audit/verify",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/v1/reports/compliance-posture",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/v1/reports/compliance-posture",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/v1/reports/executive-summary",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/v1/reports/executive-summary",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/v1/system/soc-health",
+      "methods": [
+        "GET"
+      ],
+      "note": "",
+      "sample": "/api/v1/system/soc-health",
+      "status_no_auth": 401,
+      "len": 101,
+      "status_fake_auth": null,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/api/v1/triage/{incident_id}",
+      "methods": [
+        "POST"
+      ],
+      "note": "",
+      "sample": "/api/v1/triage/1",
+      "status_no_auth": 405,
+      "len": 31,
+      "status_fake_auth": null,
+      "differs_with_fake_token": false,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/health",
+      "methods": [
+        "GET"
+      ],
+      "note": "200 بلا مصادقة",
+      "sample": "/health",
+      "status_no_auth": 200,
+      "len": 161,
+      "status_fake_auth": 200,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/health/deep",
+      "methods": [
+        "GET"
+      ],
+      "note": "200 بلا مصادقة",
+      "sample": "/health/deep",
+      "status_no_auth": 200,
+      "len": 693,
+      "status_fake_auth": 200,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/livez",
+      "methods": [
+        "GET"
+      ],
+      "note": "200 بلا مصادقة",
+      "sample": "/livez",
+      "status_no_auth": 200,
+      "len": 58,
+      "status_fake_auth": 200,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    },
+    {
+      "path": "/ready",
+      "methods": [
+        "GET"
+      ],
+      "note": "catch-all (SPA)",
+      "sample": "/ready",
+      "status_no_auth": 200,
+      "len": 467,
+      "status_fake_auth": 200,
+      "differs_with_fake_token": false,
+      "content_type": "text/html",
+      "spa_fallback": true
+    },
+    {
+      "path": "/readyz",
+      "methods": [
+        "GET"
+      ],
+      "note": "200 بلا مصادقة",
+      "sample": "/readyz",
+      "status_no_auth": 200,
+      "len": 419,
+      "status_fake_auth": 200,
+      "differs_with_fake_token": true,
+      "content_type": "application/json",
+      "spa_fallback": false
+    }
+  ],
+  "findings": [
+    {
+      "id": "API-021",
+      "title": "صفحة توثيق API منشورة",
+      "severity": "low",
+      "category": "API",
+      "detail": "توثيق تفاعلي متاح بلا مصادقة.",
+      "evidence": "/api/docs",
+      "endpoint": "",
+      "remediation": "قيّد الوصول لصفحة التوثيق."
+    },
+    {
+      "id": "API-020",
+      "title": "مواصفة OpenAPI/Swagger منشورة",
+      "severity": "medium",
+      "category": "API",
+      "detail": "أي زائر يستطيع قراءة كل نقاط النهاية والمخططات.",
+      "evidence": "/api/openapi.json → 163538B",
+      "endpoint": "",
+      "remediation": "احمِ المواصفة (Basic auth / allowlist / أزلها من الإنتاج)."
+    },
+    {
+      "id": "API-001",
+      "title": "نقطة API ترجع بيانات بلا مصادقة: /api/alerts/mitre/navigator-layer",
+      "severity": "high",
+      "category": "Broken Access Control",
+      "detail": "الاستجابة 200 + JSON بدون أي مصادقة — تحقّق إن كانت البيانات حساسة.",
+      "evidence": "{\"name\":\"Smart SOC — Cumulative Detections\",\"versions\":{\"attack\":\"14\",\"navigator\":\"4.9.1\",\"layer\":\"4.5\"},\"domain\":\"enterprise-attack\",\"description\":\"Auto-generated from Smart SOC alert corpus\",\"techniques\":[{\"techniqueID\":\"T1078\",\"score\":726,\"comment\":\"T1078\",\"tactic\":\"Defense Evasion\",\"enabled\":tru",
+      "endpoint": "/api/alerts/mitre/navigator-layer",
+      "remediation": "أضف تحقق مصادقة/صلاحية على هذه النقطة (أو 401/403)."
+    },
+    {
+      "id": "API-001",
+      "title": "نقطة API ترجع بيانات بلا مصادقة: /api/alerts/stats/summary",
+      "severity": "high",
+      "category": "Broken Access Control",
+      "detail": "الاستجابة 200 + JSON بدون أي مصادقة — تحقّق إن كانت البيانات حساسة.",
+      "evidence": "{\"total_alerts\":3614,\"severity_breakdown\":{\"medium\":131,\"info\":87,\"critical\":79,\"high\":1279,\"low\":2038},\"analysis_status\":{\"with_ai_analysis\":2010,\"with_threat_intel\":3614,\"with_file_hash_indicator\":3,\"with_ueba_anomaly\":284,\"pending_investigation\":1604},\"true_positive_analysis\":{\"true_positive\":1,\"",
+      "endpoint": "/api/alerts/stats/summary",
+      "remediation": "أضف تحقق مصادقة/صلاحية على هذه النقطة (أو 401/403)."
+    },
+    {
+      "id": "API-001",
+      "title": "نقطة API ترجع بيانات بلا مصادقة: /api/alerts/1",
+      "severity": "high",
+      "category": "Broken Access Control",
+      "detail": "الاستجابة 200 + JSON بدون أي مصادقة — تحقّق إن كانت البيانات حساسة.",
+      "evidence": "{\"alert_name\":\"Suspicious encoded PowerShell launched by Microsoft Word\",\"severity\":\"critical\",\"category\":\"windows\",\"source_ip\":null,\"destination_ip\":null,\"hostname\":\"WIN-SERVER-2022\",\"source_port\":null,\"destination_port\":null,\"network_protocol\":null,\"destination_domain\":null,\"dns_query\":null,\"url\":",
+      "endpoint": "/api/alerts/1",
+      "remediation": "أضف تحقق مصادقة/صلاحية على هذه النقطة (أو 401/403)."
+    },
+    {
+      "id": "API-001",
+      "title": "نقطة API ترجع بيانات بلا مصادقة: /api/alerts/1/evidence",
+      "severity": "high",
+      "category": "Broken Access Control",
+      "detail": "الاستجابة 200 + JSON بدون أي مصادقة — تحقّق إن كانت البيانات حساسة.",
+      "evidence": "{\"alert_id\":1,\"wazuh_id\":\"manual-wazuh-powershell-001\",\"raw_event\":null,\"full_log\":null,\"normalized_event\":{\"schema_version\":\"soc-ocsf-subset/1.0\",\"metadata\":{\"product\":\"wazuh\",\"source\":\"wazuh_alert\",\"original_event_uid\":\"manual-wazuh-powershell-001\"},\"time\":\"2026-08-24T12:00:00+00:00\",\"class_name\":",
+      "endpoint": "/api/alerts/1/evidence",
+      "remediation": "أضف تحقق مصادقة/صلاحية على هذه النقطة (أو 401/403)."
+    },
+    {
+      "id": "API-001",
+      "title": "نقطة API ترجع بيانات بلا مصادقة: /api/alerts/1/investigation-status/1",
+      "severity": "high",
+      "category": "Broken Access Control",
+      "detail": "الاستجابة 200 + JSON بدون أي مصادقة — تحقّق إن كانت البيانات حساسة.",
+      "evidence": "{\"task_id\":\"1\",\"alert_id\":1,\"state\":\"PENDING\"}",
+      "endpoint": "/api/alerts/1/investigation-status/1",
+      "remediation": "أضف تحقق مصادقة/صلاحية على هذه النقطة (أو 401/403)."
+    },
+    {
+      "id": "API-001",
+      "title": "نقطة API ترجع بيانات بلا مصادقة: /health",
+      "severity": "high",
+      "category": "Broken Access Control",
+      "detail": "الاستجابة 200 + JSON بدون أي مصادقة — تحقّق إن كانت البيانات حساسة.",
+      "evidence": "{\"status\":\"healthy\",\"database\":\"healthy\",\"wazuh\":{\"manager\":\"configured\",\"indexer\":\"configured\"},\"cors_origins_count\":9,\"timestamp\":\"2026-10-17T18:08:54.889807\"}",
+      "endpoint": "/health",
+      "remediation": "أضف تحقق مصادقة/صلاحية على هذه النقطة (أو 401/403)."
+    },
+    {
+      "id": "API-002",
+      "title": "المصادقة تُقبل بتوكن وهمية (token validation ضعيفة)",
+      "severity": "high",
+      "category": "Broken Access Control",
+      "detail": "الاستجابة تغيّرت مع توكن Bearer عشوائي — الخادم لا يتحقق من صحة التوكن بشكل صحيح.",
+      "evidence": "status: 200 → 200",
+      "endpoint": "/health",
+      "remediation": "تحقق من التوقيع/الصلاحية/الصلاحية الزمنية لكل طلب."
+    },
+    {
+      "id": "API-001",
+      "title": "نقطة API ترجع بيانات بلا مصادقة: /health/deep",
+      "severity": "high",
+      "category": "Broken Access Control",
+      "detail": "الاستجابة 200 + JSON بدون أي مصادقة — تحقّق إن كانت البيانات حساسة.",
+      "evidence": "{\"status\":\"degraded\",\"database\":{\"status\":\"healthy\"},\"schema\":{\"status\":\"healthy\",\"required_migration\":null,\"missing_tables\":[],\"missing_columns\":{}},\"rules\":{\"status\":\"healthy\",\"loaded_rules\":38},\"broker\":{\"status\":\"healthy\"},\"workers\":{\"status\":\"healthy\",\"workers\":{\"ai@70ad55e9bd37\":{\"ok\":\"pong\"},",
+      "endpoint": "/health/deep",
+      "remediation": "أضف تحقق مصادقة/صلاحية على هذه النقطة (أو 401/403)."
+    },
+    {
+      "id": "API-002",
+      "title": "المصادقة تُقبل بتوكن وهمية (token validation ضعيفة)",
+      "severity": "high",
+      "category": "Broken Access Control",
+      "detail": "الاستجابة تغيّرت مع توكن Bearer عشوائي — الخادم لا يتحقق من صحة التوكن بشكل صحيح.",
+      "evidence": "status: 200 → 200",
+      "endpoint": "/health/deep",
+      "remediation": "تحقق من التوقيع/الصلاحية/الصلاحية الزمنية لكل طلب."
+    },
+    {
+      "id": "API-001",
+      "title": "نقطة API ترجع بيانات بلا مصادقة: /livez",
+      "severity": "high",
+      "category": "Broken Access Control",
+      "detail": "الاستجابة 200 + JSON بدون أي مصادقة — تحقّق إن كانت البيانات حساسة.",
+      "evidence": "{\"status\":\"live\",\"timestamp\":\"2026-10-17T18:09:07.442883\"}",
+      "endpoint": "/livez",
+      "remediation": "أضف تحقق مصادقة/صلاحية على هذه النقطة (أو 401/403)."
+    },
+    {
+      "id": "API-002",
+      "title": "المصادقة تُقبل بتوكن وهمية (token validation ضعيفة)",
+      "severity": "high",
+      "category": "Broken Access Control",
+      "detail": "الاستجابة تغيّرت مع توكن Bearer عشوائي — الخادم لا يتحقق من صحة التوكن بشكل صحيح.",
+      "evidence": "status: 200 → 200",
+      "endpoint": "/livez",
+      "remediation": "تحقق من التوقيع/الصلاحية/الصلاحية الزمنية لكل طلب."
+    },
+    {
+      "id": "API-001",
+      "title": "نقطة API ترجع بيانات بلا مصادقة: /readyz",
+      "severity": "high",
+      "category": "Broken Access Control",
+      "detail": "الاستجابة 200 + JSON بدون أي مصادقة — تحقّق إن كانت البيانات حساسة.",
+      "evidence": "{\"status\":\"ready\",\"checks\":{\"database\":true,\"schema\":true,\"rules\":true,\"redis_cache\":true,\"broker\":true},\"database\":{\"status\":\"healthy\"},\"schema\":{\"status\":\"healthy\",\"required_migration\":null,\"missing_tables\":[],\"missing_columns\":{}},\"rules\":{\"status\":\"healthy\",\"loaded_rules\":38},\"redis_cache\":{\"sta",
+      "endpoint": "/readyz",
+      "remediation": "أضف تحقق مصادقة/صلاحية على هذه النقطة (أو 401/403)."
+    },
+    {
+      "id": "API-002",
+      "title": "المصادقة تُقبل بتوكن وهمية (token validation ضعيفة)",
+      "severity": "high",
+      "category": "Broken Access Control",
+      "detail": "الاستجابة تغيّرت مع توكن Bearer عشوائي — الخادم لا يتحقق من صحة التوكن بشكل صحيح.",
+      "evidence": "status: 200 → 200",
+      "endpoint": "/readyz",
+      "remediation": "تحقق من التوقيع/الصلاحية/الصلاحية الزمنية لكل طلب."
+    }
+  ]
+}

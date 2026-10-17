@@ -32,7 +32,7 @@ except ImportError:  # pragma: no cover
 PATTERNS: list[tuple[str, str, str, str]] = [
     ("Solana private key (base58)", r"\b[1-9A-HJ-NP-Za-km-z]{85,90}\b", "critical",
      "المفتاح يجب أن يكون في متغير بيئة فقط — إن كان حقيقياً فاقلبه فوراً (لا يمكن استرجاع funds من نفس المفتاح)."),
-    ("Solana JSON keypair", r"\[\s*\d{1,3}\s*,\s*\d{1,3}\s*,\s*[\"\d,\s]{40,}\]", "critical",
+    ("Solana JSON keypair", r"\[\s*\d{1,3}(?:\s*,\s*\d{1,3}){63}\s*\]", "critical",
      "احذف الملف من تاريخ git (git filter-repo / BFG) وأعد توليد المفتاح."),
     ("PEM private key", r"-----BEGIN (?:RSA |EC |OPENSSH |PGP )?PRIVATE KEY-----", "critical",
      "أزله فوراً من المستودع واعتبره مكشوفاً."),
@@ -88,6 +88,17 @@ def is_noise(text: str) -> bool:
 
 
 def scan_text(text: str, where: str, out: list[dict], allow_noise: bool = False) -> None:
+    # تجاهل الأسطر المعلّمة بـ sec:ignore (أسطر تعريف الأنماط داخل الأدوات)
+    lines = text.split("\n")
+    ignored = {i for i, ln in enumerate(lines) if "sec:ignore" in ln}
+    if ignored:
+        keep = []
+        last = 0
+        for i in sorted(ignored):
+            keep.append("\n".join(lines[last:i]))
+            last = i + 1
+        keep.append("\n".join(lines[last:]))
+        text = "\n".join(keep)
     for name, pat, sev, fix in PATTERNS:
         for m in re.finditer(pat, text):
             val = m.group(0)

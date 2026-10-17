@@ -89,6 +89,15 @@ Stripe • Google API • Infura/Alchemy • Helius • JWT • إسنادات `
 
 ---
 
+## 📂 نتائج فحص جاهزة
+
+| التقرير | الهدف | التاريخ |
+|---|---|---|
+| [`REPORT_20.215.186.30.md`](REPORT_20.215.186.30.md) | Smart SOC Platform — `http://20.215.186.30` | 2026-10-17 |
+| [`reports/soc-2026-10-17/`](reports/soc-2026-10-17/) | الملفات الخام (JSON/MD + دليل OpenAPI المكشوف) | 2026-10-17 |
+
+---
+
 ## 📝 تقرير النتائج
 
 1. انسخ `security/FINDINGS_TEMPLATE.md` إلى `security/findings/REPORT_<date>.md`

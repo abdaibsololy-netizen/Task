@@ -1,0 +1,11 @@
+{
+  "target": "http://20.215.186.30",
+  "started": "2026-10-17T17:57:51+00:00",
+  "finished": "2026-10-17T18:08:22+00:00",
+  "probes_run": 5040,
+  "summary": {},
+  "facts": {
+    "targets_discovered": 168
+  },
+  "findings": []
+}

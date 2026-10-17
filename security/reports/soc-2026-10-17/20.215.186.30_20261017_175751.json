@@ -1,0 +1,139 @@
+{
+  "target": "http://20.215.186.30",
+  "started": "2026-10-17T17:57:26+00:00",
+  "finished": "2026-10-17T17:57:51+00:00",
+  "facts": {
+    "root_status": 200,
+    "root_title": "Smart SOC Platform",
+    "root_final_url": "http://20.215.186.30/",
+    "body_length": 467,
+    "server": "nginx/1.31.7",
+    "powered_by": "",
+    "all_headers": {
+      "Server": "nginx/1.31.7",
+      "Date": "Sat, 17 Oct 2026 17:57:26 GMT",
+      "Content-Type": "text/html",
+      "Content-Length": "467",
+      "Last-Modified": "Fri, 16 Oct 2026 01:36:49 GMT",
+      "Connection": "keep-alive",
+      "ETag": "\"6ad17fb1-1d3\"",
+      "X-Frame-Options": "SAMEORIGIN",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Accept-Ranges": "bytes"
+    },
+    "cookies": [],
+    "stack": [
+      "nginx"
+    ],
+    "cors_origin_reflected": "",
+    "rate_limit_sample": [
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200,
+      200
+    ]
+  },
+  "summary": {
+    "medium": 2,
+    "low": 2,
+    "info": 4,
+    "high": 2
+  },
+  "findings": [
+    {
+      "id": "HDR-100",
+      "title": "ترويسة HSTS مفقودة",
+      "severity": "medium",
+      "category": "ترويسات",
+      "detail": "الاستجابة لا تحتوي HSTS.",
+      "evidence": "",
+      "remediation": "أضف: Strict-Transport-Security: max-age=31536000; includeSubDomains"
+    },
+    {
+      "id": "HDR-101",
+      "title": "ترويسة CSP مفقودة",
+      "severity": "low",
+      "category": "ترويسات",
+      "detail": "الاستجابة لا تحتوي CSP.",
+      "evidence": "",
+      "remediation": "أضف Content-Security-Policy صارمة (default-src 'self') لتقييد السكربتات والـ iframes"
+    },
+    {
+      "id": "HDR-104",
+      "title": "ترويسة Referrer-Policy مفقودة",
+      "severity": "info",
+      "category": "ترويسات",
+      "detail": "الاستجابة لا تحتوي Referrer-Policy.",
+      "evidence": "",
+      "remediation": "أضف Referrer-Policy: strict-origin-when-cross-origin"
+    },
+    {
+      "id": "HDR-105",
+      "title": "ترويسة Permissions-Policy مفقودة",
+      "severity": "info",
+      "category": "ترويسات",
+      "detail": "الاستجابة لا تحتوي Permissions-Policy.",
+      "evidence": "",
+      "remediation": "أضف Permissions-Policy لتقييد الكاميرا/المايكروفون/الموقع"
+    },
+    {
+      "id": "HDR-002",
+      "title": "إصدار الخادم مكشوف",
+      "severity": "info",
+      "category": "ترويسات",
+      "detail": "رقم الإصدار يساعد المهاجم على اختيار ثغرة معروفة.",
+      "evidence": "nginx/1.31.7",
+      "remediation": "server_tokens off (nginx) أو تعطيل Banner في IIS."
+    },
+    {
+      "id": "TLS-001",
+      "title": "فشل التحقق من TLS",
+      "severity": "high",
+      "category": "TLS",
+      "detail": "تعذّر إكمال مصافحة TLS: timed out",
+      "evidence": "",
+      "remediation": "تأكد أن_certificate صالح ومُجدَّد وأن النقطة 443 مفتوحة للعموم."
+    },
+    {
+      "id": "TLS-010",
+      "title": "النظام يعمل على HTTP فقط",
+      "severity": "high",
+      "category": "TLS",
+      "detail": "لا يوجد تشفير للنقل — كل بيانات وبيانات دخول تُرسل نصاً صريحاً.",
+      "evidence": "",
+      "remediation": "فعّل HTTPS وأجبِ بـ 301 إلى https، ثم فعّل HSTS."
+    },
+    {
+      "id": "INF-974",
+      "title": "مسار حساس مكشوف: /api/docs",
+      "severity": "medium",
+      "category": "كشف معلومات",
+      "detail": "توثيق API مكشوف",
+      "evidence": "\n    <!DOCTYPE html>\n    <html>\n    <head>\n    <link type=\"text/css\" rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.9.0/swagger-ui.css\">\n    <link rel=\"shortcut icon\" href=\"https://fastapi.tiangolo.com/img/favicon.png\">\n    <title>Smart SOC Platform API - Swagger UI</title>\n  ",
+      "remediation": ""
+    },
+    {
+      "id": "INF-010",
+      "title": "المسارات غير الموجودة ترجع صفحة SPA (catch-all route)",
+      "severity": "info",
+      "category": "كشف معلومات",
+      "detail": "33 مساراً حساساً رجعت بالصفحة الجذرية (200) — ليست ملفات مكشوفة، لكن رجاءً قيّد المسارات في السيرفر/الـ WAF بدل الاعتماد على 404.",
+      "evidence": "",
+      "remediation": "اجعل unknown paths ترجع 404 بدل 200، وفعّل deny rules على .git/.env/actuator."
+    },
+    {
+      "id": "HTTP-030",
+      "title": "لا يوجد تحديد معدل (Rate limiting)",
+      "severity": "low",
+      "category": "HTTP",
+      "detail": "8 طلبات متتالية كلها نجحت بلا 429 — يسمح بـ brute-force على نقاط المصادقة.",
+      "evidence": "[200, 200, 200, 200, 200, 200, 200, 200]",
+      "remediation": "طبّق rate limiting على /login و /api (Redis/nginx limit_req) و429 بعد threshold."
+    }
+  ]
+}

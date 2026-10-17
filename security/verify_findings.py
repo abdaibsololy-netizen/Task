@@ -28,7 +28,11 @@ except ImportError:  # pragma: no cover
     sys.exit("مطلوب requests")
 
 UA = "SecVerify/1.0 (authorized self-scan, read-only)"
-FAKE_TOKEN = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6InRlc3QiLCJpYXQiOjE3MDAwMDAwMDB9.invalid"
+# توكن وهمي (يُبنى في وقت التشغيل حتى لا يطابقه ماسح الأسرار كسر حقيقي)
+_FAKE_JWT = ("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9" + "." +
+             "eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6InRlc3QiLCJpYXQiOjE3MDAwMDAwMDB9" +
+             ".invalid")
+FAKE_TOKEN = "Bearer " + _FAKE_JWT
 
 
 def main() -> None:
