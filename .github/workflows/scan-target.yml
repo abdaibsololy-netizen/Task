@@ -1,0 +1,89 @@
+name: "Security Scan — فحص هدف محدد"
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: "الرابط المستهدف (مثال: http://20.215.186.30)"
+        required: true
+        default: "http://20.215.186.30"
+      mode:
+        description: "نطاق الفحص"
+        required: false
+        default: "full"
+        type: choice
+        options: [full, quick, probe-only, secrets-only]
+      timeout:
+        description: "مهلة الطلب بالثواني"
+        required: false
+        default: "12"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sec-scan-${{ inputs.target }}
+  cancel-in-progress: true
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: تثبيت الأدوات
+        run: pip install -q -r security/requirements.txt
+
+      - name: الفحص العام (TLS/ترويسات/كوكيز/CORS/مسارات/IDOR …)
+        if: inputs.mode == 'full' || inputs.mode == 'quick'
+        run: |
+          if [ "${{ inputs.mode }}" = "quick" ]; then
+            python security/audit.py "${{ inputs.target }}" --out security/findings --skip-active
+          else
+            python security/audit.py "${{ inputs.target }}" --out security/findings --timeout "${{ inputs.timeout }}"
+          fi
+
+      - name: فحوص الحقن (SQLi/XSS/traversal/cmd/SSTI/SSRF/CRLF)
+        if: inputs.mode == 'full' || inputs.mode == 'probe-only'
+        run: |
+          python security/probe.py "${{ inputs.target }}" --out security/findings --timeout "${{ inputs.timeout }}"
+
+      - name: أسرار مسرّبة داخل الموقع
+        if: inputs.mode == 'full' || inputs.mode == 'secrets-only'
+        run: |
+          python security/secrets_scan.py --url "${{ inputs.target }}" --out security/findings
+
+      - name: تجميع الملخص
+        if: always()
+        run: |
+          echo "## 🔐 نتيجة الفحص — ${{ inputs.target }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import glob, json, os
+          for f in sorted(glob.glob("security/findings/*.json")):
+              if f.endswith("bandit.json"):
+                  continue
+              try:
+                  d = json.load(open(f))
+              except Exception:
+                  continue
+              if "summary" in d:
+                  print(f"### {os.path.basename(f)}")
+                  print("الملخص:", json.dumps(d.get("summary", {}), ensure_ascii=False))
+                  for x in d.get("findings", [])[:40]:
+                      print(f"- **{x.get('severity','?').upper()}** `{x.get('id','')}` {x.get('title','')} → `{x.get('target','')}`")
+                  print()
+          PY
+
+      - name: رفع التقارير
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-scan-${{ github.run_number }}
+          path: security/findings/
+          retention-days: 30

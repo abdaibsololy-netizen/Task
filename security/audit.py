@@ -39,7 +39,7 @@ try:
 except ImportError:  # pragma: no cover
     sys.exit("مطلوب requests → pip install -r security/requirements.txt")
 
-UA = "SecAudit/1.0 (authorized self-scan)"
+UA = "SecAudit/1.0 (authorized self-scan, read-only)"
 SEV_ORDER = {"critical": 0, "high": 1, "medium": 2, "low": 3, "info": 4}
 
 # ------------------------------------------------------------------
@@ -406,8 +406,10 @@ def check_error_disclosure(client: Client, report: Report) -> None:
 # 6. إعدادات HTTP
 # ------------------------------------------------------------------
 
-def check_http_methods(client: Client, report: Report) -> None:
-    for m in ("TRACE", "TRACK", "PUT", "DELETE", "PATCH"):
+def check_http_methods(client: Client, report: Report, allow_write: bool = False) -> None:
+    """TRACE/TRACK آمنة دائماً. PUT/DELETE/PATCH قد تُنشئ/تحذف بيانات — تتطلب إذناً صريحاً."""
+    methods = ("TRACE", "TRACK", "PUT", "DELETE", "PATCH") if allow_write else ("TRACE", "TRACK")
+    for m in methods:
         r = client.req("/", method=m, allow_redirects=False)
         if r is None:
             continue
@@ -452,17 +454,18 @@ def check_open_redirect(client: Client, report: Report) -> None:
 
 def check_rate_limit(client: Client, report: Report) -> None:
     codes = []
-    for _ in range(12):
+    for _ in range(8):
         r = client.req("/")
         if r is None:
             return
         codes.append(r.status_code)
         if r.status_code == 429:
             break
+        time.sleep(0.4)
     report.facts["rate_limit_sample"] = codes
     if all(c == 200 for c in codes):
         report.add(id="HTTP-030", title="لا يوجد تحديد معدل (Rate limiting)", severity="low", category="HTTP",
-                   detail="12 طلباً متتالياً كلها نجحت بلا 429 — يسرّب تسريب/Brute-force على نقاط المصادقة.",
+                   detail="8 طلبات متتالية كلها نجحت بلا 429 — يسمح بـ brute-force على نقاط المصادقة.",
                    evidence=str(codes),
                    remediation="طبّق rate limiting على /login و /api (Redis/nginx limit_req) و429 بعد threshold.")
 
@@ -564,7 +567,8 @@ def check_stack_fingerprints(report: Report) -> None:
 # ------------------------------------------------------------------
 
 
-def run_audit(base: str, timeout: int = 10, active: bool = True, outdir: str = "security/findings") -> Report:
+def run_audit(base: str, timeout: int = 10, active: bool = True, outdir: str = "security/findings",
+              allow_write_methods: bool = False) -> Report:
     report = Report(target=base, started=datetime.now(timezone.utc).isoformat(timespec="seconds"))
     client = Client(base, timeout=timeout)
 
@@ -589,7 +593,7 @@ def run_audit(base: str, timeout: int = 10, active: bool = True, outdir: str = "
         check_cors(client, report)
         check_sensitive_paths(client, report)
         check_error_disclosure(client, report)
-        check_http_methods(client, report)
+        check_http_methods(client, report, allow_write=allow_write_methods)
         check_host_header(client, report)
         check_open_redirect(client, report)
         check_methods_auth(client, report)
@@ -623,10 +627,13 @@ def main() -> None:
     ap.add_argument("--timeout", type=int, default=10)
     ap.add_argument("--out", default="security/findings")
     ap.add_argument("--skip-active", action="store_true", help="تخطّي الفحوص النشطة (الملفات/الطرق/CORS)")
+    ap.add_argument("--allow-write-methods", action="store_true",
+                    help="السماح بـ PUT/DELETE/PATCH (قد تغيّر حالة الخادم — استخدم بحذر)")
     ap.add_argument("--quiet", action="store_true")
     args = ap.parse_args()
 
-    rep = run_audit(args.target, timeout=args.timeout, active=not args.skip_active, outdir=args.out)
+    rep = run_audit(args.target, timeout=args.timeout, active=not args.skip_active, outdir=args.out,
+                    allow_write_methods=args.allow_write_methods)
     s = rep.summary()
     if not args.quiet:
         print(f"\n=== فحص {args.target} ===")
