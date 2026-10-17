@@ -1,0 +1,70 @@
+name: "Security Self-Audit (authorized)"
+
+# فحص أمني غير تخريبي لموقع تملكه وتصرّح باختباره.
+# لا يعمل تلقائيًا — فقط عند الضغط على "Run workflow" من تبويب Actions.
+# كل الطلبات GET/OPTIONS/TRACE، بدون استغلال أو تعديل بيانات.
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: "الهدف (URL تملكه) — مثال: http://20.215.186.30"
+        required: true
+        default: "http://20.215.186.30"
+      active:
+        description: "تشغيل اختبار رصد WAF/IDS (حِزم شبيهة بالهجوم بلا استغلال)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: security-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: التحقق من التفويض
+        env:
+          TARGET: ${{ inputs.target }}
+        run: |
+          echo "::notice title=Authorized self-test::الفحص يعمل على هدف يملكه صاحب المستودع."
+          echo "الهدف: $TARGET"
+
+      - name: تشغيل الفحص
+        env:
+          TARGET: ${{ inputs.target }}
+          ACTIVE: ${{ inputs.active }}
+        run: |
+          set -uo pipefail
+          chmod +x security-check/audit.sh
+          args=(--target "$TARGET" --out ./audit-out --timeout 12)
+          if [ "$ACTIVE" = "true" ]; then args+=(--active); fi
+          ./security-check/audit.sh "${args[@]}" || true
+          echo "=== EXIT CODE: $? ==="
+
+      - name: طباعة التقرير في السجل
+        if: always()
+        run: |
+          if [ -f audit-out/report.md ]; then
+            echo "::group::تقرير الفحص"
+            cat audit-out/report.md
+            echo "::endgroup::"
+          else
+            echo "::warning::لم يُنتج التقرير — راجع الخطوة السابقة."
+          fi
+
+      - name: رفع التقرير كأثر (Artifact)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-audit-${{ github.run_number }}
+          path: audit-out/
+          if-no-files-found: warn
+          retention-days: 30
