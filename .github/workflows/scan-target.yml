@@ -14,7 +14,7 @@ on:
         required: false
         default: "full"
         type: choice
-        options: [full, quick, probe-only, secrets-only, recon]
+        options: [full, quick, probe-only, secrets-only, recon, verify]
 
 permissions:
   contents: write
@@ -77,6 +77,11 @@ jobs:
         if: steps.cfg.outputs.mode == 'full' || steps.cfg.outputs.mode == 'recon'
         run: |
           python security/recon_app.py "${{ steps.cfg.outputs.target }}" --out security/findings
+
+      - name: تحقّق موجّه من النتائج + قياس الأثر (قراءة فقط)
+        if: steps.cfg.outputs.mode == 'full' || steps.cfg.outputs.mode == 'verify'
+        run: |
+          python security/verify_findings.py "${{ steps.cfg.outputs.target }}" --out security/findings
 
       - name: تجميع الملخص
         if: always()
