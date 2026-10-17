@@ -14,7 +14,7 @@ on:
         required: false
         default: "full"
         type: choice
-        options: [full, quick, probe-only, secrets-only]
+        options: [full, quick, probe-only, secrets-only, recon]
 
 permissions:
   contents: write
@@ -72,6 +72,11 @@ jobs:
         if: steps.cfg.outputs.mode == 'full' || steps.cfg.outputs.mode == 'secrets-only'
         run: |
           python security/secrets_scan.py --url "${{ steps.cfg.outputs.target }}" --out security/findings
+
+      - name: استطلاع مُعجب بالتطبيق (SPA/JS/Swagger/خريطة API)
+        if: steps.cfg.outputs.mode == 'full' || steps.cfg.outputs.mode == 'recon'
+        run: |
+          python security/recon_app.py "${{ steps.cfg.outputs.target }}" --out security/findings
 
       - name: تجميع الملخص
         if: always()

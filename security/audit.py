@@ -136,6 +136,8 @@ class Client:
     def __init__(self, base: str, timeout: int = 10, verify: bool = True):
         self.base = base if base.endswith("/") else base + "/"
         self.timeout = timeout
+        self.root_sig: str | None = None      # بصمة الصفحة الجذرية (SHA-256)
+        self.root_len: int = 0
         self.s = requests.Session()
         self.s.verify = verify
         self.s.headers.update({"User-Agent": UA, "Accept": "*/*"})
@@ -153,6 +155,19 @@ class Client:
 
     def head(self, path: str = "/") -> requests.Response | None:
         return self.req(path, method="HEAD", allow_redirects=False)
+
+    def set_root(self, r: requests.Response) -> None:
+        """يحفظ بصمة الصفحة الجذرية لمقارنة أي مسار بعدها بها."""
+        import hashlib
+        self.root_sig = hashlib.sha256(r.content).hexdigest()
+        self.root_len = len(r.content)
+
+    def is_catch_all(self, r: requests.Response) -> bool:
+        """هل هذا المسار يرجع صفحة SPA الافتراضية (catch-all) بدل مورد حقيقي؟"""
+        import hashlib
+        if not self.root_sig or r is None:
+            return False
+        return hashlib.sha256(r.content).hexdigest() == self.root_sig
 
 
 # ------------------------------------------------------------------
@@ -359,9 +374,13 @@ SENSITIVE_PATHS = [
 
 
 def check_sensitive_paths(client: Client, report: Report) -> None:
+    spa_hits = 0
     for path, sev, desc in SENSITIVE_PATHS:
         r = client.req(path, allow_redirects=False)
         if r is None:
+            continue
+        if client.is_catch_all(r):
+            spa_hits += 1
             continue
         if r.status_code in (200, 206) and len(r.content) > 0:
             body = r.text[:300]
@@ -378,6 +397,12 @@ def check_sensitive_paths(client: Client, report: Report) -> None:
                        severity="low", category="كشف معلومات",
                        detail=f"المسار يحوّل إلى {r.headers.get('Location')} — قد يكون مجرد normalisation.",
                        evidence=f"Location: {r.headers.get('Location')}")
+    if spa_hits:
+        report.add(id="INF-010", title="المسارات غير الموجودة ترجع صفحة SPA (catch-all route)", severity="info",
+                   category="كشف معلومات",
+                   detail=f"{spa_hits} مساراً حساساً رجعت بالصفحة الجذرية (200) — ليست ملفات مكشوفة، "
+                          "لكن رجاءً قيّد المسارات في السيرفر/الـ WAF بدل الاعتماد على 404.",
+                   remediation="اجعل unknown paths ترجع 404 بدل 200، وفعّل deny rules على .git/.env/actuator.")
 
 
 def check_error_disclosure(client: Client, report: Report) -> None:
@@ -518,6 +543,8 @@ def check_idor(client: Client, report: Report) -> None:
         ra, rb = client.req(a, allow_redirects=False), client.req(b, allow_redirects=False)
         if ra is None or rb is None:
             continue
+        if client.is_catch_all(ra) or client.is_catch_all(rb):
+            continue
         if ra.status_code == 200 and rb.status_code == 200 and ra.text != rb.text and len(ra.text) > 20:
             report.add(id="API-001", title=f"مؤشر IDOR محتمل: {a} يرد بمحتوى مختلف", severity="medium",
                        category="API",
@@ -534,6 +561,8 @@ def check_methods_auth(client: Client, report: Report) -> None:
                  "/admin/api", "/internal/health", "/api/admin", "/api/debug"):
         r = client.req(path, allow_redirects=False)
         if r is None:
+            continue
+        if client.is_catch_all(r):
             continue
         if r.status_code == 200 and len(r.content) > 10:
             report.add(id="API-010", title=f"نقطة API بلا مصادقة: {path}", severity="high", category="API",
@@ -578,6 +607,7 @@ def run_audit(base: str, timeout: int = 10, active: bool = True, outdir: str = "
                    detail="لم يصل رد على الطلب الأساسي — تحقّق من الرابط/المنفذ/الـ firewall.",
                    remediation="تأكد أن الخادم يعمل وأن الرابط صحيح.")
     else:
+        client.set_root(root)
         report.facts["root_status"] = root.status_code
         report.facts["root_title"] = extract_title(root.text)
         report.facts["root_final_url"] = root.url
