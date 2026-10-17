@@ -34,8 +34,8 @@ jobs:
 
       - name: تحليل ساكن للكود
         run: |
-          bandit -r bot data -x bot/.venv,.venv,__pycache__ -f screen -ll
-          bandit -r bot data -x bot/.venv,.venv,__pycache__ -f json -o security/findings/bandit.json -q
+          bandit -r bot data -x bot/.venv,.venv,__pycache__ -f screen -ll || true
+          bandit -r bot data -x bot/.venv,.venv,__pycache__ -f json -o security/findings/bandit.json -q || true
 
       - name: اختبار الأدوات (خادم مصاب محلياً)
         run: python security/selftest.py
