@@ -1,40 +1,55 @@
-name: "Security Scan — فحص هدف محدد"
+name: "Security Scan — فحص الهدف المنشور"
 
 on:
+  push:
+    branches: [main, "arena/**"]
   workflow_dispatch:
     inputs:
       target:
-        description: "الرابط المستهدف (مثال: http://20.215.186.30)"
-        required: true
-        default: "http://20.215.186.30"
+        description: "الرابط المستهدف (يتجاوز الملف security/scan_target.txt)"
+        required: false
+        default: ""
       mode:
         description: "نطاق الفحص"
         required: false
         default: "full"
         type: choice
         options: [full, quick, probe-only, secrets-only]
-      timeout:
-        description: "مهلة الطلب بالثواني"
-        required: false
-        default: "12"
 
 permissions:
   contents: read
 
 concurrency:
-  group: sec-scan-${{ inputs.target }}
+  group: sec-scan
   cancel-in-progress: true
 
 jobs:
   scan:
     runs-on: ubuntu-latest
     timeout-minutes: 40
+    env:
+      TARGET_FILE: security/scan_target.txt
     steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
+      - name: تحديد الهدف
+        id: tgt
+        run: |
+          set -euo pipefail
+          TARGET="${{ inputs.target }}"
+          if [ -z "$TARGET" ] && [ -f "$TARGET_FILE" ]; then
+            TARGET="$(tr -d '\r\n' < "$TARGET_FILE" | sed 's/[[:space:]]*$//')"
+          fi
+          if [ -z "$TARGET" ]; then
+            echo "no target configured" >&2
+            exit 1
+          fi
+          echo "target=${TARGET}" >> "$GITHUB_OUTPUT"
+          echo "🎯 الهدف: ${TARGET}"
 
       - name: تثبيت الأدوات
         run: pip install -q -r security/requirements.txt
@@ -43,27 +58,28 @@ jobs:
         if: inputs.mode == 'full' || inputs.mode == 'quick'
         run: |
           if [ "${{ inputs.mode }}" = "quick" ]; then
-            python security/audit.py "${{ inputs.target }}" --out security/findings --skip-active
+            python security/audit.py "${{ steps.tgt.outputs.target }}" --out security/findings --skip-active
           else
-            python security/audit.py "${{ inputs.target }}" --out security/findings --timeout "${{ inputs.timeout }}"
+            python security/audit.py "${{ steps.tgt.outputs.target }}" --out security/findings --timeout 12
           fi
 
       - name: فحوص الحقن (SQLi/XSS/traversal/cmd/SSTI/SSRF/CRLF)
         if: inputs.mode == 'full' || inputs.mode == 'probe-only'
         run: |
-          python security/probe.py "${{ inputs.target }}" --out security/findings --timeout "${{ inputs.timeout }}"
+          python security/probe.py "${{ steps.tgt.outputs.target }}" --out security/findings --timeout 12
 
       - name: أسرار مسرّبة داخل الموقع
         if: inputs.mode == 'full' || inputs.mode == 'secrets-only'
         run: |
-          python security/secrets_scan.py --url "${{ inputs.target }}" --out security/findings
+          python security/secrets_scan.py --url "${{ steps.tgt.outputs.target }}" --out security/findings
 
       - name: تجميع الملخص
         if: always()
         run: |
-          echo "## 🔐 نتيجة الفحص — ${{ inputs.target }}" >> "$GITHUB_STEP_SUMMARY"
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          {
+            echo "## 🔐 نتيجة الفحص — ${{ steps.tgt.outputs.target }}"
+            echo ""
+            python - <<'PY'
           import glob, json, os
           for f in sorted(glob.glob("security/findings/*.json")):
               if f.endswith("bandit.json"):
@@ -72,13 +88,16 @@ jobs:
                   d = json.load(open(f))
               except Exception:
                   continue
-              if "summary" in d:
-                  print(f"### {os.path.basename(f)}")
-                  print("الملخص:", json.dumps(d.get("summary", {}), ensure_ascii=False))
-                  for x in d.get("findings", [])[:40]:
-                      print(f"- **{x.get('severity','?').upper()}** `{x.get('id','')}` {x.get('title','')} → `{x.get('target','')}`")
-                  print()
+              if "summary" not in d:
+                  continue
+              print(f"### {os.path.basename(f)}")
+              print("الملخص:", json.dumps(d.get("summary", {}), ensure_ascii=False))
+              for x in d.get("findings", [])[:60]:
+                  tgt = x.get("target") or x.get("where", "")
+                  print(f"- **{x.get('severity','?').upper()}** `{x.get('id','')}` {x.get('title','')} → `{tgt}`")
+              print()
           PY
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: رفع التقارير
         if: always()
