@@ -184,11 +184,18 @@ def main() -> None:
 
     # ── 8) نقاط التوثيق الإضافية ───────────────────────────────────
     print("\n▶ مسارات توثيق إضافية")
-    for p in ("/docs", "/redoc", "/openapi.json", "/api/redoc"):
+    root_html = b""
+    try:
+        root_html = s.get(urljoin(base, ""), timeout=12).content
+    except requests.RequestException:
+        pass
+    for p in ("/docs", "/redoc", "/openapi.json", "/api/redoc", "/api/docs"):
         try:
             r = s.get(urljoin(base, p.lstrip("/")), timeout=10)
         except requests.RequestException:
             continue
+        if root_html and r.content == root_html:
+            continue          # catch-all لصفحة SPA — ليس مسار توثيق حقيقياً
         if r.status_code == 200 and len(r.content) > 100:
             chk("DOC-001", f"مسار توثيق مكشوف: {p}", "low", True, f"{p} → 200 ({len(r.content)}B)",
                 r.text[:200], "يمنح المهاجم خريطة كاملة للنظام.")
