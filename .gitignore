@@ -1,5 +1,61 @@
+# ============================================================
+#  بيئة بحث أكاديمي  |  Academic Research Workspace
+# ============================================================
+
+# --- Python / Jupyter ---
 __pycache__/
-*.pyc
-bot_state.json
-bot.log
+*.py[cod]
+*.egg-info/
 .venv/
+venv/
+env/
+.ipynb_checkpoints/
+.pytest_cache/
+.ruff_cache/
+
+# --- LaTeX (بعد تحويل المخطوطة) ---
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.run.xml
+*.bcf
+
+# --- بيانات / مخرجات كبيرة ---
+experiments/data/raw/*
+!experiments/data/raw/.gitkeep
+experiments/data/processed/*
+!experiments/data/processed/.gitkeep
+experiments/data/external/*
+!experiments/data/external/.gitkeep
+*.parquet
+*.pkl
+*.sav
+*.dta
+*.xlsx
+
+# --- نماذج وملفات ضخمة ---
+*.bin
+*.gguf
+*.pt
+*.safetensors
+models/
+
+# --- ملفات حسّاسة (مفاتيح API، بيانات المشاركين، مسودات غير منشورة) ---
+.env
+*.env
+secrets/
+*_private*
+interview_transcripts/
+survey_responses_raw/
+
+# --- نظام / محرر ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
