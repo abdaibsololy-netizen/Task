@@ -19,6 +19,8 @@ The repository covers the full research cycle: **topic definition → systematic
 | `docs/04_writing_guide.md` | ✍️ قواعد الكتابة الأكاديمية بالإنجليزية + بنك عبارات | Academic writing rules + phrase bank |
 | `docs/05_publishing_guide.md` | 📤 اختيار المجلة، الإرسال، الرد على المحكمين | Journal choice, submission, rebuttal |
 | `docs/06_ethics_integrity.md` | ⚖️ الأمانة العلمية وإفصاح استخدام الذكاء الاصطناعي | Research integrity & AI-use disclosure |
+| `docs/07_intake_protocol.md` | 📥 **بروتوكول الإدخال**: كل نوع مادة وين يُحفظ بالضبط | **Intake protocol**: where each item type goes |
+| `inbox/` | 📥 المواد الخام قبل التصنيف | Raw material before classification |
 | `literature/` | 📚 قاعدة المصادر، التصنيف، مصفوفة المشكلة↔الحل | Source database, taxonomy, problem↔solution matrix |
 | `literature/taxonomy.md` | 🧩 تصنيف المشاكل (تقنية + تنظيمية) بأكواد | Problem taxonomy with codes (T1…, O1…) |
 | `literature/problem_solution_matrix.md` | 🔗 ربط كل مشكلة بالحلول والأدلة والفجوة | Problem → solutions → evidence → gap |
