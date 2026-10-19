@@ -1,0 +1,108 @@
+% ============================================================
+%  references.bib — مكتبة المراجع الأساسية | Core BibTeX library
+% ------------------------------------------------------------
+%  هذا الملف يُحرَّر يدوياً (مراجع مؤسِّسة + إطارات حوكمة).
+%  المراجع المستخرجة من literature/sources.csv تُولَّد تلقائياً في
+%  references/references_auto.bib  عبر:  python tools/litkit.py export-bib
+%
+%  ⚠️ تحقّق من كل DOI قبل الإرسال — أدوات الذكاء الاصطناعي تختلق مراجع.
+%     Verify every DOI before submission.
+% ============================================================
+
+
+% ---------- 1. مراجع منهجية | Methodology -------------------
+
+@article{page2021prisma,
+  author    = {Page, Matthew J. and McKenzie, Joanne E. and Bossuyt, Patrick M. and
+               Boutron, Isabelle and Hoffmann, Tammy C. and Mulrow, Cynthia D. and
+               Shamseer, Larissa and Tetzlaff, Jennifer M. and Akl, Elie A. and
+               Brennan, Sue E. and Chou, Roger and Glanville, Julie and
+               Grimshaw, Jeremy M. and Hr{\'o}bjartsson, Asbj{\o}rn and
+               Lalu, Manoj M. and Li, Tianjing and Loder, Elizabeth W. and
+               Mayo-Wilson, Evan and McDonald, Steve and McGuinness, Luke A. and
+               Stewart, Lesley A. and Thomas, James and Tricco, Andrea C. and
+               Welch, Vivian A. and Whiting, Penny and Moher, David},
+  title     = {The {PRISMA} 2020 statement: an updated guideline for reporting systematic reviews},
+  journal   = {BMJ},
+  volume    = {372},
+  pages     = {n71},
+  year      = {2021},
+  doi       = {10.1136/bmj.n71},
+  note      = {PRISMA 2020 — reporting guideline for systematic reviews}
+}
+
+
+% ---------- 2. مشاكل الذكاء الاصطناعي التقنية | Technical ---
+
+@article{huang2025survey,
+  author    = {Huang, Lei and Yu, Weijiang and Ma, Weitao and Zhong, Weihong and
+               Feng, Zhangyin and Wang, Haotian and Chen, Qianglong and
+               Peng, Weihua and Feng, Xiaocheng and Qin, Bing and Liu, Ting},
+  title     = {A Survey on Hallucination in Large Language Models:
+               Principles, Taxonomy, Challenges, and Open Questions},
+  journal   = {ACM Transactions on Information Systems},
+  volume    = {43},
+  number    = {2},
+  pages     = {1--55},
+  year      = {2025},
+  doi       = {10.1145/3703155},
+  note      = {Q1 — taxonomy: factuality vs. faithfulness hallucination}
+}
+
+
+% ---------- 3. الزاوية التنظيمية | Organizational / IS ------
+
+@article{romeo2026adoption,
+  author    = {Romeo, Emilia and Lacko, J{\'a}n},
+  title     = {Adoption and integration of {AI} in organizations: a systematic review
+               of challenges and drivers towards future directions of research},
+  journal   = {Kybernetes},
+  volume    = {55},
+  number    = {3},
+  pages     = {1286--1307},
+  year      = {2026},
+  doi       = {10.1108/K-07-2024-2002},
+  note      = {PRISMA review of 196 works — template for the organizational angle}
+}
+
+
+% ---------- 4. أطر الحوكمة | Governance frameworks ----------
+
+@techreport{tabassi2023airmf,
+  author      = {Tabassi, Elham},
+  title       = {Artificial Intelligence Risk Management Framework ({AI RMF} 1.0)},
+  institution = {National Institute of Standards and Technology},
+  number      = {NIST AI 100-1},
+  year        = {2023},
+  doi         = {10.6028/NIST.AI.100-1}
+}
+
+@misc{iso42001,
+  author       = {{ISO/IEC JTC 1/SC 42}},
+  title        = {{ISO/IEC} 42001:2023 Information technology --- Artificial
+                  intelligence --- Management system},
+  year         = {2023},
+  howpublished = {International Organization for Standardization},
+  url          = {https://www.iso.org/standard/42001},
+  note         = {First certifiable AI management system standard (published Dec 2023)}
+}
+
+@misc{euaiact2024,
+  author       = {{European Union}},
+  title        = {Regulation ({EU}) 2024/1689 of the European Parliament and of the
+                  Council laying down harmonised rules on artificial intelligence
+                  ({Artificial Intelligence Act})},
+  year         = {2024},
+  howpublished = {Official Journal of the European Union},
+  url          = {https://eur-lex.europa.eu/eli/reg/2024/1689/oj},
+  note         = {Verify the consolidated text before citing}
+}
+
+
+% ============================================================
+%  كيف تضيف مرجعاً | How to add a reference
+% ------------------------------------------------------------
+%  1) صدّره من Zotero بصيغة BibTeX وألصقه هنا، أو
+%  2) أضفه عبر: python tools/litkit.py add ... ثم export-bib
+%  3) استخدم المفتاح في المتن: \citep{huang2025survey}  أو  [@huang2025survey]
+% ============================================================

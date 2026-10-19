@@ -1,0 +1,43 @@
+name: "Research CI — فحص جودة المستودع"
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    name: "اختبارات الأدوات + فحص المصادر"
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: "تشغيل الاختبارات | Run tests"
+        run: python tests/test_tools.py
+
+      - name: "فحص جدول المصادر | Validate sources (strict)"
+        run: python tools/validate_sources.py --strict
+        continue-on-error: true
+
+      - name: "فحص أرقام PRISMA | Check PRISMA counts"
+        run: python tools/prisma.py
+        continue-on-error: true
+
+      - name: "تحليل المصادر | Descriptive analysis"
+        run: python experiments/scripts/analyze_sources.py
+
+      - name: "رفع النتائج | Upload analysis outputs"
+        uses: actions/upload-artifact@v4
+        with:
+          name: analysis-results
+          path: experiments/results/
+          if-no-files-found: ignore

@@ -1,0 +1,26 @@
+# ============================================================
+#  بيئة البحث | Research environment
+# ------------------------------------------------------------
+#  ملاحظة: أدوات tools/ واختبارات tests/ لا تحتاج أي مكتبة —
+#  تعمل بمكتبات Python القياسية وحدها.
+#  NOTE: tools/ and tests/ need NO third-party packages
+#  (pure Python standard library).
+# ============================================================
+
+# --- تحليل البيانات (اختياري | optional, للنوتبوكات) ---
+pandas>=2.0
+numpy>=1.24
+matplotlib>=3.7
+seaborn>=0.12
+
+# --- إحصاء وتعلّم آلي (اختياري | optional) ---
+scikit-learn>=1.3
+scipy>=1.11
+# statsmodels>=0.14          # للتحليل الانحداري / SEM المساعد
+
+# --- نوتبوكات | notebooks ---
+jupyterlab>=4.0
+nbformat>=5.9
+
+# --- اختبارات | testing ---
+pytest>=7.4
